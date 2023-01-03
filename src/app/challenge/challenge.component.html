@@ -1,1 +1,296 @@
-<p>challenge works!</p>
+<div class="container-fluid" style="overflow: hidden;">
+    <div class="row flex-nowrap">
+        <div id="sidebar" class="col-auto sidebar  collapse collapse-horizontal show" *ngIf="menuBureau"
+            style="height: 100vh;">
+            <app-menu></app-menu>
+            <!-- </div> -->
+        </div>
+        <main class="col " style=" height: 100vh ; overflow: scroll; overflow-x: hidden;">
+            <nav class=" bg-danger  navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0"
+                style="margin-left: -4%; width: 107%;">
+                <h1 style="width: 20px;"></h1>
+                <a href="#" class="sidebar-toggler flex-shrink-0" data-bs-toggle="collapse" data-bs-target="#sidebar"
+                    aria-expanded="false" (click)="afficheMenuMobile()" aria-controls="collapseWidthExample">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <form class="d-none d-md-flex ms-4">
+                    <input class="form-control border-0" type="search" placeholder="Search">
+                    <i class='bx bx-search icon ' style="font-size:35px"></i>
+                </form>
+                <div class="navbar-nav align-items-center ms-auto">
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa fa-envelope me-lg-2"></i>
+                            <span class="d-none d-lg-inline-flex">Message</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="../../assets/logo8.png" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="../../assets/logo8.png" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="../../assets/logo8.png" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all message</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa fa-bell me-lg-2"></i>
+                            <span class="d-none d-lg-inline-flex">Notificatin</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Profile updated</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">New user added</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Password changed</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all notifications</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="../../assets/logo8.png" alt=""
+                                style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">My Profile</a>
+                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="#" class="dropdown-item">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div class="container-fluid pt-4 px-4" style="margin-left: -2.5%; width: 105%;">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class='bx bxs-trophy fa-3x'></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Total Challenge</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class='bx bxs-trophy fa-3x'></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Challenge à venir</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class='bx bxs-trophy fa-3x' style="color:yellow ;"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Total encours</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3 ">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class='bx bxs-trophy  fa-3x '></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Total Terminer</p>
+                                <h6 class="mb-0">1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid pt-4 px-4" style="margin-left: -2.5%; width: 105%;">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-8">
+                        <div class="bg-light text-center rounded p-4">
+                            <div class="chart-container">
+                                <div class="header_fixed py-2">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>S No.</th>
+                                                <th>Image</th>
+                                                <th>Username</th>
+                                                <th>Email</th>
+                                                <th>Department</th>
+                                                <!-- <th>Action</th> -->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>rge</td>
+                                                <td>Rakhi Gupta</td>
+                                                <td>rakhigupta@gmail.com</td>
+                                                <td>Engineering</td>
+                                                <!-- <td><button>View</button></td> -->
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>gdf</td>
+                                                <td>Anjali</td>
+                                                <td>anjali@gmail.com</td>
+                                                <td>Engineering</td>
+                                                <!-- <td><button>View</button></td> -->
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>fdf</td>
+                                                <td>Vejata Gupta</td>
+                                                <td>Vejata@gmail.com</td>
+                                                <td>Engineering</td>
+                                                <!-- <td><button>View</button></td> -->
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>fd</td>
+                                                <td>Shweta</td>
+                                                <td>Shweta@gmail.com</td>
+                                                <td>Engineering</td>
+                                                <!-- <td><button>View</button></td> -->
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>fd</td>
+                                                <td>Adarsh</td>
+                                                <td>Adarsh@gmail.com</td>
+                                                <td>Engineering</td>
+                                                <!-- <td><button>View</button></td> -->
+                                            </tr>
+                                            <tr>
+                                                <td>6</td>
+                                                <td>cxcv</td>
+                                                <td>Monti</td>
+                                                <td>Monti@gmail.com</td>
+                                                <td>Engineering</td>
+                                                <!-- <td><button>View</button></td> -->
+                                            </tr>
+                                            <tr>
+                                                <td>7</td>
+                                                <td>vc</td>
+                                                <td>Arpit</td>
+                                                <td>Arpit@gmail.com</td>
+                                                <td>Engineering</td>
+                                                <!-- <td><button>View</button></td> -->
+                                            </tr>
+                                            <tr>
+                                                <td>8</td>
+                                                <td>cxc</td>
+                                                <td>Priya</td>
+                                                <td>priya@gmail.com</td>
+                                                <td>Engineering</td>
+                                                <!-- <td><button>View</button></td> -->
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-xl-4">
+                        <div class="bg-light text-center rounded">
+                            <div class="h-100 bg-light rounded p-3">
+                                <div class="header_fixed py-2">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>S No.</th>
+                                                <th>Username</th>
+                                                <th>Email</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Rakhi Gupta</td>
+                                                <td>rakhigupta@gmail.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Anjali</td>
+                                                <td>anjali@gmail.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Vejata Gupta</td>
+                                                <td>Vejata@gmail.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>Shweta</td>
+                                                <td>Shweta@gmail.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>Adarsh</td>
+                                                <td>Adarsh@gmail.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>6</td>
+                                                <td>Monti</td>
+                                                <td>Monti@gmail.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>7</td>
+                                                <td>Arpit</td>
+                                                <td>Arpit@gmail.com</td>
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <button><i class='bx bxs-message-square-add fa-1x' style="color: white;"></i> Ajouter un
+                    challenge</button>
+                <button> <i class='bx bxs-message-square-add fa-1x' style="color: white;"></i> Ajouter une
+                    catégorie</button>
+            </div>
+            <app-footer></app-footer>
+        </main>
+    </div>
+</div>
