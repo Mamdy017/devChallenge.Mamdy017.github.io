@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ChallengeComponent } from './challenge/challenge.component';
+import { CommentaireComponent } from './commentaire/commentaire.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForumComponent } from './forum/forum.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'challenge', component: ChallengeComponent },
   { path: 'utilisateur', component: UtilisateurComponent },
   {path:'forum',component:ForumComponent},
+  {path:'commentaire/:id',component:CommentaireComponent},
   { path: '**', component: NotFoundComponent },
 ];
 

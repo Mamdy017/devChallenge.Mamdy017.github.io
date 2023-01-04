@@ -12,6 +12,7 @@ import { ChallengeComponent } from './challenge/challenge.component';
 import { UtilisateurComponent } from './utilisateur/utilisateur.component';
 import { ForumComponent } from './forum/forum.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CommentaireComponent } from './commentaire/commentaire.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ChallengeComponent,
     UtilisateurComponent,
     ForumComponent,
+    CommentaireComponent,
      ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@
         <div id="sidebar" class="col-auto sidebar  collapse collapse-horizontal show" *ngIf="menuBureau"
             style="height: 100vh;">
             <app-menu></app-menu>
-            <!-- </div> -->
+             <!-- </div> -->
         </div>
         <main class="col " style=" height: 100vh ; overflow: scroll; overflow-x: hidden;">
             <nav class=" bg-danger  navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0"
@@ -102,7 +102,7 @@
             <div class="container-fluid pt-4 px-4" style="margin-left: -2.5%; width: 105%;">
                 <button class="button">
                     <i class='bx bxs-message-square-add fa-1x' style="color: white;"></i>
-                    Ajouter un challenge</button>
+                    Ajouter catégorie</button>
                 <div class="row g-4 py-3">
                     <div class="col-sm-12 col-xl-3">
                         <div class="bg-light rounded p-4 he" style="height: 100%;">
@@ -110,7 +110,7 @@
                                 <div class=" py-2">
                                     <button class="btn" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
                                         aria-expanded="false">
-                                        Langages </button>
+                                        Tous </button>
                                 </div>
                                 <div class="dropdown py-2">
                                     <button class="btn  dropdown-toggle" type="button" id="dropdownMenu2"
@@ -167,7 +167,7 @@
                                             <h6 class="mb-0">Jhon Doe</h6>
                                             <small>15 minutes ago</small>
                                         </div>
-                                        <span>Short message goes here...</span>
+                                        <span routerLinkActive="active" routerLink="/commentaire/1">Short message goes here...</span>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center border-bottom py-2">
