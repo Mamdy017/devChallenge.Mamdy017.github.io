@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-@Component({
-  selector: 'app-challenge',
-  templateUrl: './challenge.component.html',
-  styleUrls: ['./challenge.component.css']
-})
-export class ChallengeComponent implements OnInit {
 
+@Component({
+  selector: 'app-utilisateur',
+  templateUrl: './utilisateur.component.html',
+  styleUrls: ['./utilisateur.component.css']
+})
+export class UtilisateurComponent implements OnInit {
+
+  p:any;
   menuBureau: boolean = true;
   menuMobile: boolean = false;
   constructor(public breakpointObserver: BreakpointObserver,
@@ -31,10 +33,9 @@ export class ChallengeComponent implements OnInit {
           this.menuBureau = true;
           this.menuMobile = false;
           this.actualise();
-        } 
+        }
       });
   }
-
   afficheMenuMobile() {
     this.menuBureau = true;
     this.menuMobile = false;

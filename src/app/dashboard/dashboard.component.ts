@@ -45,6 +45,8 @@ export class DashboardComponent implements OnInit {
     this.menuMobile = false;
   }
 
+ 
+
   createChart() {
     this.actualise();
     this.chart = new Chart("MyChart", {
@@ -57,7 +59,7 @@ export class DashboardComponent implements OnInit {
         datasets: [
           {
             label: "Sales",
-            data: ['467', '576', '572', '79', '92',
+            data: ['467', '577', '572', '79', '92',
               '574', '573', '576', '79', '92',
               '574', '573'],
             backgroundColor: '#695CFE'

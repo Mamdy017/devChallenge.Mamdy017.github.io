@@ -9,6 +9,10 @@ import { FooterComponent } from './footer/footer.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ChallengeComponent } from './challenge/challenge.component';
+import { UtilisateurComponent } from './utilisateur/utilisateur.component';
+import { ForumComponent } from './forum/forum.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -18,11 +22,14 @@ import { ChallengeComponent } from './challenge/challenge.component';
     FooterComponent,
     ConnexionComponent,
     NotFoundComponent,
-    ChallengeComponent
-  ],
+    ChallengeComponent,
+    UtilisateurComponent,
+    ForumComponent,
+     ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

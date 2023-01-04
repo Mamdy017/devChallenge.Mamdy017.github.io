@@ -3,6 +3,12 @@ table {
   border-collapse: collapse;
 }
 
+.header_fixed {
+  max-height: 100vh;
+  width: 100%;
+  overflow: auto;
+  border: 1px solid #dddddd;
+}
 
 .header_fixed thead th {
   position: sticky;
@@ -15,22 +21,16 @@ table {
 th,
 td {
   border-bottom: 1px solid #dddddd;
-  padding: 10px;
+  padding: 10px 20px;
   font-size: 14px;
 }
 
-@media screen and (max-width: 767px) {
-
-  th,
-  td {
-    padding: 5px;
-    font-size: 10px;
-  }
-  .header_fixed thead th{
-    font-size: 10px;
-  }
+td img {
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  border: 5px solid #e6e7e8;
 }
-
 
 tr:nth-child(even) {
   background-color: #dddddd;
@@ -53,15 +53,10 @@ td button {
   background-color: #707070;
   color: #e6e7e8;
 }
-
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-::-webkit-scrollbar-thumb {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+button {
+  border: none;
+  padding: 7px ;
+  border-radius: 20px;
+  background-color: #707070;
+  color: #e6e7e8;
 }
