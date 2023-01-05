@@ -117,7 +117,7 @@
           </div>
           <div class="col-sm-6 col-xl-3">
             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-              <i class='bx bxs-trophy fa-3x' style="color:yellow ;"></i>
+              <i class='bx bxs-trophy fa-3x'></i>
               <div class="ms-3">
                 <p class="mb-2">Total encours</p>
                 <h6 class="mb-0">$1234</h6>
@@ -136,9 +136,88 @@
         </div>
       </div>
       <div class="container-fluid pt-4 px-4" style="margin-left: -2.5%; width: 105%;">
-        <button >
-          <i class='bx bxs-message-square-add fa-1x' style="color: white;"></i>
-           Ajouter un challenge</button>
+        <div class="example-button-row d-flex justify-content-end">
+          <button data-mdb-toggle="modal" data-mdb-target="#staticBackdrop4">
+            <i class='bx bxs-message-square-add fa-1x' style="color: white;"></i>
+            Ajouter un challenge
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="staticBackdrop4" tabindex="100" aria-labelledby="exampleModalLabel4"
+            aria-hidden="true">
+            <div class="modal-dialog d-flex justify-content-center">
+              <div class="modal-content w-100">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel4">Formulaire d'ajout d'un pays
+                  </h5>
+                  <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="section">
+                  <div class="container">
+                    <div class="row full-height justify-content-center">
+                      <div class="col-12 text-center align-self-center py-5">
+                        <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                          <h6 class="mb-0 pb-3"><span>Catégorie </span><span>Challenge</span></h6>
+                          <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+                          <label for="reg-log"></label>
+                          <div class="card-3d-wrap mx-auto">
+                            <div class="card-3d-wrapper">
+                              <div class="card-front">
+                                <div class="center-wrap">
+                                  <div class="section text-center">
+                                    <h4 class="mb-4 pb-3 text-white">Catégorie</h4>
+                                    <div class="form-group">
+                                      <input type="email" name="logemail" class="form-style" placeholder="Your Email"
+                                        id="logemail" autocomplete="off">
+                                      <i class="input-icon uil uil-at"></i>
+                                    </div>
+                                    <div class="form-group mt-2">
+                                      <input type="password" name="logpass" class="form-style"
+                                        placeholder="Your Password" id="logpass" autocomplete="off">
+                                      <i class="input-icon uil uil-lock-alt"></i>
+                                    </div>
+                                    <a href="#" class="btn mt-4">submit</a>
+                                    <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a>
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="card-back">
+                                <div class="center-wrap">
+                                  <div class="section text-center">
+                                    <h4 class="mb-4 pb-3 text-white">Challenge</h4>
+                                    <div class="form-group">
+                                      <input type="text" name="logname" class="form-style" placeholder="Your Full Name"
+                                        id="logname" autocomplete="off">
+                                      <i class="input-icon uil uil-user"></i>
+                                    </div>
+                                    <div class="form-group mt-2">
+                                      <input type="email" name="logemail" class="form-style" placeholder="Your Email"
+                                        id="logemail" autocomplete="off">
+                                      <i class="input-icon uil uil-at"></i>
+                                    </div>
+                                    <div class="form-group mt-2">
+                                      <input type="password" name="logpass" class="form-style"
+                                        placeholder="Your Password" id="logpass" autocomplete="off">
+                                      <i class="input-icon uil uil-lock-alt"></i>
+                                    </div>
+                                    <a href="#" class="btn mt-4">submit</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal -->
+        </div>
+   
         <div class="row g-4 py-2">
           <div class="col-sm-12 col-xl-8">
             <div class="bg-light text-center rounded p-4">
