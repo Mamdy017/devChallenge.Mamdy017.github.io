@@ -17,89 +17,15 @@
           <input class="form-control border-0" type="search" placeholder="Search">
           <i class='bx bx-search icon ' style="font-size:35px"></i>
         </form>
-        <div class="navbar-nav align-items-center ms-auto">
-          <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-              <i class="fa fa-envelope me-lg-2"></i>
-              <span class="d-none d-lg-inline-flex">Message</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-              <a href="#" class="dropdown-item">
-                <div class="d-flex align-items-center">
-                  <img class="rounded-circle" src="../../assets/logo8.png" alt="" style="width: 40px; height: 40px;">
-                  <div class="ms-2">
-                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                    <small>15 minutes ago</small>
-                  </div>
-                </div>
-              </a>
-              <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item">
-                <div class="d-flex align-items-center">
-                  <img class="rounded-circle" src="../../assets/logo8.png" alt="" style="width: 40px; height: 40px;">
-                  <div class="ms-2">
-                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                    <small>15 minutes ago</small>
-                  </div>
-                </div>
-              </a>
-              <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item">
-                <div class="d-flex align-items-center">
-                  <img class="rounded-circle" src="../../assets/logo8.png" alt="" style="width: 40px; height: 40px;">
-                  <div class="ms-2">
-                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                    <small>15 minutes ago</small>
-                  </div>
-                </div>
-              </a>
-              <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item text-center">See all message</a>
-            </div>
-          </div>
-          <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-              <i class="fa fa-bell me-lg-2"></i>
-              <span class="d-none d-lg-inline-flex">Notificatin</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-              <a href="#" class="dropdown-item">
-                <h6 class="fw-normal mb-0">Profile updated</h6>
-                <small>15 minutes ago</small>
-              </a>
-              <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item">
-                <h6 class="fw-normal mb-0">New user added</h6>
-                <small>15 minutes ago</small>
-              </a>
-              <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item">
-                <h6 class="fw-normal mb-0">Password changed</h6>
-                <small>15 minutes ago</small>
-              </a>
-              <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item text-center">See all notifications</a>
-            </div>
-          </div>
-          <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-              <img class="rounded-circle me-lg-2" src="../../assets/logo8.png" alt=""
-                style="width: 40px; height: 40px;">
-              <span class="d-none d-lg-inline-flex">John Doe</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-              <a href="#" class="dropdown-item">My Profile</a>
-              <a href="#" class="dropdown-item">Settings</a>
-              <a href="#" class="dropdown-item">Log Out</a>
-            </div>
-          </div>
+        <div class="d-flex justify-content-end  w-100">
+          <app-navbar></app-navbar>
         </div>
       </nav>
 
 
       <div class="container-fluid pt-4 px-4" style="margin-left: -2.5%; width: 105%;">
         <div class="row g-4 py-3">
-          <div class="col-sm-12 col-xl-4">            
+          <div class="col-sm-12 col-xl-4">
             <div class="card">
               <div class="row ">
                 <div class=" px-3 py-2">
@@ -117,30 +43,31 @@
                     <h3></h3>
                     <div class="">
                       <div class="row">
-                          <div class="col-12">
-                              <div class="comment-box ml-2">
-                                  <h4>Ajouter des commentaires</h4>                                  
-                                  <div class="comment-area">
-                                      <textarea class="form-control" placeholder="Parteager ses idées" rows="4"></textarea>
+                        <div class="col-12">
+                          <div class="comment-box ml-2">
+                            <h4>Ajouter des commentaires</h4>
+                            <div class="comment-area">
+                              <textarea class="form-control" placeholder="Parteager ses idées" rows="4"></textarea>
+                            </div>
+                            <div class="comment-btns mt-2">
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="pull-left">
+                                    <button class="btn btn-success btn-sm">Annuler</button>
                                   </div>
-                                  <div class="comment-btns mt-2">
-                                      <div class="row">
-                                          <div class="col-6">
-                                              <div class="pull-left">
-                                              <button class="btn btn-success btn-sm">Annuler</button>      
-                                              </div>
-                                          </div>
-                                          <div class="col-6">
-                                              <div class="pull-right">
-                                              <button class="btn btn-success send btn-sm">Ajouter <i class="fa fa-long-arrow-right ml-1"></i></button>      
-                                              </div>
-                                          </div>
-                                      </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="pull-right">
+                                    <button class="btn btn-success send btn-sm">Ajouter <i
+                                        class="fa fa-long-arrow-right ml-1"></i></button>
                                   </div>
+                                </div>
                               </div>
+                            </div>
                           </div>
+                        </div>
                       </div>
-                  </div>
+                    </div>
                   </div>
                 </div>
               </div>

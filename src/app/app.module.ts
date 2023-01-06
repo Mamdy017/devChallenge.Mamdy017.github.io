@@ -13,7 +13,9 @@ import { UtilisateurComponent } from './utilisateur/utilisateur.component';
 import { ForumComponent } from './forum/forum.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CommentaireComponent } from './commentaire/commentaire.component';
-
+// import { ProfilesComponent } from './profile/profiles.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ProfilesComponent } from './profiles/profiles.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,9 @@ import { CommentaireComponent } from './commentaire/commentaire.component';
     UtilisateurComponent,
     ForumComponent,
     CommentaireComponent,
+    // ProfilesComponent,
+    NavbarComponent,
+    ProfilesComponent
      ],
   imports: [
     BrowserModule,

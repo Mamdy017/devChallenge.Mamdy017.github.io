@@ -6,6 +6,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForumComponent } from './forum/forum.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ProfilesComponent } from './profiles/profiles.component';
 import { UtilisateurComponent } from './utilisateur/utilisateur.component';
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'utilisateur', component: UtilisateurComponent },
   {path:'forum',component:ForumComponent},
   {path:'commentaire/:id',component:CommentaireComponent},
+  {path:'profile',component:ProfilesComponent},
   { path: '**', component: NotFoundComponent },
 ];
 
