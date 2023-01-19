@@ -8,19 +8,19 @@ import { ForumComponent } from './forum/forum.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProfilesComponent } from './profiles/profiles.component';
 import { UtilisateurComponent } from './utilisateur/utilisateur.component';
-
+import { PermissionService } from './Services/permission.service';
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'connexion', pathMatch: 'full'
   },
   { path: 'connexion', component: ConnexionComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'challenge', component: ChallengeComponent },
-  { path: 'utilisateur', component: UtilisateurComponent },
-  {path:'forum',component:ForumComponent},
-  {path:'commentaire/:id',component:CommentaireComponent},
-  {path:'profile',component:ProfilesComponent},
+  { path: 'dashboard', component: DashboardComponent,canActivate: [PermissionService] },
+  { path: 'challenge', component: ChallengeComponent,canActivate: [PermissionService] },
+  { path: 'utilisateur', component: UtilisateurComponent,canActivate: [PermissionService] },
+  {path:'forum',component:ForumComponent,canActivate: [PermissionService]},
+  {path:'commentaire/:id',component:CommentaireComponent,canActivate: [PermissionService]},
+  {path:'profile',component:ProfilesComponent,canActivate: [PermissionService]},
   { path: '**', component: NotFoundComponent },
 ];
 

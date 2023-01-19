@@ -28,7 +28,7 @@
                         <div class="bg-light  rounded p-4">
                             <div class="row">
                                 <div class="col-md-8 ">
-                                    <h3>La liste des challenges</h3>
+                                    <h3>La liste complètes des utilisateurs</h3>
                                 </div>
                                 <!-- <div class="col-md-2"></div> -->
                                 <div class="col-md-4">
@@ -50,22 +50,23 @@
                                                 <th>Nom</th>
                                                 <th>Prenom</th>
                                                 <th>Email</th>
-                                                <th>Points</th>
-                                                <th>Challenge</th>
+                                                <th>Telephone</th>
+                                                <th>Role</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><img src="../../assets/bg.jpg" alt=""></td>
-                                                <td>cxc</td>
-                                                <td>Priya</td>
-                                                <td>Rakhi Gupta</td>
-                                                <td>344</td>
-                                                <td>Encours</td>
+                                            <tr *ngFor="let users of user ,  let i = index ">
+                                                <td>{{i}}</td>
+                                                <td><img src="{{users.profile}}" alt=""></td>
+                                                <td>{{users.nom}}</td>
+                                                <td>{{users.prenopm}}</td>
+                                                <td>{{users.email}}</td>
+                                                <td>91228829</td>
+                                                <td>{{users.roles.name}}</td>
                                                 <td><button>Banir</button></td>
                                             </tr>
+                                            
                                             <tr>
                                                 <td>2</td>
                                                 <td><img src="../../assets/bg.jpg" alt=""></td>

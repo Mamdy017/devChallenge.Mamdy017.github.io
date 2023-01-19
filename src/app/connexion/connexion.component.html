@@ -1,20 +1,36 @@
 <div class="container-fluid" style="background-color: black;">
   <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
     <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
-      <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
-        <div class="d-flex align-items-center justify-content-between mb-3">
-          <h3 align="center">Connexion!</h3>
+      <form *ngIf="!connexionReussi" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <h3 align="center">Connexion!</h3>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" name="usernameOrEmail" [(ngModel)]="form.usernameOrEmail" required
+              #usernameOrEmail="ngModel" [ngClass]="{ 'is-invalid': f.submitted && usernameOrEmail.errors }"
+              class="form-control" id="floatingInput" placeholder="name@example.com">
+            <div *ngIf="usernameOrEmail.errors && f.submitted" class="invalid-feedback">
+              Champ pseudo ou email est obligatoire !!
+            </div>
+            <label for="floatingInput">Votre Email ou Pseudo</label>
+          </div>
+          <div class="form-floating mb-4">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password"
+              [(ngModel)]="form.password" required minlength="6" #password="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && password.errors }">
+            <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
+              <div color="red" *ngIf="password.errors['required']" style="color: red;">Le mot de
+                passe est obligatoir</div>
+              <div *ngIf="password.errors['minlength']" style="color: red;">
+                le mot de passe doit contenir au mois 6 caracters
+              </div>
+            </div>
+            <label for="floatingPassword">Mot de passe</label>
+          </div>
+          <button type="submit" class=" btn-primary py-3 w-100 mb-4">Se connecter</button>
         </div>
-        <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">Votre Email</label>
-        </div>
-        <div class="form-floating mb-4">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-          <label for="floatingPassword">Mot de passe</label>
-        </div>
-        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Se connecter</button>
-      </div>
+      </form>
     </div>
   </div>
 </div>

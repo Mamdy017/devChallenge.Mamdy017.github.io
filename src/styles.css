@@ -35,6 +35,9 @@ body {
     color: #fff;
 }
 
+main::-webkit-scrollbar {
+    display: none;
+  }
 body.dark {
     --body-color: #18191a;
     --sidebar-color: #242526;

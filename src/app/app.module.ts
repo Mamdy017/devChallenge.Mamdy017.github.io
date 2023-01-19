@@ -16,6 +16,8 @@ import { CommentaireComponent } from './commentaire/commentaire.component';
 // import { ProfilesComponent } from './profile/profiles.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfilesComponent } from './profiles/profiles.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,12 +33,15 @@ import { ProfilesComponent } from './profiles/profiles.component';
     CommentaireComponent,
     // ProfilesComponent,
     NavbarComponent,
-    ProfilesComponent
+    ProfilesComponent,
+    
      ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
