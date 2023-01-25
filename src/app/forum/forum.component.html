@@ -213,7 +213,44 @@
                     </div>
                 </div>
             </div>
-
+            <form action="" [formGroup]="challengeForm" (ngSubmit)="onSubmit()" >
+                <input type="text" name="titre" formControlName="titre" placeholder="titre">
+                <input type="text" name="description" formControlName="description" placeholder="description">
+                <input type="date" name="datedebut" formControlName="datedebut" placeholder="datedebut">
+                <input type="date" name="datefin" formControlName="datefin" placeholder="datefin">
+                <input type="file" name="photo" formControlName="photo" (change)="onFileChangePhoto($event)" placeholder="photo">
+                <select class="select" name="critereids" formControlName="critereids" multiple>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                    <option value="4">Four</option>
+                    <option value="5">Five</option>
+                    <option value="6">Six</option>
+                    <option value="7">Seven</option>
+                    <option value="8">Eight</option>
+                  </select>
+                  <select class="select" name="tecnhoids" formControlName="tecnhoids" multiple>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                    <option value="4">Four</option>
+                    <option value="5">Five</option>
+                    <option value="6">Six</option>
+                    <option value="7">Seven</option>
+                    <option value="8">Eight</option>
+                  </select>
+                  <select class="select" name="cateids" formControlName="cateids" multiple>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                    <option value="4">Four</option>
+                    <option value="5">Five</option>
+                    <option value="6">Six</option>
+                    <option value="7">Seven</option>
+                    <option value="8">Eight</option>
+                  </select>
+                  <input type="submit" value="envoyer">
+            </form>
             <app-footer></app-footer>
         </main>
 

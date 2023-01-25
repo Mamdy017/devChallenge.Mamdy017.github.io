@@ -60,6 +60,28 @@ body.dark {
     z-index: 100;
 }
 
+.modal-backdrop {
+    --bs-backdrop-zindex: 1050;
+    --bs-backdrop-bg: #000;
+    --bs-backdrop-opacity: 0.5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* z-index: var(--bs-backdrop-zindex); */
+    /* width: 100vw; */
+    height:0px !important;
+    background-color: var(--bs-backdrop-bg);
+}
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 100vw;
+     height:0px !important; 
+    background-color: #000;
+}
+
 .bac {
     background: var(--sidebar-color);
     margin-left: -4%;

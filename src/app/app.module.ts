@@ -17,7 +17,7 @@ import { CommentaireComponent } from './commentaire/commentaire.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfilesComponent } from './profiles/profiles.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     NgxPaginationModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
