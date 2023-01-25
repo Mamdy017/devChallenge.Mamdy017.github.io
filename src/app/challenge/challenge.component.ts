@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { AfficherService } from '../Services/afficher.service';
+
+
 @Component({
   selector: 'app-challenge',
   templateUrl: './challenge.component.html',
@@ -10,8 +13,24 @@ export class ChallengeComponent implements OnInit {
 
   menuBureau: boolean = true;
   menuMobile: boolean = false;
+
+  options = [];
+  options1 = [];
+  options2 = [];
+
+
+  selectedOptions = [];
+  dropdownSettings = {
+    singleSelection: false,
+    idField: 'id',
+    textField: 'nom',
+    selectAllText: 'Tout',
+    unSelectAllText: 'Tout',
+  };
+  
+
   constructor(public breakpointObserver: BreakpointObserver,
-    private route: Router) { }
+    private route: Router,private serviceAfficher:AfficherService) { }
 
   actualise(): void {
     setInterval(
@@ -31,11 +50,19 @@ export class ChallengeComponent implements OnInit {
           this.menuBureau = true;
           this.menuMobile = false;
           this.actualise();
-        } 
+        }
       });
+      this.serviceAfficher.afficherCategorie().subscribe(data => {
+        this.options = data;
+      });
+      this.serviceAfficher.afficherTecnho().subscribe(data=>{
+        this.options1=data;
+      })
+      this.serviceAfficher.afficherCritere().subscribe(data=>{
+        this.options2=data;
+      })
   }
-
-  afficheMenuMobile() {
+    afficheMenuMobile() {
     this.menuBureau = true;
     this.menuMobile = false;
   }

@@ -36,4 +36,13 @@ export class AfficherService {
   afficheruser() :Observable<any>{
     return this.http.get(`${env}/utilisateur/afficheruser`);
   }
+  afficherCategorie() :Observable<any>{
+    return this.http.get(`${env}/cate/afficher`)
+  }
+  afficherTecnho() :Observable<any>{
+    return this.http.get(`${env}/techo/afficher`)
+  }
+  afficherCritere() :Observable<any>{
+    return this.http.get(`${env}/critere/afficher`)
+  }
 }

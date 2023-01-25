@@ -18,6 +18,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ProfilesComponent } from './profiles/profiles.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+
+
 
 @NgModule({
   declarations: [
@@ -42,7 +46,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgxPaginationModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
