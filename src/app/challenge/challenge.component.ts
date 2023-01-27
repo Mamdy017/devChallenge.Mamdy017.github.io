@@ -19,9 +19,15 @@ export class ChallengeComponent implements OnInit {
   menuBureau: boolean = true;
   menuMobile: boolean = false;
   challengeForm!: FormGroup;
+  critereForm!: FormGroup;
+  cateForm!:FormGroup;
+  technoForm!:FormGroup;
+  baremeForm!:FormGroup;
+
   options = [];
   options1 = [];
   options2 = [];
+  options4 = [];
 
 
 
@@ -41,16 +47,25 @@ export class ChallengeComponent implements OnInit {
     textField: 'critere',
     selectAllText: 'Tout',
     unSelectAllText: 'Tout',
-      allowSearchFilter: true,
+    allowSearchFilter: true,
     closeDropDownOnSelection: true
   };
-  responseMessage: string="";
-  
-  
+  bareme = {
+    singleSelection: false,
+    idField: 'id',
+    textField: 'bareme',
+    selectAllText: 'Tout',
+    unSelectAllText: 'Tout',
+    allowSearchFilter: true,
+    closeDropDownOnSelection: true
+  };
+  responseMessage: string = "";
+
+
 
   constructor(public breakpointObserver: BreakpointObserver,
-    private route: Router,private serviceAfficher:AfficherService,
-     private serviceAjouter: AjouterServiceService, private datePipe: DatePipe) { }
+    private route: Router, private serviceAfficher: AfficherService,
+    private serviceAjouter: AjouterServiceService, private datePipe: DatePipe) { }
 
   actualise(): void {
     setInterval(
@@ -72,92 +87,145 @@ export class ChallengeComponent implements OnInit {
           this.actualise();
         }
       });
-      this.challengeForm = new FormGroup({
-        titre: new FormControl(''),
-        description: new FormControl(''),
-        datedebut: new FormControl(''),
-        datefin: new FormControl(''),
-        critereids: new FormControl([Validators.required, Validators.pattern("^[0-9]*$")]),
-        tecnhoids: new FormControl([Validators.required, Validators.pattern("^[0-9]*$")]),
-        cateids: new FormControl([Validators.required, Validators.pattern("^[0-9]*$")]),
-        photo: new FormControl(''),
-        fileSource: new FormControl('', [Validators.required])
-  
-      });
-      this.serviceAfficher.afficherCategorie().subscribe(data => {
-        this.options = data;
-      });
-      this.serviceAfficher.afficherTecnho().subscribe(data=>{
-        this.options1=data;
-      })
-      this.serviceAfficher.afficherCritere().subscribe(data=>{
-        this.options2=data;
-      })
+    this.challengeForm = new FormGroup({
+      titre: new FormControl(''),
+      description: new FormControl(''),
+      datedebut: new FormControl(''),
+      datefin: new FormControl(''),
+      critereids: new FormControl([Validators.required, Validators.pattern("^[0-9]*$")]),
+      tecnhoids: new FormControl([Validators.required, Validators.pattern("^[0-9]*$")]),
+      cateids: new FormControl([Validators.required, Validators.pattern("^[0-9]*$")]),
+      photo: new FormControl(''),
+      fileSource: new FormControl('', [Validators.required])
+    });
+    this.critereForm = new FormGroup({
+      criteres: new FormControl(''),
+      baremeids: new FormControl([Validators.required, Validators.pattern("^[0-9]*$")]),
+
+    })
+    this.cateForm = new FormGroup({
+      cate: new FormControl(''),
+    })
+    this.baremeForm = new FormGroup({
+      bareme: new FormControl(''),
+      
+
+    })
+    this.technoForm = new FormGroup({
+      techno: new FormControl(''),
+    })
+    this.serviceAfficher.afficherCategorie().subscribe(data => {
+      this.options = data;
+    });
+    this.serviceAfficher.afficherTecnho().subscribe(data => {
+      this.options1 = data;
+    })
+    this.serviceAfficher.afficherCritere().subscribe(data => {
+      this.options2 = data;
+    })
+    this.serviceAfficher.afficherBareme().subscribe(data => {
+      this.options4 = data;
+    })
   }
-  
-  get fphoto(){
+
+  get fphoto() {
     return this.challengeForm.controls;
   }
 
 
-  onFileChangePhoto(event: any){
-    if(event.target.files.length > 0){
+  onFileChangePhoto(event: any) {
+    if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.challengeForm.patchValue({
         fileSource: file
       });
     }
   }
-  // onSubmit() {
-  //   const formData = new FormData();
-  //   const cateids = this.challengeForm.value.cateids.map((options: { id: any; }) => options.id);
-  //   const tecnhoids = this.challengeForm.value.cateids.map((options2: { id: any; }) => options2.id);
-  //   const critereids = this.challengeForm.value.cateids.map((options1: { id: any; }) => options1.id);
-  //   this.challengeForm.value.datedebut = this.datePipe.transform(this.challengeForm.value.datedebut, 'yyyy/MM/dd');
-  //   this.challengeForm.value.datefin = this.datePipe.transform(this.challengeForm.value.datefin, 'yyyy/MM/dd');
 
-  //   formData.append('critereids',critereids);
-  //   formData.append('tecnhoids', tecnhoids);
-  //   formData.append('cateids',cateids);
-  //   formData.append('titre', this.challengeForm.value.titre);
-  //   formData.append('description', this.challengeForm.value.description);
-  //   formData.append('datedebut', this.challengeForm.value.datedebut);
-  //   formData.append('datefin', this.challengeForm.value.datefin);
-  //   formData.append('photo', this.challengeForm.value.fileSource);
-
-  //   this.serviceAjouter.AjouterChallenge(formData).subscribe(data => {
-        
-  //   });
-  
-  // }
   onSubmit() {
     if (this.challengeForm.valid) {
-        const formData = new FormData();
-        const cateids = this.challengeForm.value.cateids.map((options: { id: any; }) => options.id);
-        const tecnhoids = this.challengeForm.value.cateids.map((options2: { id: any; }) => options2.id);
-        const critereids = this.challengeForm.value.cateids.map((options1: { id: any; }) => options1.id);
-        this.challengeForm.value.datedebut = this.datePipe.transform(this.challengeForm.value.datedebut, 'yyyy/MM/dd');
-        this.challengeForm.value.datefin = this.datePipe.transform(this.challengeForm.value.datefin, 'yyyy/MM/dd');
-    
-        formData.append('critereids',critereids);
-        formData.append('tecnhoids', tecnhoids);
-        formData.append('cateids',cateids);
-        formData.append('titre', this.challengeForm.value.titre);
-        formData.append('description', this.challengeForm.value.description);
-        formData.append('datedebut', this.challengeForm.value.datedebut);
-        formData.append('datefin', this.challengeForm.value.datefin);
-        formData.append('photo', this.challengeForm.value.fileSource);
-        
-        this.serviceAjouter.AjouterChallenge(formData).subscribe((data:any) => {
-          this.errorMessage = data.message;
-        });
-    } else {
-       this.errorMessage="Tous les champs champs sont obligatoirs !!";
-       
-    }
-}
+      const formData = new FormData();
+      const cateids = this.challengeForm.value.cateids.map((options: { id: any; }) => options.id);
+      const tecnhoids = this.challengeForm.value.cateids.map((options2: { id: any; }) => options2.id);
+      const critereids = this.challengeForm.value.cateids.map((options1: { id: any; }) => options1.id);
+      this.challengeForm.value.datedebut = this.datePipe.transform(this.challengeForm.value.datedebut, 'yyyy/MM/dd');
+      this.challengeForm.value.datefin = this.datePipe.transform(this.challengeForm.value.datefin, 'yyyy/MM/dd');
 
-    afficheMenuMobile() {
+      formData.append('critereids', critereids);
+      formData.append('tecnhoids', tecnhoids);
+      formData.append('cateids', cateids);
+      formData.append('titre', this.challengeForm.value.titre);
+      formData.append('description', this.challengeForm.value.description);
+      formData.append('datedebut', this.challengeForm.value.datedebut);
+      formData.append('datefin', this.challengeForm.value.datefin);
+      formData.append('photo', this.challengeForm.value.fileSource);
+
+      this.serviceAjouter.AjouterChallenge(formData).subscribe((data: any) => {
+        this.errorMessage = data.message;
+      });
+    } else {
+      this.errorMessage = "Tous les champs champs sont obligatoirs !!";
+
+    }
+  }
+  onSubmitCritere() {
+    if (this.critereForm.valid) {
+      const formData = new FormData();
+      const baremeids = this.critereForm.value.baremeids.map((options4: { id: any; }) => options4.id);
+      console.log("vvvvvvvvvv" + baremeids);
+      console.log("mes id" + this.critereForm.value.criteres)
+      formData.append('baremeids', baremeids);
+      formData.append('criteres', this.critereForm.value.criteres);
+
+      this.serviceAjouter.AjouterCritere(formData).subscribe((data: any) => {
+        this.errorMessage = data.message;
+      });
+    } else {
+      this.errorMessage = "Tous les champs champs sont obligatoirs !!";
+
+    }
+  }
+
+  onSubmitBareme() {
+    if (this.baremeForm.valid) {
+      const formData = new FormData();
+      formData.append('bareme', this.baremeForm.value.bareme);
+console.log("mes"+ this.baremeForm.value.bareme);
+      this.serviceAjouter.AjouterBareme(formData).subscribe((data: any) => {
+        this.errorMessage = data.message;
+      });
+    } else {
+      this.errorMessage = "Tous les champs champs sont obligatoirs !!";
+
+    }
+  }
+  onSubmitCate() {
+    if (this.cateForm.valid) {
+      const formData = new FormData();
+      formData.append('cate', this.cateForm.value.cate);
+
+      this.serviceAjouter.AjouterCate(formData).subscribe((data: any) => {
+        this.errorMessage = data.message;
+      });
+    } else {
+      this.errorMessage = "Tous les champs champs sont obligatoirs !!";
+
+    }
+  }
+  onSubmitTechno() {
+    if (this.technoForm.valid) {
+      const formData = new FormData();
+      formData.append('techno', this.technoForm.value.techno);
+console.log("bvbvbvb" + this.technoForm.value.techno);
+      this.serviceAjouter.AjouterTechno(formData).subscribe((data: any) => {
+        this.errorMessage = data.message;
+      });
+    } else {
+      this.errorMessage = "Tous les champs champs sont obligatoirs !!";
+
+    }
+  }
+  afficheMenuMobile() {
     this.menuBureau = true;
     this.menuMobile = false;
   }

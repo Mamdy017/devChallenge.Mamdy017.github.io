@@ -45,4 +45,7 @@ export class AfficherService {
   afficherCritere() :Observable<any>{
     return this.http.get(`${env}/critere/afficher`)
   }
+  afficherBareme() :Observable<any>{
+    return this.http.get(`${env}/bareme/afficher`)
+  }
 }

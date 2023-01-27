@@ -7,20 +7,20 @@
     </div>
     <main class="col " style=" height: 100vh ; overflow: scroll; overflow-x: hidden;">
       <nav class=" bg-danger  navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0"
-      style="margin-left: -4%; width: 107%;">
-      <h1 style="width: 20px;"></h1>
-      <a href="#" class="sidebar-toggler flex-shrink-0" data-bs-toggle="collapse" data-bs-target="#sidebar"
-        aria-expanded="false" (click)="afficheMenuMobile()" aria-controls="collapseWidthExample">
-        <i class="fa fa-bars"></i>
-      </a>
-      <form class="d-none d-md-flex ms-4">
-        <input class="form-control border-0" type="search" placeholder="Search">
-        <i class='bx bx-search icon ' style="font-size:35px"></i>
-      </form>
-      <div class="d-flex justify-content-end  w-100">
-        <app-navbar></app-navbar>
-      </div>
-    </nav>
+        style="margin-left: -4%; width: 107%;">
+        <h1 style="width: 20px;"></h1>
+        <a href="#" class="sidebar-toggler flex-shrink-0" data-bs-toggle="collapse" data-bs-target="#sidebar"
+          aria-expanded="false" (click)="afficheMenuMobile()" aria-controls="collapseWidthExample">
+          <i class="fa fa-bars"></i>
+        </a>
+        <form class="d-none d-md-flex ms-4">
+          <input class="form-control border-0" type="search" placeholder="Search">
+          <i class='bx bx-search icon ' style="font-size:35px"></i>
+        </form>
+        <div class="d-flex justify-content-end  w-100">
+          <app-navbar></app-navbar>
+        </div>
+      </nav>
       <div class="container-fluid pt-4 px-4" style="margin-left: -2.5%; width: 105%;">
         <div class="row g-4">
           <div class="col-sm-6 col-xl-3">
@@ -76,67 +76,6 @@
                 <div class="modal-header">
                   <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <!-- <div class="section">
-                  <div class="container">
-                    <div class="row full-height justify-content-center">
-                      <div class="col-12 text-center align-self-center py-5">
-                        <div class="section pb-5 pt-5 pt-sm-2 text-center">
-                          <h6 class="mb-0 pb-3"><span>Catégorie </span><span>Challenge</span></h6>
-                          <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
-                          <label for="reg-log"></label>
-                          <div class="card-3d-wrap mx-auto">
-                            <div class="card-3d-wrapper">
-                              <div class="card-front">
-                                <div class="center-wrap">
-                                  <div class="section text-center">
-                                    <h4 class="mb-4 pb-3 text-white">Catégorie</h4>
-                                    <div class="form-group">
-                                      <input type="email" name="logemail" class="form-style" placeholder="Your Email"
-                                        id="logemail" autocomplete="off">
-                                      <i class="input-icon uil uil-at"></i>
-                                    </div>
-                                    <div class="form-group mt-2">
-                                      <input type="password" name="logpass" class="form-style"
-                                        placeholder="Your Password" id="logpass" autocomplete="off">
-                                      <i class="input-icon uil uil-lock-alt"></i>
-                                    </div>
-                                    
-                                    <a href="#" class="btn mt-4">submit</a>
-                                    <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a>
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="card-back">
-                                <div class="center-wrap">
-                                  <div class="section text-center">
-                                    <h4 class="mb-4 pb-3 text-white">Challenge</h4>
-                                    <div class="form-group">
-                                      <input type="text" name="logname" class="form-style" placeholder="Your Full Name"
-                                        id="logname" autocomplete="off">
-                                      <i class="input-icon uil uil-user"></i>
-                                    </div>
-                                    <div class="form-group mt-2">
-                                      <input type="email" name="logemail" class="form-style" placeholder="Your Email"
-                                        id="logemail" autocomplete="off">
-                                      <i class="input-icon uil uil-at"></i>
-                                    </div>
-                                    <div class="form-group mt-2">
-                                      <input type="password" name="logpass" class="form-style"
-                                        placeholder="Your Password" id="logpass" autocomplete="off">
-                                      <i class="input-icon uil uil-lock-alt"></i>
-                                    </div>
-                                    <a href="#" class="btn mt-4">submit</a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
                 <div class="container">
                   <div class="title">Ajouter un challenge</div>
                   <div *ngIf="errorMessage" style="color: red; padding: 2%;">{{ errorMessage }}</div>
@@ -145,27 +84,33 @@
                       <div class="user-details">
                         <div class="input-box">
                           <span class="details">Titre</span>
-                          <input type="text"  name="titre" formControlName="titre" placeholder="Donner un titre">
+                          <input type="text" name="titre" formControlName="titre" placeholder="Donner un titre">
                         </div>
                         <div class="input-box">
-                          <ng-multiselect-dropdown [placeholder]="'Choisir technologie'" [data]="options1" formControlName="tecnhoids"
-                          [settings]="catetec"  defaultOpen="false"></ng-multiselect-dropdown>
+                          <span class="details">Choisir technologie</span>
+                          <ng-multiselect-dropdown [placeholder]="'Choisir technologie'" [data]="options1"
+                            formControlName="tecnhoids" [settings]="catetec"
+                            defaultOpen="false"></ng-multiselect-dropdown>
                         </div>
                         <div class="input-box">
-                          <ng-multiselect-dropdown [placeholder]="'Choisir Catégorie'" [data]="options" formControlName="cateids"
-                          [settings]="catetec"  defaultOpen="true"></ng-multiselect-dropdown>
+                          <span class="details">Choisir Catégorie</span>
+                          <ng-multiselect-dropdown [placeholder]="'Choisir Catégorie'" [data]="options"
+                            formControlName="cateids" [settings]="catetec" defaultOpen="true"></ng-multiselect-dropdown>
                         </div>
                         <div class="input-box">
-                          <ng-multiselect-dropdown [placeholder]="'Choisir Critère'" [data]="options2" formControlName="critereids"
-                          [settings]="critere"></ng-multiselect-dropdown>
+                          <span class="details">Choisir Critère</span>
+                          <ng-multiselect-dropdown [placeholder]="'Choisir Critère'" [data]="options2"
+                            formControlName="critereids" [settings]="critere"></ng-multiselect-dropdown>
                         </div>
                         <div class="input-box">
                           <span class="details">Description</span>
-                          <input type="text"  name="description" formControlName="description" placeholder="Donner une description">
+                          <input type="text" name="description" formControlName="description"
+                            placeholder="Donner une description">
                         </div>
                         <div class="input-box">
                           <span class="details">Date de début</span>
-                          <input type="date" name="datedebut" formControlName="datedebut" placeholder="Date de debut" required>
+                          <input type="date" name="datedebut" formControlName="datedebut" placeholder="Date de debut"
+                            required>
                         </div>
                         <div class="input-box">
                           <span class="details">Date de fin</span>
@@ -173,23 +118,166 @@
                         </div>
                         <div class="input-box">
                           <span class="details">Date de fin</span>
-                          <input type="file" name="photo" formControlName="photo" (change)="onFileChangePhoto($event)" placeholder="photo">
+                          <input type="file" name="photo" formControlName="photo" (change)="onFileChangePhoto($event)"
+                            placeholder="photo" class="py-2">
                         </div>
                       </div>
-                      
+                      <button data-mdb-toggle="modal" data-mdb-target="#staticBackdrop6">
+                        <i class='bx bxs-message-square-add fa-1x' style="color: white;"></i>
+                        Ajouter un critère
+                      </button>
+                      <button data-mdb-toggle="modal" data-mdb-target="#staticBackdrop7">
+                        <i class='bx bxs-message-square-add fa-1x' style="color: white;"></i>
+                        Categories/techno
+                      </button>
                       <div class="button">
-                        <input type="submit" value="Register">
+                        <input type="submit" value="Créer">
                       </div>
                     </form>
                   </div>
                 </div>
-              
+
               </div>
             </div>
           </div>
           <!-- Modal -->
+
+
+
+          <div class="modal fade" id="staticBackdrop6" tabindex="100" aria-labelledby="exampleModalLabel6"
+            aria-hidden="true">
+            <div class="modal-dialog d-flex justify-content-center">
+              <div class="modal-content w-100">
+                <button data-mdb-toggle="modal" data-mdb-target="#staticBackdrop4"
+                  style="margin-left: auto; width: 8%;">
+                  X
+                </button>
+                <div class="container">
+                  <div class="title">Ajouter un critère</div>
+                  <div *ngIf="errorMessage" style="color: red; padding: 2%;">{{ errorMessage }}</div>
+                  <div class="content">
+                    <form action="#" [formGroup]="critereForm" (ngSubmit)="onSubmitCritere()">
+                      <div class="user-details">
+                        <div class="input-box">
+                          <span class="details">Critere</span>
+                          <input type="text" name="criteres" formControlName="criteres" placeholder="Donner une critere">
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Choisir un barème</span>
+                          <ng-multiselect-dropdown [placeholder]="'Choisir technologie'" [data]="options4"
+                            formControlName="baremeids" [settings]="bareme"
+                            defaultOpen="false"></ng-multiselect-dropdown>
+                        </div>
+                      </div>
+                      <button data-mdb-toggle="modal" data-mdb-target="#staticBackdrop8">
+                        <i class='bx bxs-message-square-add fa-1x' style="color: white;"></i>
+                        Ajouter un barème
+                      </button>
+                      <div class="button">
+                        <input type="submit" value="Créer">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="modal fade" id="staticBackdrop8" tabindex="100" aria-labelledby="exampleModalLabel8"
+            aria-hidden="true">
+            <div class="modal-dialog d-flex justify-content-center">
+              <div class="modal-content w-100">
+                <button data-mdb-toggle="modal" data-mdb-target="#staticBackdrop6"
+                  style="margin-left: auto; width: 8%;">
+                  X
+                </button>
+                <div class="container">
+                  <div class="title">Ajouter un Barème</div>
+                  <div *ngIf="errorMessage" style="color: red; padding: 2%;">{{ errorMessage }}</div>
+                  <div class="content">
+                    <form action="#" [formGroup]="baremeForm" (ngSubmit)="onSubmitBareme()">
+                      <div class="user-details">
+                        <div class="input-box" style="width: 100% !important;">
+                          <span class="details">Barème</span>
+                          <input type="number" name="bareme" formControlName="bareme" placeholder="Donner bareme">
+                        </div>
+                      </div>
+                      <div class="button">
+                        <input type="submit" value="Créer">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="staticBackdrop7" tabindex="100" aria-labelledby="exampleModalLabel7"
+            aria-hidden="true">
+            <div class="modal-dialog d-flex justify-content-center">
+              <div class="modal-content w-100">
+                <button data-mdb-toggle="modal" data-mdb-target="#staticBackdrop4"
+                  style="margin-left: auto; width: 8%;">
+                  X
+                </button>
+
+                <div class="row full-height justify-content-center">
+                  <div class="col-12 text-center align-self-center py-5">
+                    <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                      <h6 class="mb-0 pb-3"><span>Catégorie </span><span>Technologie</span></h6>
+                      <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+                      <label for="reg-log"></label>
+                      <div class="card-3d-wrap mx-auto">
+                        <div class="card-3d-wrapper">
+                          <div class="card-front">
+                            <div class="center-wrap">
+                              <div class="content">
+                                <form action="#" [formGroup]="cateForm" (ngSubmit)="onSubmitCate()">
+                                  <div class="user-details">
+                                    <div class="input-box" style="width: 100% !important;">
+                                      <span class="details" style="color: white;">Categories</span>
+                                      <input type="text" name="cate" formControlName="cate"
+                                        placeholder="Donner un Categorie" style="width: 100% !important;">
+                                    </div>
+                                  </div>
+                                  <div class="button">
+                                    <input type="submit" value="Créer" style="width: 96% !important;">
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-back">
+                            <div class="content">
+                              <form action="#" [formGroup]="technoForm" (ngSubmit)="onSubmitTechno()">
+                                <div class="user-details">
+                                  <div class="input-box" style="width: 100% !important;">
+                                    <span class="details" style="color: white;">Technologie</span>
+                                    <input type="text" name="techno" formControlName="techno"
+                                      placeholder="Donner une technologie" style="width: 90% !important;">
+                                  </div>
+                                </div>
+                                <div class="button">
+                                  <input type="submit" value="Créer" style="width: 90% !important;">
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
-   
+
+
         <div class="row g-4 py-2">
           <div class="col-sm-12 col-xl-8">
             <div class="bg-light text-center rounded p-4">
@@ -446,6 +534,7 @@
             </table>
           </div>
         </div>
+
       </div>
       <app-footer></app-footer>
     </main>
