@@ -37,8 +37,6 @@ export class NavbarComponent implements OnInit {
     console.table(this.currentUser);
     var moi = this.currentUser.id;
 
-    console.log("je suis id user" + moi);
-
     this.isLoggedIn = this.storage.connexionReussi();
 
     if (this.isLoggedIn) {

@@ -139,36 +139,41 @@
                 </div> -->
                 <div class="container">
                   <div class="title">Ajouter un challenge</div>
+                  <div *ngIf="errorMessage" style="color: red; padding: 2%;">{{ errorMessage }}</div>
                   <div class="content">
-                    <form action="#">
+                    <form action="#" [formGroup]="challengeForm" (ngSubmit)="onSubmit()">
                       <div class="user-details">
                         <div class="input-box">
                           <span class="details">Titre</span>
-                          <input type="text" placeholder="Enter your name" required>
+                          <input type="text"  name="titre" formControlName="titre" placeholder="Donner un titre">
                         </div>
                         <div class="input-box">
-                          <ng-multiselect-dropdown [placeholder]="'Choisir technologie'" [data]="options1" [(ngModel)]="selectedOptions"
-                          [settings]="dropdownSettings"></ng-multiselect-dropdown>
+                          <ng-multiselect-dropdown [placeholder]="'Choisir technologie'" [data]="options1" formControlName="tecnhoids"
+                          [settings]="catetec"  defaultOpen="false"></ng-multiselect-dropdown>
                         </div>
                         <div class="input-box">
-                          <ng-multiselect-dropdown [placeholder]="'Choisir Catégorie'" [data]="options" [(ngModel)]="selectedOptions"
-                          [settings]="dropdownSettings"></ng-multiselect-dropdown>
+                          <ng-multiselect-dropdown [placeholder]="'Choisir Catégorie'" [data]="options" formControlName="cateids"
+                          [settings]="catetec"  defaultOpen="true"></ng-multiselect-dropdown>
                         </div>
                         <div class="input-box">
-                          <ng-multiselect-dropdown [placeholder]="'Choisir Critère'" [data]="options2" [(ngModel)]="selectedOptions"
-                          [settings]="dropdownSettings"></ng-multiselect-dropdown>
+                          <ng-multiselect-dropdown [placeholder]="'Choisir Critère'" [data]="options2" formControlName="critereids"
+                          [settings]="critere"></ng-multiselect-dropdown>
                         </div>
                         <div class="input-box">
-                          <span class="details">Email</span>
-                          <input type="text" placeholder="Enter your email" required>
+                          <span class="details">Description</span>
+                          <input type="text"  name="description" formControlName="description" placeholder="Donner une description">
                         </div>
                         <div class="input-box">
-                          <span class="details">Phone Number</span>
-                          <input type="text" placeholder="Enter your number" required>
+                          <span class="details">Date de début</span>
+                          <input type="date" name="datedebut" formControlName="datedebut" placeholder="Date de debut" required>
                         </div>
                         <div class="input-box">
-                          <span class="details">Confirm Password</span>
-                          <input type="text" placeholder="Confirm your password" required>
+                          <span class="details">Date de fin</span>
+                          <input type="date" name="datefin" formControlName="datefin" placeholder="datefin">
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Date de fin</span>
+                          <input type="file" name="photo" formControlName="photo" (change)="onFileChangePhoto($event)" placeholder="photo">
                         </div>
                       </div>
                       

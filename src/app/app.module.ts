@@ -38,7 +38,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     // ProfilesComponent,
     NavbarComponent,
     ProfilesComponent,
-    
+
      ],
   imports: [
     BrowserModule,
@@ -48,6 +48,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
+    
     NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],
