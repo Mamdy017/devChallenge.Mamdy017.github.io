@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
   { path: 'dashboard', component: DashboardComponent,canActivate: [PermissionService] },
   { path: 'challenge', component: ChallengeComponent,canActivate: [PermissionService] },
+  { path: 'challenge/:idChallenge', component: ChallengeComponent,canActivate: [PermissionService] },
   { path: 'utilisateur', component: UtilisateurComponent,canActivate: [PermissionService] },
   {path:'forum',component:ForumComponent,canActivate: [PermissionService]},
   {path:'commentaire/:id',component:CommentaireComponent,canActivate: [PermissionService]},

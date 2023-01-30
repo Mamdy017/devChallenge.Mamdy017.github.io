@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConnexionService } from '../Services/connexion.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  form: any = {
+    username: null,
+    email: null,
+    password: null
+  };
+  InscriptionReussi = false;
+  Inscriptionechoue = false;
+  messageErreur = '';
+  constructor(private inscription:ConnexionService) { }
 
   ngOnInit(): void {
+
+  }
+  onSubmit(): void {
+    const { nom, prenom,username,email, password } = this.form;
+
+    this.inscription.inscription(nom, prenom,username,email, password).subscribe({
+      next: data => {
+        console.log(data);
+        this.InscriptionReussi = true;
+        this.Inscriptionechoue = false;
+      },
+      error: err => {
+        this.messageErreur = err.error.message;
+        this.Inscriptionechoue = true;
+      }
+    });
   }
 
 }

@@ -54,57 +54,94 @@
   </div>
 
   <div class="modal fade" id="staticBackdrop5" tabindex="100" aria-labelledby="exampleModalLabel4" aria-hidden="true">
-    
-   
+
+
     <div class="modal-dialog d-flex justify-content-center">
       <div class="modal-content w-100">
         <div class="modal-header">
-         
+
           <button type="button"></button>
         </div>
         <div class="form-box">
           <div class="form">
-           <div>
-            <h1 style="margin-left: 100%; margin-top: -8%; font-size: 1.8em; color: white; cursor: pointer;"   data-mdb-dismiss="modal" aria-label="Close">x</h1>
-           </div>
+            <div>
+              <h1 style="margin-left: 100%; margin-top: -8%; font-size: 1.8em; color: white; cursor: pointer;"
+                data-mdb-dismiss="modal" aria-label="Close">x</h1>
+            </div>
             <h2>Ajouter un administrateur</h2>
-            <div class="" style="display: flex;">
-              <div class="input-box">
-                <input type="text" required="requied">
-                <span>Nom</span>
-                <i></i>
-              </div>&nbsp;&nbsp;&nbsp;
-              <div class="input-box">
-                <input type="text" required="requied">
-                <span>Prenom</span>
-                <i></i>
+            <form *ngIf="!InscriptionReussi" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+              <div class="" style="display: flex;">
+                <div class="input-box">
+                  <input type="text" name="nom" name="nom" [(ngModel)]="form.nom" required maxlength="20" #nom="ngModel"
+                    [ngClass]="{ 'is-invalid': f.submitted && nom.errors }">
+                  <div class="invalid-feedback" *ngIf="nom.errors && f.submitted">
+                    <div *ngIf="nom.errors['required']">Le nom est obligatoire!</div>
+                    <div *ngIf="nom.errors['maxlength']">
+                      Le nom ne doit pas depasser 20 caracters
+                    </div>
+                  </div>
+                  <span>Nom</span>
+                  <i></i>
+                </div>&nbsp;&nbsp;&nbsp;
+                <div class="input-box">
+                  <input type="text" name="prenom" name="prenom" [(ngModel)]="form.prenom" required maxlength="20"
+                    #prenom="ngModel" [ngClass]="{ 'is-invalid': f.submitted && prenom.errors }">
+                  <div class="invalid-feedback" *ngIf="prenom.errors && f.submitted">
+                    <div *ngIf="prenom.errors['required']">Le nom est obligatoire!</div>
+                    <div *ngIf="prenom.errors['maxlength']">
+                      Le prenom ne dooit pas depasser 20 caracters !!!
+                    </div>
+                  </div>
+                  <span>Prenom</span>
+                  <i></i>
+                </div>
               </div>
-            </div>
-            <div class="" style="display: flex;">
-              <div class="input-box">
-                <input type="text" required="requied">
-                <span>Pseudo</span>
-                <i></i>
-              </div>&nbsp;&nbsp;&nbsp;
-              <div class="input-box">
-                <input type="text" required="requied">
-                <span>Email</span>
-                <i></i>
+              <div class="" style="display: flex;">
+                <div class="input-box">
+                  <input type="text" name="username" name="username" [(ngModel)]="form.username" required maxlength="20"
+                    #username="ngModel" [ngClass]="{ 'is-invalid': f.submitted && username.errors }">
+                  <div class="invalid-feedback" *ngIf="username.errors && f.submitted">
+                    <div *ngIf="username.errors['required']">Le nom est obligatoire!</div>
+                    <div *ngIf="username.errors['maxlength']">
+                      Le nom d'utilisateur ne doit pas depasser 20 caracters
+                    </div>
+                  </div>
+                  <span>Pseudo</span>
+                  <i></i>
+                </div>&nbsp;&nbsp;&nbsp;
+                <div class="input-box">
+                  <input type="password" value="1234567" class="input" id="password" class="form-control" name="password"
+                    [(ngModel)]="form.password" required minlength="6" #password="ngModel"
+                    [ngClass]="{ 'is-invalid': f.submitted && password.errors }">
+                  <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
+                    <div color="red" *ngIf="password.errors['required']" style="color: red;">Le mot de passe est
+                      obligatoir</div>
+                    <div *ngIf="password.errors['minlength']" style="color: red;">
+                      le mot de passe doit contenir au mois 6 caracters
+                    </div>
+                  </div>
+                  <!-- <span>Email</span> -->
+                  <i></i>
+                </div>
               </div>
-            </div>
-            <div class="" style="display: flex; margin-bottom: 10%;">
-              <div class="input-box" style="width: 100%;">
-                <input type="email" required="requied">
-                <span>Username</span>
-                <i></i>
+              <div class="" style="display: flex; margin-bottom: 10%;">
+                <div class="input-box" style="width: 100%;">
+                  <div *ngIf="email.errors && f.submitted" class="invalid-feedback" style="color: red;">
+                    L'adresse email est obligatoire!
+                  </div>
+                  <input type="email" name="email" [(ngModel)]="form.email" required #email="ngModel"
+                    [ngClass]="{'is-invalid':f.submitted && email.errors}">
+                  <span>Email</span>
+                  <i></i>
+                </div>
               </div>
-            </div>
-          
-            <input type="submit" value="Login" class="btn">
+
+              <input type="submit" value="Enregistrer" class="btn">
+            </form>
           </div>
         </div>
-        
-        
+
+
       </div>
     </div>
   </div>

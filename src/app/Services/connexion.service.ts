@@ -35,6 +35,9 @@ export class ConnexionService {
         username,
         email,
         password,
+        "roles":[
+          "adminuser"
+      ]
       },
       httpOptions
     );

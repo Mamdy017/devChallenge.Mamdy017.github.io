@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { AfficherService } from '../Services/afficher.service';
 import { AjouterServiceService } from '../Services/ajouter-service.service';
@@ -23,6 +23,7 @@ export class ChallengeComponent implements OnInit {
   cateForm!:FormGroup;
   technoForm!:FormGroup;
   baremeForm!:FormGroup;
+  challengeFormModifier!:FormGroup;
 
   options = [];
   options1 = [];
@@ -50,21 +51,30 @@ export class ChallengeComponent implements OnInit {
     allowSearchFilter: true,
     closeDropDownOnSelection: true
   };
+  disabled = false;
+  ShowFilter = false;
+  limitSelection = false;
   bareme = {
     singleSelection: false,
+    defaultOpen: false,
     idField: 'id',
     textField: 'bareme',
     selectAllText: 'Tout',
     unSelectAllText: 'Tout',
-    allowSearchFilter: true,
-    closeDropDownOnSelection: true
+    closeDropDownOnSelection: true,
+    allowSearchFilter: this.ShowFilter
+    
   };
   responseMessage: string = "";
+  challenge: any;
+  critereParIdChallenge: any;
+  ParIdChallenge: any;
+  idChallenge!: number;
 
 
 
   constructor(public breakpointObserver: BreakpointObserver,
-    private route: Router, private serviceAfficher: AfficherService,
+    private route: Router, private routes: ActivatedRoute, private serviceAfficher: AfficherService,
     private serviceAjouter: AjouterServiceService, private datePipe: DatePipe) { }
 
   actualise(): void {
@@ -98,6 +108,17 @@ export class ChallengeComponent implements OnInit {
       photo: new FormControl(''),
       fileSource: new FormControl('', [Validators.required])
     });
+    this.challengeFormModifier = new FormGroup({
+      titremod: new FormControl(''),
+      descriptionmod: new FormControl(''),
+      datedebutmod: new FormControl(''),
+      datefinmod: new FormControl(''),
+      critereidsmod: new FormControl([Validators.required, Validators.pattern("^[0-9]*$")]),
+      tecnhoidsmod: new FormControl([Validators.required, Validators.pattern("^[0-9]*$")]),
+      cateidsmod: new FormControl([Validators.required, Validators.pattern("^[0-9]*$")]),
+      photomod: new FormControl(''),
+      fileSourcemod: new FormControl('', [Validators.required])
+    });
     this.critereForm = new FormGroup({
       criteres: new FormControl(''),
       baremeids: new FormControl([Validators.required, Validators.pattern("^[0-9]*$")]),
@@ -108,13 +129,27 @@ export class ChallengeComponent implements OnInit {
     })
     this.baremeForm = new FormGroup({
       bareme: new FormControl(''),
-      
+
 
     })
     this.technoForm = new FormGroup({
       techno: new FormControl(''),
     })
+    this.serviceAfficher.afficherChallenge().subscribe(data => {
+      this.challenge = data;
+    });
+    this.idChallenge = this.routes.snapshot.params['idChallenge']
+    this.serviceAfficher.afficherCritereParIdChallenge(this.idChallenge).subscribe(data => {
+      this.critereParIdChallenge = data;
+    })
+    this.serviceAfficher.afficherParIdChallenge(this.idChallenge).subscribe(data => {
+      this.ParIdChallenge = data;
+      console.log(this.ParIdChallenge);
+    })
     this.serviceAfficher.afficherCategorie().subscribe(data => {
+      this.options = data;
+    });
+       this.serviceAfficher.afficherCategorie().subscribe(data => {
       this.options = data;
     });
     this.serviceAfficher.afficherTecnho().subscribe(data => {
@@ -141,6 +176,14 @@ export class ChallengeComponent implements OnInit {
       });
     }
   }
+  onFileChangePhotoMod(event: any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.challengeFormModifier.patchValue({
+        fileSourcemod: file
+      });
+    }
+  }
 
   onSubmit() {
     if (this.challengeForm.valid) {
@@ -161,6 +204,42 @@ export class ChallengeComponent implements OnInit {
       formData.append('photo', this.challengeForm.value.fileSource);
 
       this.serviceAjouter.AjouterChallenge(formData).subscribe((data: any) => {
+        this.errorMessage = data.message;
+      });
+    } else {
+      this.errorMessage = "Tous les champs champs sont obligatoirs !!";
+
+    }
+  }
+  onSubmitModifier() {
+    if (this.challengeFormModifier.valid) {
+      const formData = new FormData();
+      const cateIds = this.challengeFormModifier.value.cateidsmod.map((options: { id: any; }) => options.id);
+      const tecnhoIds = this.challengeFormModifier.value.tecnhoidsmod.map((options1: { id: any; }) => options1.id);
+      const critereIds = this.challengeFormModifier.value.critereidsmod.map((options2: { id: any; }) => options2.id);
+      this.challengeFormModifier.value.datedebutmod = this.datePipe.transform(this.challengeFormModifier.value.datedebutmod, 'yyyy/MM/dd');
+      this.challengeFormModifier.value.datefinmod = this.datePipe.transform(this.challengeFormModifier.value.datefinmod, 'yyyy/MM/dd');
+
+      formData.append('critereIds', critereIds);
+      formData.append('tecnhoIds', tecnhoIds);
+      formData.append('cateIds', cateIds);
+      formData.append('titre', this.challengeFormModifier.value.titremod);
+      formData.append('description', this.challengeFormModifier.value.descriptionmod);
+      formData.append('datedebut', this.challengeFormModifier.value.datedebutmod);
+      formData.append('datefin', this.challengeFormModifier.value.datefinmod);
+      formData.append('photo', this.challengeFormModifier.value.fileSourcemod);
+
+      console.log(critereIds)
+      console.log(tecnhoIds)
+      console.log(cateIds)
+      console.log(this.challengeFormModifier.value.titremod)
+      console.log(this.challengeFormModifier.value.descriptionmod)
+      console.log(this.challengeFormModifier.value.datedebutmod)
+      console.log(this.challengeFormModifier.value.datefinmod)
+      console.log("sur tout photot" + this.challengeFormModifier.value.fileSourcemod)
+
+
+      this.serviceAjouter.modifierChallenge(this.idChallenge,formData).subscribe((data: any) => {
         this.errorMessage = data.message;
       });
     } else {
@@ -229,5 +308,6 @@ console.log("bvbvbvb" + this.technoForm.value.techno);
     this.menuBureau = true;
     this.menuMobile = false;
   }
+
 
 }

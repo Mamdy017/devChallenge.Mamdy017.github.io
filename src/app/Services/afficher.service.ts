@@ -12,12 +12,12 @@ const env = environment.AUTH_API;
 })
 export class AfficherService {
 
-  constructor(private http: HttpClient ) { }  
+  constructor(private http: HttpClient ) { }
   afficherChallenge() :Observable<any>{
     return this.http.get(`${env}/challenge/afficher`);
   }
-  
-  
+
+
   afficherChallengeEncours() :Observable<any>{
     return this.http.get(`${env}/challenge/encours`);
   }
@@ -32,7 +32,7 @@ export class AfficherService {
   afficherChallengeDecroissant() :Observable<any>{
     return this.http.get(`${env}/challenge/decroissant`);
   }
-  
+
   afficheruser() :Observable<any>{
     return this.http.get(`${env}/utilisateur/afficheruser`);
   }
@@ -47,5 +47,11 @@ export class AfficherService {
   }
   afficherBareme() :Observable<any>{
     return this.http.get(`${env}/bareme/afficher`)
+  }
+  afficherCritereParIdChallenge(idChallenge:number) :Observable<any>{
+    return this.http.get(`${env}/challenge/criteria/${idChallenge}`)
+  }
+  afficherParIdChallenge(idChallenge:number) :Observable<any>{
+    return this.http.get(`${env}/challenge/afficher/${idChallenge}`)
   }
 }

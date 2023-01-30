@@ -13,6 +13,9 @@ export class AjouterServiceService {
   AjouterChallenge(formData: FormData) {
     return this.http.post('http://localhost:8080/devs/auth/challenge/ajout', formData);
   }
+  modifierChallenge(idChallenge:number,formData: FormData) {
+    return this.http.put(`http://localhost:8080/devs/auth/challenge/modification/${idChallenge}`, formData);
+  }
 
   AjouterCritere(formData: FormData) {
     return this.http.post('http://localhost:8080/devs/auth/critere/ajout', formData);

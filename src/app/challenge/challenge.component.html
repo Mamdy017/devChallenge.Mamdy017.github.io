@@ -67,8 +67,11 @@
             <i class='bx bxs-message-square-add fa-1x' style="color: white;"></i>
             Ajouter un challenge
           </button>
-
-          <!-- Modal -->
+          <button data-mdb-toggle="modal" data-mdb-target="#staticBackdrop1">
+            <i class='bx bxs-message-square-add fa-1x' style="color: white;"></i>
+            Ajouter un challenge mo
+          </button>
+          <!--========================== Modal ajouter challenge ==================================================-->
           <div class="modal fade" id="staticBackdrop4" tabindex="100" aria-labelledby="exampleModalLabel4"
             aria-hidden="true">
             <div class="modal-dialog d-flex justify-content-center">
@@ -89,8 +92,8 @@
                         <div class="input-box">
                           <span class="details">Choisir technologie</span>
                           <ng-multiselect-dropdown [placeholder]="'Choisir technologie'" [data]="options1"
-                            formControlName="tecnhoids" [settings]="catetec"
-                            defaultOpen="false"></ng-multiselect-dropdown>
+                            formControlName="tecnhoids" [settings]="catetec" defaultOpen="false">
+                          </ng-multiselect-dropdown>
                         </div>
                         <div class="input-box">
                           <span class="details">Choisir Catégorie</span>
@@ -141,8 +144,81 @@
             </div>
           </div>
           <!-- Modal -->
+          <!-- ====================================Modification challenge=============================================== -->
+          <div class="modal fade" id="staticBackdrop1" tabindex="100" aria-labelledby="exampleModalLabel1"
+            aria-hidden="true">
+            <div class="modal-dialog d-flex justify-content-center">
+              <div class="modal-content w-100">
+                <div class="modal-header">
+                  <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="container">
+                  <div class="title">Modification un challenge apres</div>
+                  <div *ngIf="errorMessage" style="color: red; padding: 2%;">{{ errorMessage }}</div>
+                  <div class="content">
+                    <form action="#" [formGroup]="challengeFormModifier" (ngSubmit)="onSubmitModifier()">
+                      <div class="user-details">
+                        <div class="input-box">
+                          <span class="details">Titre</span>
+                          <input type="text" name="titremod" formControlName="titremod" placeholder="Donner un titre" value="{{ParIdChallenge[1]}}">
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Choisir technologie</span>
+                          <ng-multiselect-dropdown [placeholder]="'Choisir technologie'" [data]="options1"
+                            formControlName="tecnhoidsmod" [settings]="catetec" defaultOpen="false">
+                          </ng-multiselect-dropdown>
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Choisir Catégorie</span>
+                          <ng-multiselect-dropdown [placeholder]="'Choisir Catégorie'" [data]="options"
+                            formControlName="cateidsmod" [settings]="catetec" defaultOpen="true" ></ng-multiselect-dropdown>
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Choisir Critère</span>
+                          <ng-multiselect-dropdown [placeholder]="'Choisir Critère'" [data]="options2"
+                            formControlName="critereidsmod" [settings]="critere"></ng-multiselect-dropdown>
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Description</span>
+                          <input type="text" name="descriptionmod" value="{{ParIdChallenge.description
+                          }}" formControlName="descriptionmod"
+                            placeholder="Donner une description">
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Date de début</span>
+                          <input type="date" name="datedebutmod" formControlName="datedebutmod" placeholder="Date de debut"
+                            required>
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Date de fin</span>
+                          <input type="date" name="datefinmod" value="{{ParIdChallenge.datefin}}" formControlName="datefinmod" placeholder="datefin">
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Photo</span>
+                          <input type="file" name="photomod" formControlName="photomod" value="{{ParIdChallenge.photo}}" (change)="onFileChangePhotoMod($event)"
+                            placeholder="photo" class="py-2">
+                        </div>
+                        
+                      </div>
+                      <button data-mdb-toggle="modal" data-mdb-target="#staticBackdrop6">
+                        <i class='bx bxs-message-square-add fa-1x' style="color: white;"></i>
+                        Ajouter un critère
+                      </button>
+                      <button data-mdb-toggle="modal" data-mdb-target="#staticBackdrop7">
+                        <i class='bx bxs-message-square-add fa-1x' style="color: white;"></i>
+                        Categories/techno
+                      </button>
+                      <div class="button">
+                        <input type="submit" value="Créer">
+                      </div>
+                    </form>
+                  </div>
+                </div>
 
-
+              </div>
+            </div>
+          </div>
+          <!-- ====================================Ajouter critere=============================================== -->
 
           <div class="modal fade" id="staticBackdrop6" tabindex="100" aria-labelledby="exampleModalLabel6"
             aria-hidden="true">
@@ -160,14 +236,16 @@
                       <div class="user-details">
                         <div class="input-box">
                           <span class="details">Critere</span>
-                          <input type="text" name="criteres" formControlName="criteres" placeholder="Donner une critere">
+                          <input type="text" name="criteres" formControlName="criteres"
+                            placeholder="Donner une critere">
                         </div>
                         <div class="input-box">
                           <span class="details">Choisir un barème</span>
                           <ng-multiselect-dropdown [placeholder]="'Choisir technologie'" [data]="options4"
-                            formControlName="baremeids" [settings]="bareme"
-                            defaultOpen="false"></ng-multiselect-dropdown>
+                            formControlName="baremeids" [settings]="bareme" defaultOpen="false">
+                          </ng-multiselect-dropdown>
                         </div>
+
                       </div>
                       <button data-mdb-toggle="modal" data-mdb-target="#staticBackdrop8">
                         <i class='bx bxs-message-square-add fa-1x' style="color: white;"></i>
@@ -184,7 +262,8 @@
             </div>
           </div>
 
-          
+          <!-- ====================================Ajouter Barème=============================================== -->
+
           <div class="modal fade" id="staticBackdrop8" tabindex="100" aria-labelledby="exampleModalLabel8"
             aria-hidden="true">
             <div class="modal-dialog d-flex justify-content-center">
@@ -215,6 +294,7 @@
             </div>
           </div>
 
+          <!-- ====================================Ajouter categoriee et technologies=============================================== -->
           <div class="modal fade" id="staticBackdrop7" tabindex="100" aria-labelledby="exampleModalLabel7"
             aria-hidden="true">
             <div class="modal-dialog d-flex justify-content-center">
@@ -277,109 +357,36 @@
           </div>
         </div>
 
+        <!-- ====================================Tableau challenge=============================================== -->
 
         <div class="row g-4 py-2">
-          <div class="col-sm-12 col-xl-8">
+          <div class="col-sm-12">
             <div class="bg-light text-center rounded p-4">
               <h3>La liste des challenges</h3>
               <div class="chart-container">
-                <div class="header_fixed py-2">
+                <div class="header_fixed ">
                   <table>
                     <thead>
                       <tr>
                         <th>No.</th>
-                        <th>Titre </th>
+                        <th>Nom </th>
+                        <th>Description</th>
                         <th>Début</th>
                         <th>Fin</th>
-                        <th>Catégories</th>
-                        <th>Participants</th>
                         <th>Etat</th>
-                        <th colspan="2">Action</th>
+                        <th>Critère</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      <tr *ngFor="let cha of challenge">
                         <td>1</td>
-                        <td>rge</td>
-                        <td>cxc</td>
-                        <td>Priya</td>
-                        <td>Rakhi Gupta</td>
-                        <td>344</td>
-                        <td>Encours</td>
-                        <td><i class='bx bx-edit fa-2x icon'></i></td>
-                        <td><i class='bx bxs-trash fa-2x icon'></i></td>
-                        <!-- <td><button>Donner points</button></td> -->
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>gdf</td>
-                        <td>Anjali</td>
-                        <td>cxc</td>
-                        <td>Priya</td>
-                        <td>Engineering</td>
-                        <td>Encours</td>
-                        <td><i class='bx bx-edit fa-2x icon'></i></td>
-                        <td><i class='bx bxs-trash fa-2x icon'></i></td>
-                        <!-- <td><button>Donner points</button></td> -->
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>fdf</td>
-                        <td>cxc</td>
-                        <td>Priya</td>
-                        <td>Vejata Gupta</td>
-                        <td>Encours</td>
-                        <td>Engineering</td>
-                        <td><i class='bx bx-edit fa-2x icon'></i></td>
-                        <td><i class='bx bxs-trash fa-2x icon'></i></td>
-                        <!-- <td><button>Donner points</button></td> -->
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>fd</td>
-                        <td>Shweta</td>
-                        <td>cxc</td>
-                        <td>Priya</td>
-                        <td>Encours</td>
-                        <td>Engineering</td>
-                        <td><i class='bx bx-edit fa-2x icon'></i></td>
-                        <td><i class='bx bxs-trash fa-2x icon'></i></td>
-                        <!-- <td><button>Donner points</button></td> -->
-                      </tr>
-                      <tr>
-                        <td>5</td>
-                        <td>fd</td>
-                        <td>Adarsh</td>
-                        <td>cxc</td>
-                        <td>Priya</td>
-                        <td>Encours</td>
-                        <td>Engineering</td>
-                        <td><i class='bx bx-edit fa-2x icon'></i></td>
-                        <td><i class='bx bxs-trash fa-2x icon'></i></td>
-                        <!-- <td><button>Donner points</button></td> -->
-                      </tr>
-                      <tr>
-                        <td>6</td>
-                        <td>lalaallallalalal</td>
-                        <td>nom</td>
-                        <td>Encours</td>
-                        <td>Engineering</td>
-                        <td>Engineering</td>
-                        <td>Encours</td>
-                        <td><i class='bx bx-edit fa-2x icon'></i></td>
-                        <td><i class='bx bxs-trash fa-2x icon'></i></td>
-                        <!-- <td><button>Donner points</button></td> -->
-                      </tr>
-                      <tr>
-                        <td>7</td>
-                        <td>vc</td>
-                        <td>Arpit</td>
-                        <td>cxc</td>
-                        <td>Priya</td>
-                        <td>Engineering</td>
-                        <td>Encours</td>
-                        <td><i class='bx bx-edit fa-2x icon'></i></td>
-                        <td><i class='bx bxs-trash fa-2x icon'></i></td>
+                        <td>{{cha.titre}}</td>
+                        <td>{{cha.description}}</td>
+                        <td>{{cha.datedebut | date: 'dd/MM/yyyy'}}</td>
+                        <td>{{cha.datefin  | date: 'dd/MM/yyyy'}}</td>
+                        <td>moi</td>
+                        <td><button [routerLink]="['/challenge',cha.id]">Plus...</button></td>
+
                         <!-- <td><button>Donner points</button></td> -->
                       </tr>
                     </tbody>
@@ -389,77 +396,7 @@
             </div>
           </div>
 
-          <div class="col-sm-12 col-xl-4">
-            <div class="bg-light text-center rounded">
-              <div class="h-100 bg-light rounded p-3">
-                <h3>La liste des Catégories</h3>
-                <div class="header_fixed py-2">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>No.</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th colspan="2">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Rakhi Gupta</td>
-                        <td>bbv</td>
-                        <td><i class='bx bx-edit fa-2x icon'></i></td>
-                        <td><i class='bx bxs-trash fa-2x icon'></i></td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Anjali</td>
-                        <td>Encours</td>
-                        <td><i class='bx bx-edit fa-2x icon'></i></td>
-                        <td><i class='bx bxs-trash fa-2x icon'></i></td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Vejata Gupta</td>
-                        <td>Encours</td>
-                        <td><i class='bx bx-edit fa-2x icon'></i></td>
-                        <td><i class='bx bxs-trash fa-2x icon'></i></td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>Shweta</td>
-                        <td>Encours</td>
-                        <td><i class='bx bx-edit fa-2x icon'></i></td>
-                        <td><i class='bx bxs-trash fa-2x icon'></i></td>
-                      </tr>
-                      <tr>
-                        <td>5</td>
-                        <td>Adarsh</td>
-                        <td>Encours</td>
-                        <td><i class='bx bx-edit fa-2x icon'></i></td>
-                        <td><i class='bx bxs-trash fa-2x icon'></i></td>
-                      </tr>
-                      <tr>
-                        <td>6</td>
-                        <td>Monti</td>
-                        <td>Encours</td>
-                        <td><i class='bx bx-edit fa-2x icon'></i></td>
-                        <td><i class='bx bxs-trash fa-2x icon'></i></td>
-                      </tr>
-                      <tr>
-                        <td>7</td>
-                        <td>Arpit</td>
-                        <td>Terminer</td>
-                        <td><i class='bx bx-edit fa-2x icon'></i></td>
-                        <td><i class='bx bxs-trash fa-2x icon'></i></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
 
-            </div>
-          </div>
           <div class="header_fixed py-2">
             <table>
               <thead>
@@ -473,9 +410,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr *ngFor="let cpidc of critereParIdChallenge ">
                   <td>1</td>
-                  <td><img src="../../assets/bg.jpg" alt=""></td>
+                  <td>{{cpidc.critere}}</td>
                   <td>Rakhi Gupta</td>
                   <td>rakhigupta@gmail.com</td>
                   <td>Engineering</td>
