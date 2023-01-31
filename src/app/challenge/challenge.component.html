@@ -160,7 +160,7 @@
                       <div class="user-details">
                         <div class="input-box">
                           <span class="details">Titre</span>
-                          <input type="text" name="titremod" formControlName="titremod" placeholder="Donner un titre" value="{{ParIdChallenge[1]}}">
+                          <input type="text" name="titremod" formControlName="titremod" placeholder="Donner un titre" value="{{titre}}">
                         </div>
                         <div class="input-box">
                           <span class="details">Choisir technologie</span>
@@ -180,8 +180,7 @@
                         </div>
                         <div class="input-box">
                           <span class="details">Description</span>
-                          <input type="text" name="descriptionmod" value="{{ParIdChallenge.description
-                          }}" formControlName="descriptionmod"
+                          <input type="text" name="descriptionmod" value="{{description}}" formControlName="descriptionmod"
                             placeholder="Donner une description">
                         </div>
                         <div class="input-box">
@@ -191,11 +190,11 @@
                         </div>
                         <div class="input-box">
                           <span class="details">Date de fin</span>
-                          <input type="date" name="datefinmod" value="{{ParIdChallenge.datefin}}" formControlName="datefinmod" placeholder="datefin">
+                          <input type="date" name="datefinmod" value="{{datefin}}" formControlName="datefinmod" placeholder="datefin">
                         </div>
                         <div class="input-box">
                           <span class="details">Photo</span>
-                          <input type="file" name="photomod" formControlName="photomod" value="{{ParIdChallenge.photo}}" (change)="onFileChangePhotoMod($event)"
+                          <input type="file" formControlName="photomod" (change)="onFileChangePhotoMod($event)"
                             placeholder="photo" class="py-2">
                         </div>
                         
@@ -385,7 +384,7 @@
                         <td>{{cha.datedebut | date: 'dd/MM/yyyy'}}</td>
                         <td>{{cha.datefin  | date: 'dd/MM/yyyy'}}</td>
                         <td>moi</td>
-                        <td><button [routerLink]="['/challenge',cha.id]">Plus...</button></td>
+                        <td><button [routerLink]="['/challenge',cha.id]" (click)=" affichage(cha.id)">Plus...</button></td>
 
                         <!-- <td><button>Donner points</button></td> -->
                       </tr>
@@ -418,55 +417,6 @@
                   <td>Engineering</td>
                   <td><button>Donner points</button></td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td><img src="../../assets/bg.jpg" alt=""></td>
-                  <td>Anjali</td>
-                  <td>anjali@gmail.com</td>
-                  <td>Engineering</td>
-                  <td><button>Donner points</button></td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td><img src="../../assets/bg.jpg" alt=""></td>
-                  <td>Vejata Gupta</td>
-                  <td>Vejata@gmail.com</td>
-                  <td>Engineering</td>
-                  <td><button>Donner points</button></td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td><img src="../../assets/bg.jpg" alt=""></td>
-                  <td>Shweta</td>
-                  <td>Shweta@gmail.com</td>
-                  <td>Engineering</td>
-                  <td><button>Donner points</button></td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td><img src="../../assets/bg.jpg" alt=""></td>
-                  <td>Adarsh</td>
-                  <td>Adarsh@gmail.com</td>
-                  <td>Engineering</td>
-                  <td><button>Donner points</button></td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td><img src="../../assets/bg.jpg" alt=""></td>
-                  <td>Monti</td>
-                  <td>Monti@gmail.com</td>
-                  <td>Engineering</td>
-                  <td><button>Donner points</button></td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td><img src="../../assets/bg.jpg" alt=""></td>
-                  <td>Arpit</td>
-                  <td>Arpit@gmail.com</td>
-                  <td>Engineering</td>
-                  <td><button>Donner points</button></td>
-                </tr>
-
               </tbody>
             </table>
           </div>

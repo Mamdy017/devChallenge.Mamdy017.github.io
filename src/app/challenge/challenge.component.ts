@@ -20,10 +20,10 @@ export class ChallengeComponent implements OnInit {
   menuMobile: boolean = false;
   challengeForm!: FormGroup;
   critereForm!: FormGroup;
-  cateForm!:FormGroup;
-  technoForm!:FormGroup;
-  baremeForm!:FormGroup;
-  challengeFormModifier!:FormGroup;
+  cateForm!: FormGroup;
+  technoForm!: FormGroup;
+  baremeForm!: FormGroup;
+  challengeFormModifier!: FormGroup;
 
   options = [];
   options1 = [];
@@ -63,13 +63,17 @@ export class ChallengeComponent implements OnInit {
     unSelectAllText: 'Tout',
     closeDropDownOnSelection: true,
     allowSearchFilter: this.ShowFilter
-    
+
   };
   responseMessage: string = "";
   challenge: any;
   critereParIdChallenge: any;
   ParIdChallenge: any;
   idChallenge!: number;
+
+  titre:any;
+  description:any;
+  datefin:any;
 
 
 
@@ -129,8 +133,6 @@ export class ChallengeComponent implements OnInit {
     })
     this.baremeForm = new FormGroup({
       bareme: new FormControl(''),
-
-
     })
     this.technoForm = new FormGroup({
       techno: new FormControl(''),
@@ -139,17 +141,18 @@ export class ChallengeComponent implements OnInit {
       this.challenge = data;
     });
     this.idChallenge = this.routes.snapshot.params['idChallenge']
-    this.serviceAfficher.afficherCritereParIdChallenge(this.idChallenge).subscribe(data => {
-      this.critereParIdChallenge = data;
-    })
+    
     this.serviceAfficher.afficherParIdChallenge(this.idChallenge).subscribe(data => {
       this.ParIdChallenge = data;
-      console.log(this.ParIdChallenge);
+      this.titre = data.titre;
+      this.description = data.description;
+      this.datefin = data.datefin;
+      console.log("mes donnees" + JSON.stringify(this.ParIdChallenge));
     })
     this.serviceAfficher.afficherCategorie().subscribe(data => {
       this.options = data;
     });
-       this.serviceAfficher.afficherCategorie().subscribe(data => {
+    this.serviceAfficher.afficherCategorie().subscribe(data => {
       this.options = data;
     });
     this.serviceAfficher.afficherTecnho().subscribe(data => {
@@ -239,7 +242,7 @@ export class ChallengeComponent implements OnInit {
       console.log("sur tout photot" + this.challengeFormModifier.value.fileSourcemod)
 
 
-      this.serviceAjouter.modifierChallenge(this.idChallenge,formData).subscribe((data: any) => {
+      this.serviceAjouter.modifierChallenge(this.idChallenge, formData).subscribe((data: any) => {
         this.errorMessage = data.message;
       });
     } else {
@@ -269,7 +272,7 @@ export class ChallengeComponent implements OnInit {
     if (this.baremeForm.valid) {
       const formData = new FormData();
       formData.append('bareme', this.baremeForm.value.bareme);
-console.log("mes"+ this.baremeForm.value.bareme);
+      console.log("mes" + this.baremeForm.value.bareme);
       this.serviceAjouter.AjouterBareme(formData).subscribe((data: any) => {
         this.errorMessage = data.message;
       });
@@ -295,7 +298,7 @@ console.log("mes"+ this.baremeForm.value.bareme);
     if (this.technoForm.valid) {
       const formData = new FormData();
       formData.append('techno', this.technoForm.value.techno);
-console.log("bvbvbvb" + this.technoForm.value.techno);
+      console.log("bvbvbvb" + this.technoForm.value.techno);
       this.serviceAjouter.AjouterTechno(formData).subscribe((data: any) => {
         this.errorMessage = data.message;
       });
@@ -307,6 +310,12 @@ console.log("bvbvbvb" + this.technoForm.value.techno);
   afficheMenuMobile() {
     this.menuBureau = true;
     this.menuMobile = false;
+  }
+
+  affichage(idChallenge:any){
+    this.serviceAfficher.afficherCritereParIdChallenge(idChallenge).subscribe(data => {
+      this.critereParIdChallenge = data;
+    })
   }
 
 
