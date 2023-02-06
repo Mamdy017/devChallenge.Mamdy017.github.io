@@ -74,6 +74,8 @@ export class ChallengeComponent implements OnInit {
   titre:any;
   description:any;
   datefin:any;
+  status: any;
+  today!: Date;
 
 
 
@@ -87,8 +89,8 @@ export class ChallengeComponent implements OnInit {
       }, 100, clearInterval(1500));
   }
   ngOnInit(): void {
-
-    this.breakpointObserver
+     this.today = new Date();
+        this.breakpointObserver
       .observe(['(max-width: 767px)'])
       .subscribe((state: BreakpointState) => {
         if (state.matches) {
@@ -139,6 +141,7 @@ export class ChallengeComponent implements OnInit {
     })
     this.serviceAfficher.afficherChallenge().subscribe(data => {
       this.challenge = data;
+      
     });
     this.idChallenge = this.routes.snapshot.params['idChallenge']
     
@@ -192,8 +195,8 @@ export class ChallengeComponent implements OnInit {
     if (this.challengeForm.valid) {
       const formData = new FormData();
       const cateids = this.challengeForm.value.cateids.map((options: { id: any; }) => options.id);
-      const tecnhoids = this.challengeForm.value.cateids.map((options2: { id: any; }) => options2.id);
-      const critereids = this.challengeForm.value.cateids.map((options1: { id: any; }) => options1.id);
+      const tecnhoids = this.challengeForm.value.tecnhoids.map((options2: { id: any; }) => options2.id);
+      const critereids = this.challengeForm.value.critereids.map((options1: { id: any; }) => options1.id);
       this.challengeForm.value.datedebut = this.datePipe.transform(this.challengeForm.value.datedebut, 'yyyy/MM/dd');
       this.challengeForm.value.datefin = this.datePipe.transform(this.challengeForm.value.datefin, 'yyyy/MM/dd');
 
@@ -208,6 +211,8 @@ export class ChallengeComponent implements OnInit {
 
       this.serviceAjouter.AjouterChallenge(formData).subscribe((data: any) => {
         this.errorMessage = data.message;
+        this.status=data.status;
+        this.challengeForm.reset();
       });
     } else {
       this.errorMessage = "Tous les champs champs sont obligatoirs !!";
@@ -232,18 +237,20 @@ export class ChallengeComponent implements OnInit {
       formData.append('datefin', this.challengeFormModifier.value.datefinmod);
       formData.append('photo', this.challengeFormModifier.value.fileSourcemod);
 
-      console.log(critereIds)
-      console.log(tecnhoIds)
-      console.log(cateIds)
-      console.log(this.challengeFormModifier.value.titremod)
-      console.log(this.challengeFormModifier.value.descriptionmod)
-      console.log(this.challengeFormModifier.value.datedebutmod)
-      console.log(this.challengeFormModifier.value.datefinmod)
-      console.log("sur tout photot" + this.challengeFormModifier.value.fileSourcemod)
+      // console.log(critereIds)
+      // console.log(tecnhoIds)
+      // console.log(cateIds)
+      // console.log(this.challengeFormModifier.value.titremod)
+      // console.log(this.challengeFormModifier.value.descriptionmod)
+      // console.log(this.challengeFormModifier.value.datedebutmod)
+      // console.log(this.challengeFormModifier.value.datefinmod)
+      // console.log("sur tout photot" + this.challengeFormModifier.value.fileSourcemod)
 
 
       this.serviceAjouter.modifierChallenge(this.idChallenge, formData).subscribe((data: any) => {
         this.errorMessage = data.message;
+        this.status=data.status;
+        this.challengeFormModifier.reset();
       });
     } else {
       this.errorMessage = "Tous les champs champs sont obligatoirs !!";
@@ -254,13 +261,15 @@ export class ChallengeComponent implements OnInit {
     if (this.critereForm.valid) {
       const formData = new FormData();
       const baremeids = this.critereForm.value.baremeids.map((options4: { id: any; }) => options4.id);
-      console.log("vvvvvvvvvv" + baremeids);
-      console.log("mes id" + this.critereForm.value.criteres)
+      // console.log("vvvvvvvvvv" + baremeids);
+      // console.log("mes id" + this.critereForm.value.criteres)
       formData.append('baremeids', baremeids);
       formData.append('criteres', this.critereForm.value.criteres);
 
       this.serviceAjouter.AjouterCritere(formData).subscribe((data: any) => {
         this.errorMessage = data.message;
+        this.status=data.status;
+        this.critereForm.reset();
       });
     } else {
       this.errorMessage = "Tous les champs champs sont obligatoirs !!";
@@ -272,9 +281,11 @@ export class ChallengeComponent implements OnInit {
     if (this.baremeForm.valid) {
       const formData = new FormData();
       formData.append('bareme', this.baremeForm.value.bareme);
-      console.log("mes" + this.baremeForm.value.bareme);
+      // console.log("mes" + this.baremeForm.value.bareme);
       this.serviceAjouter.AjouterBareme(formData).subscribe((data: any) => {
         this.errorMessage = data.message;
+        this.status=data.status;
+        this.baremeForm.reset();
       });
     } else {
       this.errorMessage = "Tous les champs champs sont obligatoirs !!";
@@ -288,6 +299,8 @@ export class ChallengeComponent implements OnInit {
 
       this.serviceAjouter.AjouterCate(formData).subscribe((data: any) => {
         this.errorMessage = data.message;
+        this.status=data.status;
+        this.cateForm.reset();
       });
     } else {
       this.errorMessage = "Tous les champs champs sont obligatoirs !!";
@@ -298,9 +311,11 @@ export class ChallengeComponent implements OnInit {
     if (this.technoForm.valid) {
       const formData = new FormData();
       formData.append('techno', this.technoForm.value.techno);
-      console.log("bvbvbvb" + this.technoForm.value.techno);
+      // console.log("bvbvbvb" + this.technoForm.value.techno);
       this.serviceAjouter.AjouterTechno(formData).subscribe((data: any) => {
         this.errorMessage = data.message;
+        this.status=data.status;
+        this.technoForm.reset();
       });
     } else {
       this.errorMessage = "Tous les champs champs sont obligatoirs !!";
@@ -318,5 +333,10 @@ export class ChallengeComponent implements OnInit {
     })
   }
 
+  isChallengeInProgress(startDate: string): boolean {
+    const challengeStartDate = new Date(startDate.split('T')[0]);
+    const currentDate = new Date();
+    return challengeStartDate > currentDate;
+  }
 
 }

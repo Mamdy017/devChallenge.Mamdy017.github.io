@@ -81,7 +81,8 @@
                 </div>
                 <div class="container">
                   <div class="title">Ajouter un challenge</div>
-                  <div *ngIf="errorMessage" style="color: red; padding: 2%;">{{ errorMessage }}</div>
+                  <div *ngIf="status==false" style="color: red; padding: 2%;">{{ errorMessage }}</div>
+                  <div *ngIf="status==true" style="color: blue; padding: 2%;">{{ errorMessage }}</div>
                   <div class="content">
                     <form action="#" [formGroup]="challengeForm" (ngSubmit)="onSubmit()">
                       <div class="user-details">
@@ -92,8 +93,8 @@
                         <div class="input-box">
                           <span class="details">Choisir technologie</span>
                           <ng-multiselect-dropdown [placeholder]="'Choisir technologie'" [data]="options1"
-                            formControlName="tecnhoids" [settings]="catetec">
-                          </ng-multiselect-dropdown>
+                          formControlName="tecnhoids" [settings]="catetec" defaultOpen="false">
+                        </ng-multiselect-dropdown>
                         </div>
                         <div class="input-box">
                           <span class="details">Choisir Catégorie</span>
@@ -377,13 +378,14 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let cha of challenge">
-                        <td>1</td>
+                      <tr *ngFor="let cha of challenge let i = index">
+                        <td>{{i+1}}</td>
                         <td>{{cha.titre}}</td>
                         <td>{{cha.description}}</td>
                         <td>{{cha.datedebut | date: 'dd/MM/yyyy'}}</td>
                         <td>{{cha.datefin  | date: 'dd/MM/yyyy'}}</td>
-                        <td>moi</td>
+                        <td *ngIf="cha.datedebut < today" >encours</td>
+                        <td  *ngIf="isChallengeInProgress(cha.datedebut)" >A venir</td>
                         <td><button [routerLink]="['/challenge',cha.id]" (click)=" affichage(cha.id)">Plus...</button></td>
 
                         <!-- <td><button>Donner points</button></td> -->
