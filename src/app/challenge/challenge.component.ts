@@ -141,10 +141,10 @@ export class ChallengeComponent implements OnInit {
     })
     this.serviceAfficher.afficherChallenge().subscribe(data => {
       this.challenge = data;
-      
+
     });
     this.idChallenge = this.routes.snapshot.params['idChallenge']
-    
+
     this.serviceAfficher.afficherParIdChallenge(this.idChallenge).subscribe(data => {
       this.ParIdChallenge = data;
       this.titre = data.titre;
@@ -330,6 +330,7 @@ export class ChallengeComponent implements OnInit {
   affichage(idChallenge:any){
     this.serviceAfficher.afficherCritereParIdChallenge(idChallenge).subscribe(data => {
       this.critereParIdChallenge = data;
+      // console.log("mes cccc",JSON.stringify(this.critereParIdChallenge))
     })
   }
 
