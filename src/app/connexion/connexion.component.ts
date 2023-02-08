@@ -34,6 +34,10 @@ export class ConnexionComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    if (this.storage.connexionReussi()) {
+      this.connexionReussi = true;
+      this.roles = this.storage.recupererUser().roles;
+    }
   }
 
   onSubmit(): void {

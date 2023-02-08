@@ -54,4 +54,8 @@ export class AfficherService {
   afficherParIdChallenge(idChallenge:number) :Observable<any>{
     return this.http.get(`${env}/challenge/afficher/${idChallenge}`)
   }
+
+  graphiqueUser() :Observable<any>{
+    return this.http.get(`http://localhost:8080/devs/auth/utilisateur/afficheruser`)
+  }
 }

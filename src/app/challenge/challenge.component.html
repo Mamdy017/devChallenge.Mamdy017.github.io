@@ -154,7 +154,8 @@
                 </div>
                 <div class="container">
                   <div class="title">Modification un challenge apres</div>
-                  <div *ngIf="errorMessage" style="color: red; padding: 2%;">{{ errorMessage }}</div>
+                  <div *ngIf="status==false" style="color: red; padding: 2%;">{{ errorMessage }}</div>
+                  <div *ngIf="status==true" style="color: blue; padding: 2%;">{{ errorMessage }}</div>
                   <div class="content">
                     <form action="#" [formGroup]="challengeFormModifier" (ngSubmit)="onSubmitModifier()">
                       <div class="user-details">
