@@ -340,4 +340,11 @@ export class ChallengeComponent implements OnInit {
     return challengeStartDate > currentDate;
   }
 
+  reset(){
+    this.challengeForm.reset();
+  }
+
+  resetC(){
+    this.critereForm.reset();
+  }
 }
