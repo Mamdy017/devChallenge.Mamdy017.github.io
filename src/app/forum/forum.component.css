@@ -5,3 +5,17 @@
     background-color: #707070;
     color: #e6e7e8;
   }
+  button {
+    border: none;
+   
+    border-radius: 20px;
+    background-color: #707070;
+    color: #e6e7e8;
+  }
+  button {
+    border: none;
+    padding: 7px ;
+    border-radius: 20px;
+    background-color: #707070;
+    color: #e6e7e8;
+  }

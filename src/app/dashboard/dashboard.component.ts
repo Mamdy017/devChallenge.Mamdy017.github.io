@@ -176,15 +176,15 @@ export class DashboardComponent implements OnInit {
     this.chart = new Chart("MyChart", {
       type: 'bar',
       data: {
-        labels: ['Jan', 'Fev', 'Mars', 'Av', 'Mai', 'Juin', 'Juil', 'Août', 'Sep', 'Oct', 'Nov', 'Dec'],
+        labels: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
         datasets: [
           {
-            label: "Sales",
+            label: "Utilisateur",
             data: [this.jan, this.fe, this.mar, this.av, this.mai, this.jui,this.juil , this.au, this.sep, this.oct, this.nov, this.dec],
             backgroundColor: '#695CFE'
           },
           {
-            label: "Profit",
+            label: "Participation aux challenges",
             data: [0, 0, 0, 0, 0, 0.00, 1, 2, 0, 1, 0, 0],
             backgroundColor: 'limegreen'
           }

@@ -431,6 +431,7 @@
                         <th>Fin</th>
                         <th>Etat</th>
                         <th>Critère</th>
+                        <th>Solution</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -446,15 +447,19 @@
                         <td><button [routerLink]="['/challenge',cha.id]" data-mdb-toggle="modal"
                             data-mdb-target="#critere" (click)=" affichage(cha.id)">Plus...</button>
                         </td>
+                        <td><button [routerLink]="['/solution',cha.id]" 
+                            >Plus...</button>
+                        </td>
                         <td><i class="fa-sharp fa-regular fa-pen-to-square" [routerLink]="['/challenge',cha.id]"
                             data-mdb-toggle="modal" data-mdb-target="#staticBackdrop1" style="font-size: 2em; "></i>
                         </td>
+                        <td></td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-                <pagination-controls style="font-size: .9em;" (pageChange)="p =$event"
-                nextLabel="Suivant" previousLabel="Précedent"></pagination-controls>
+                <pagination-controls style="font-size: .9em;" (pageChange)="p =$event" nextLabel="Suivant"
+                  previousLabel="Précedent"></pagination-controls>
               </div>
             </div>
           </div>
