@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'challenge', component: ChallengeComponent,canActivate: [PermissionService] },
   { path: 'challenge/:idChallenge', component: ChallengeComponent,canActivate: [PermissionService] },
   { path: 'utilisateur', component: UtilisateurComponent,canActivate: [PermissionService] },
-  {path:'forum',component:ForumComponent,canActivate: [PermissionService]},
+  {path:'solution/:id',component:ForumComponent,canActivate: [PermissionService]},
   {path:'commentaire/:id',component:CommentaireComponent,canActivate: [PermissionService]},
   {path:'profile',component:ProfilesComponent,canActivate: [PermissionService]},
   { path: '**', component: NotFoundComponent },

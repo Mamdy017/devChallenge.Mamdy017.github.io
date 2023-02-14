@@ -3,7 +3,7 @@
         <div id="sidebar" class="col-auto sidebar  collapse collapse-horizontal show" *ngIf="menuBureau"
             style="height: 100vh;">
             <app-menu></app-menu>
-             <!-- </div> -->
+            <!-- </div> -->
         </div>
         <main class="col " style=" height: 100vh ; overflow: scroll; overflow-x: hidden;">
             <nav class=" bg-danger  navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
@@ -99,11 +99,9 @@
             </nav>
 
             <div class="container-fluid pt-4 px-4">
-                <button class="button">
-                    <i class='bx bxs-message-square-add fa-1x' style="color: white;"></i>
-                    Ajouter catégorie</button>
+
                 <div class="row g-4 py-3">
-                    <div class="col-sm-12 col-xl-3">
+                    <!-- <div class="col-sm-12 col-xl-1">
                         <div class="bg-light rounded p-4 he" style="height: 100%;">
                             <div class="">
                                 <div class=" py-2">
@@ -149,24 +147,37 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-9">
+                    </div> -->
+                    <div class="col-sm-12  col-xl-10">
                         <div class="bg-light text-center rounded">
-
-                            <div class="h-100 bg-light rounded p-3">
-                                <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <h6 class="mb-0">Utilisateur recents</h6>
-                                    <a href="">Voir plus</a>
+                            <div class="h-100 bg-light justify-content-end rounded p-5">
+                                <div class="d-flex align-items-center  mb-2" style="text-align: center;">
+                                    <h4 class="mb-0" style="margin-left: auto; margin-right: auto;">Utilisateur recents
+                                    </h4>
                                 </div>
-                                <div class="d-flex align-items-center border-bottom py-3">
-                                    <img class="rounded-circle flex-shrink-0" src="../../assets/logo8.png" alt=""
-                                        style="width: 40px; height: 40px;">
+                                <div *ngFor=" let solution of solutionAffichage|filter:term | paginate: { itemsPerPage: 8, currentPage: p }, let i = index"
+                                    class="d-flex align-items-center border-bottom py-3">
+                                    <div class="rounded-circle flex-shrink-0"
+                                        style="width: 40px; height: 40px; border: 1px solid #5260FF;">
+                                        <span style="margin-top: 1vh !important; position: absolute;">{{i+1}}</span>
+                                    </div>
                                     <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-0">Jhon Doe</h6>
-                                            <small>15 minutes ago</small>
-                                        </div>
-                                        <span routerLinkActive="active" routerLink="/commentaire/1">Short message goes here...</span>
+                                        <h6>Equipe:&nbsp;&nbsp;&nbsp;&nbsp; {{solution.team.nom}}</h6>
+                                    </div>
+                                    <div class="w-100 ms-3">
+                                        <h6>Challenge:&nbsp;&nbsp;&nbsp;&nbsp; {{solution.challenge.titre}}</h6>
+                                    </div>
+                                    <div class="w-100 ms-3">
+                                        <h6> Fichier source:&nbsp;&nbsp;&nbsp;&nbsp; <a href="{{solution.source}}"
+                                                download=""><i class="bi bi-download" style="font-size: 1.5em;"></i></a>
+                                        </h6>
+                                    </div>
+                                    <div class="w-100 ms-3">
+                                        <h6>Correction: &nbsp;&nbsp; &nbsp;&nbsp;<button
+                                                [routerLink]="['/challenge',solution.id]" data-mdb-toggle="modal"
+                                                data-mdb-target="#critere">Plus...</button></h6>
+                                    </div>
+                                    <div class="w-100 ms-3">
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center border-bottom py-2">
@@ -210,6 +221,67 @@
                             </div>
                         </div>
                     </div>
+                    <!-- <div class="col-sm-12 col-xl-11">
+                        <div class="bg-light text-center rounded">
+
+                            <div class="h-100 bg-light rounded p-3">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <h6 class="mb-0">Utilisateur recents</h6>
+                                    <a href="">Voir plus</a>
+                                </div>
+                                <div class="d-flex align-items-center border-bottom py-3">
+                                    <img class="rounded-circle flex-shrink-0" src="../../assets/logo8.png" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="w-100 ms-3">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-0">Jhon Doe</h6>
+                                            <small>15 minutes ago</small>
+                                        </div>
+                                        <span routerLinkActive="active" routerLink="/commentaire/1">Short message goes
+                                            here...</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center border-bottom py-2">
+                                    <img class="rounded-circle flex-shrink-0" src="../../assets/logo8.png" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="w-100 ms-3">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-0">Jhon Doe</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center border-bottom py-2">
+                                    <img class="rounded-circle flex-shrink-0" src="../../assets/logo8.png" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="w-100 ms-3">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-0">Jhon Doe</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center border-bottom py-2">
+                                    <img class="rounded-circle flex-shrink-0" src="../../assets/logo8.png" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="w-100 ms-3">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-0">Jhon Doe</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center pt-3 py-3">
+                                    <img class="rounded-circle flex-shrink-0" src="../../assets/logo8.png" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="w-100 ms-3">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-0">Jhon Doe</h6>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div> -->
                 </div>
             </div>
             <app-footer></app-footer>
