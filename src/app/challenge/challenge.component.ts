@@ -24,13 +24,18 @@ export class ChallengeComponent implements OnInit {
   technoForm!: FormGroup;
   baremeForm!: FormGroup;
   challengeFormModifier!: FormGroup;
+  titre: any;
+  description: any;
+  datefin: any;
+  status: any;
+  today!: Date;
+  encours: any;
+  terminer: any;
 
   options = [];
   options1 = [];
   options2 = [];
   options4 = [];
-
-
 
   catetec = {
     singleSelection: false,
@@ -71,11 +76,7 @@ export class ChallengeComponent implements OnInit {
   ParIdChallenge: any;
   idChallenge!: number;
 
-  titre:any;
-  description:any;
-  datefin:any;
-  status: any;
-  today!: Date;
+
 
 
 
@@ -89,8 +90,8 @@ export class ChallengeComponent implements OnInit {
       }, 100, clearInterval(1500));
   }
   ngOnInit(): void {
-     this.today = new Date();
-        this.breakpointObserver
+    this.today = new Date();
+    this.breakpointObserver
       .observe(['(max-width: 767px)'])
       .subscribe((state: BreakpointState) => {
         if (state.matches) {
@@ -140,9 +141,16 @@ export class ChallengeComponent implements OnInit {
       techno: new FormControl(''),
     })
     this.serviceAfficher.afficherChallenge().subscribe(data => {
-      this.challenge = data;
+      this.challenge = data;      
+    });
+    this.serviceAfficher.afficherChallengeEncours().subscribe(data => {
+      this.encours = data;
+    });
+    this.serviceAfficher.afficherChallengeTerminer().subscribe(data => {
+      this.terminer = data;
 
     });
+  
     this.idChallenge = this.routes.snapshot.params['idChallenge']
 
     this.serviceAfficher.afficherParIdChallenge(this.idChallenge).subscribe(data => {
@@ -211,7 +219,7 @@ export class ChallengeComponent implements OnInit {
 
       this.serviceAjouter.AjouterChallenge(formData).subscribe((data: any) => {
         this.errorMessage = data.message;
-        this.status=data.status;
+        this.status = data.status;
         this.challengeForm.reset();
       });
     } else {
@@ -249,7 +257,7 @@ export class ChallengeComponent implements OnInit {
 
       this.serviceAjouter.modifierChallenge(this.idChallenge, formData).subscribe((data: any) => {
         this.errorMessage = data.message;
-        this.status=data.status;
+        this.status = data.status;
         this.challengeFormModifier.reset();
       });
     } else {
@@ -268,7 +276,7 @@ export class ChallengeComponent implements OnInit {
 
       this.serviceAjouter.AjouterCritere(formData).subscribe((data: any) => {
         this.errorMessage = data.message;
-        this.status=data.status;
+        this.status = data.status;
         this.critereForm.reset();
       });
     } else {
@@ -284,7 +292,7 @@ export class ChallengeComponent implements OnInit {
       // console.log("mes" + this.baremeForm.value.bareme);
       this.serviceAjouter.AjouterBareme(formData).subscribe((data: any) => {
         this.errorMessage = data.message;
-        this.status=data.status;
+        this.status = data.status;
         this.baremeForm.reset();
       });
     } else {
@@ -299,7 +307,7 @@ export class ChallengeComponent implements OnInit {
 
       this.serviceAjouter.AjouterCate(formData).subscribe((data: any) => {
         this.errorMessage = data.message;
-        this.status=data.status;
+        this.status = data.status;
         this.cateForm.reset();
       });
     } else {
@@ -314,7 +322,7 @@ export class ChallengeComponent implements OnInit {
       // console.log("bvbvbvb" + this.technoForm.value.techno);
       this.serviceAjouter.AjouterTechno(formData).subscribe((data: any) => {
         this.errorMessage = data.message;
-        this.status=data.status;
+        this.status = data.status;
         this.technoForm.reset();
       });
     } else {
@@ -327,7 +335,7 @@ export class ChallengeComponent implements OnInit {
     this.menuMobile = false;
   }
 
-  affichage(idChallenge:any){
+  affichage(idChallenge: any) {
     this.serviceAfficher.afficherCritereParIdChallenge(idChallenge).subscribe(data => {
       this.critereParIdChallenge = data;
       // console.log("mes cccc",JSON.stringify(this.critereParIdChallenge))
@@ -340,11 +348,11 @@ export class ChallengeComponent implements OnInit {
     return challengeStartDate > currentDate;
   }
 
-  reset(){
+  reset() {
     this.challengeForm.reset();
   }
 
-  resetC(){
+  resetC() {
     this.critereForm.reset();
   }
 }

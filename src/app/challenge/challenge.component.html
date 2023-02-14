@@ -23,38 +23,38 @@
       <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
           <div class="col-sm-6 col-xl-3">
-            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+            <div class="bg-light rounded d-flex align-items-center  p-4">
               <i class='bx bxs-trophy fa-3x'></i>
               <div class="ms-3">
                 <p class="mb-2">Total Challenge</p>
-                <h6 class="mb-0">$1234</h6>
+                <h6 class="mb-0">{{challenge.length}}</h6>
               </div>
             </div>
           </div>
           <div class="col-sm-6 col-xl-3">
-            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+            <div class="bg-light rounded d-flex align-items-center  p-4">
               <i class='bx bxs-trophy fa-3x'></i>
               <div class="ms-3">
                 <p class="mb-2">Challenge à venir</p>
-                <h6 class="mb-0">$1234</h6>
+                <h6 class="mb-0"></h6>
               </div>
             </div>
           </div>
           <div class="col-sm-6 col-xl-3">
-            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+            <div class="bg-light rounded d-flex align-items-center  p-4">
               <i class='bx bxs-trophy fa-3x'></i>
               <div class="ms-3">
                 <p class="mb-2">Total encours</p>
-                <h6 class="mb-0">$1234</h6>
+                <h6 class="mb-0">{{encours.length}}</h6>
               </div>
             </div>
           </div>
           <div class="col-sm-6 col-xl-3 ">
-            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+            <div class="bg-light rounded d-flex align-items-center p-4">
               <i class='bx bxs-trophy  fa-3x '></i>
               <div class="ms-3">
                 <p class="mb-2">Total Terminer</p>
-                <h6 class="mb-0">1234</h6>
+                <h6 class="mb-0">{{terminer.length}}</h6>
               </div>
             </div>
           </div>
@@ -66,10 +66,7 @@
             <i class='bx bxs-message-square-add fa-1x' style="color: white;"></i>
             Ajouter un challenge
           </button>
-          <button data-mdb-toggle="modal" data-mdb-target="#staticBackdrop1">
-            <i class='bx bxs-message-square-add fa-1x' style="color: white;"></i>
-            Ajouter un challenge mo
-          </button>
+
           <!--========================== Modal ajouter challenge ==================================================-->
           <div class="modal fade" id="staticBackdrop4" tabindex="100" aria-labelledby="exampleModalLabel4"
             aria-hidden="true">
@@ -85,54 +82,75 @@
                   <div class="content">
                     <form action="#" [formGroup]="challengeForm" (ngSubmit)="onSubmit()">
                       <div class="user-details">
-                        <div class="input-box">
-                          <span class="details">Titre</span>
-                          <input type="text" name="titre" formControlName="titre" placeholder="Donner un titre">
+                        <div class="row">
+                          <div class="input-box col">
+                            <span class="details">Titre</span>
+                            <input type="text" name="titre" formControlName="titre" placeholder="Donner un titre">
+                          </div>
+                          <div class="input-box col">
+                            <span class="details">Description</span>
+                            <input type="text" name="description" formControlName="description"
+                              placeholder="Donner une description">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-box col">
+                            <span class="details">Date de début</span>
+                            <input type="date" name="datedebut" formControlName="datedebut" placeholder="Date de debut"
+                              required>
+                          </div>
+                          <div class="input-box col">
+                            <span class="details">Date de fin</span>
+                            <input type="date" name="datefin" formControlName="datefin" placeholder="datefin">
+                          </div>
                         </div>
                         <div class="input-box">
                           <span class="details">Choisir technologie</span>
-                          <ng-multiselect-dropdown [placeholder]="'Choisir technologie'" [data]="options1"
-                            formControlName="tecnhoids" [settings]="catetec" defaultOpen="false">
-                          </ng-multiselect-dropdown>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
+                                data-mdb-target="#staticBackdrop7" style="font-size: 2em;"></i>
+                            </div>
+                            <div class="col-md-11">
+                              <ng-multiselect-dropdown [placeholder]="'Choisir technologie'" [data]="options1"
+                                formControlName="tecnhoids" [settings]="catetec" defaultOpen="false">
+                              </ng-multiselect-dropdown>
+                            </div>
+                          </div>
                         </div>
                         <div class="input-box">
                           <span class="details">Choisir Catégorie</span>
-                          <ng-multiselect-dropdown [placeholder]="'Choisir Catégorie'" [data]="options"
-                            formControlName="cateids" [settings]="catetec"></ng-multiselect-dropdown>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
+                                data-mdb-target="#staticBackdrop7" style="font-size: 2em;"></i>
+                            </div>
+                            <div class="col-md-11">
+                              <ng-multiselect-dropdown [placeholder]="'Choisir Catégorie'" [data]="options"
+                                formControlName="cateids" [settings]="catetec"></ng-multiselect-dropdown>
+                            </div>
+                          </div>
                         </div>
                         <div class="input-box">
                           <span class="details">Choisir Critère</span>
-                          <ng-multiselect-dropdown [placeholder]="'Choisir Critère'" [data]="options2"
-                            formControlName="critereids" [settings]="critere"></ng-multiselect-dropdown>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
+                                data-mdb-target="#staticBackdrop6" (click)=" resetC()" style="font-size: 2em;"></i>
+                            </div>
+                            <div class="col-md-11">
+                              <ng-multiselect-dropdown [placeholder]="'Choisir Critère'" [data]="options2"
+                                formControlName="critereids" [settings]="critere"></ng-multiselect-dropdown>
+                            </div>
+                          </div>
                         </div>
                         <div class="input-box">
-                          <span class="details">Description</span>
-                          <input type="text" name="description" formControlName="description"
-                            placeholder="Donner une description">
-                        </div>
-                        <div class="input-box">
-                          <span class="details">Date de début</span>
-                          <input type="date" name="datedebut" formControlName="datedebut" placeholder="Date de debut"
-                            required>
-                        </div>
-                        <div class="input-box">
-                          <span class="details">Date de fin</span>
-                          <input type="date" name="datefin" formControlName="datefin" placeholder="datefin">
-                        </div>
-                        <div class="input-box">
-                          <span class="details">Date de fin</span>
-                          <input type="file" name="photo" formControlName="photo" (change)="onFileChangePhoto($event)"
-                            placeholder="photo" class="py-2">
+                          <span class="details">Choisir une image</span>
+                          <input type="file" name="photo" accept="image/*" formControlName="photo"
+                            (change)="onFileChangePhoto($event)" placeholder="photo" class="py-2">
                         </div>
                       </div>
-                      <button data-mdb-toggle="modal" data-mdb-target="#staticBackdrop6" (click)=" resetC()">
-                        <i class='bx bxs-message-square-add fa-1x' style="color: white;"></i>
-                        Ajouter un critère
-                      </button>
-                      <button data-mdb-toggle="modal" data-mdb-target="#staticBackdrop7">
-                        <i class='bx bxs-message-square-add fa-1x' style="color: white;"></i>
-                        Categories/techno
-                      </button>
+
                       <div class="button">
                         <input type="submit" value="Créer">
                       </div>
@@ -164,22 +182,47 @@
                           <input type="text" name="titremod" formControlName="titremod" placeholder="Donner un titre"
                             value="{{titre}}">
                         </div>
+
                         <div class="input-box">
                           <span class="details">Choisir technologie</span>
-                          <ng-multiselect-dropdown [placeholder]="'Choisir technologie'" [data]="options1"
-                            formControlName="tecnhoidsmod" [settings]="catetec" defaultOpen="false">
-                          </ng-multiselect-dropdown>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
+                                data-mdb-target="#staticBackdrop7" style="font-size: 2em;"></i>
+                            </div>
+                            <div class="col-md-11">
+                              <ng-multiselect-dropdown [placeholder]="'Choisir technologie'" [data]="options1"
+                                formControlName="tecnhoidsmod" [settings]="catetec" defaultOpen="false">
+                              </ng-multiselect-dropdown>
+                            </div>
+                          </div>
                         </div>
                         <div class="input-box">
                           <span class="details">Choisir Catégorie</span>
-                          <ng-multiselect-dropdown [placeholder]="'Choisir Catégorie'" [data]="options"
-                            formControlName="cateidsmod" [settings]="catetec" defaultOpen="true">
-                          </ng-multiselect-dropdown>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
+                                data-mdb-target="#staticBackdrop7" style="font-size: 2em;"></i>
+                            </div>
+                            <div class="col-md-11">
+                              <ng-multiselect-dropdown [placeholder]="'Choisir Catégorie'" [data]="options"
+                                formControlName="cateidsmod" [settings]="catetec" defaultOpen="true">
+                              </ng-multiselect-dropdown>
+                            </div>
+                          </div>
                         </div>
                         <div class="input-box">
                           <span class="details">Choisir Critère</span>
-                          <ng-multiselect-dropdown [placeholder]="'Choisir Critère'" [data]="options2"
-                            formControlName="critereidsmod" [settings]="critere"></ng-multiselect-dropdown>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
+                                data-mdb-target="#staticBackdrop6" (click)=" resetC()" style="font-size: 2em;"></i>
+                            </div>
+                            <div class="col-md-11">
+                              <ng-multiselect-dropdown [placeholder]="'Choisir Critère'" [data]="options2"
+                                formControlName="critereidsmod" [settings]="critere"></ng-multiselect-dropdown>
+                            </div>
+                          </div>
                         </div>
                         <div class="input-box">
                           <span class="details">Description</span>
@@ -359,17 +402,9 @@
             </div>
           </div>
         </div>
-
         <!-- ====================================Tableau challenge=============================================== -->
-
         <div class="row g-4 py-2">
-          <div class="row2-container" >
-            <div class="box cyan" *ngFor="let cpidc of critereParIdChallenge let i = index">
-              <h2>Critère {{i+1}} </h2>
-              <p>{{cpidc.critere}}</p>
-              <span class="img">Bareme {{cpidc.bareme[0].bareme}} points</span>
-            </div>
-          </div>
+
           <div class="col-sm-12">
             <div class="bg-light text-center rounded p-2">
               <h3>La liste des challenges</h3>
@@ -385,6 +420,7 @@
                         <th>Fin</th>
                         <th>Etat</th>
                         <th>Critère</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -393,13 +429,14 @@
                         <td>{{cha.titre}}</td>
                         <td>{{cha.description}}</td>
                         <td>{{cha.datedebut | date: 'dd/MM/yyyy'}}</td>
-                        <td>{{cha.datefin  | date: 'dd/MM/yyyy'}}</td>
-                        <td *ngIf="cha.datedebut < today">encours</td>
-                        <td *ngIf="isChallengeInProgress(cha.datedebut)">A venir</td>
-                        <td><button [routerLink]="['/challenge',cha.id]" (click)=" affichage(cha.id)">Plus...</button>
+                        <td>{{cha.datefin | date: 'dd/MM/yyyy'}}</td>
+                        <td>{{cha.etat}}</td>
+                        <td><button [routerLink]="['/challenge',cha.id]" data-mdb-toggle="modal"
+                            data-mdb-target="#critere" (click)=" affichage(cha.id)">Plus...</button>
                         </td>
-
-                        <!-- <td><button>Donner points</button></td> -->
+                        <td><i class="fa-sharp fa-regular fa-pen-to-square" [routerLink]="['/challenge',cha.id]"
+                            data-mdb-toggle="modal" data-mdb-target="#staticBackdrop1" style="font-size: 2em; "></i>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -407,7 +444,21 @@
               </div>
             </div>
           </div>
-
+          <div class="modal fade" id="critere" tabindex="100" aria-labelledby="critere" aria-hidden="true">
+            <div class="modal-dialog d-flex justify-content-center">
+              <div class="modal-content w-100">
+                <button style="margin-left: auto;" type="button" class="btn-close" data-mdb-dismiss="modal"
+                  aria-label="Close"></button>
+                <div class="row2-container">
+                  <div class="box cyan" *ngFor="let cpidc of critereParIdChallenge let i = index">
+                    <h2>Critère {{i+1}} </h2>
+                    <p>{{cpidc.critere}}</p>
+                    <span class="img">Bareme {{cpidc.bareme[0].bareme}} points</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>

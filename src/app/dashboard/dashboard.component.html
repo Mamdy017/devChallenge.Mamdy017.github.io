@@ -23,38 +23,38 @@
       <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
           <div class="col-sm-6 col-xl-3">
-            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+            <div class="bg-light rounded d-flex align-items-center  p-4">
               <i class='bx bxs-trophy fa-3x'></i>
               <div class="ms-3">
                 <p class="mb-2">Total Challenge</p>
-                <h6 class="mb-0">$1234</h6>
+                <h6 class="mb-0">{{challenge.length}}</h6>
               </div>
             </div>
           </div>
           <div class="col-sm-6 col-xl-3">
-            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+            <div class="bg-light rounded d-flex align-items-center  p-4">
               <i class='bx bxs-trophy fa-3x'></i>
               <div class="ms-3">
                 <p class="mb-2">Challenge à venir</p>
-                <h6 class="mb-0">$1234</h6>
+                <h6 class="mb-0">{{avenir.length}}</h6>
               </div>
             </div>
           </div>
           <div class="col-sm-6 col-xl-3">
-            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+            <div class="bg-light rounded d-flex align-items-center  p-4">
               <i class='bx bxs-user-circle fa-3x'></i>
               <div class="ms-3">
                 <p class="mb-2">Total Utilisateur</p>
-                <h6 class="mb-0">$1234</h6>
+                <h6 class="mb-0">{{user.length}}</h6>
               </div>
             </div>
           </div>
-          <div class="col-sm-6 col-xl-3 ">
-            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+          <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center  p-4">
               <i class='bx bxs-category fa-3x '></i>
               <div class="ms-3">
                 <p class="mb-2">Total Catégories</p>
-                <h6 class="mb-0">$1234</h6>
+                <h6 class="mb-0"></h6>
               </div>
             </div>
           </div>
@@ -80,147 +80,21 @@
                   <h6 class="mb-0">Utilisateur recents</h6>
                   <a href="">Voir plus</a>
                 </div>
-                <div class="d-flex align-items-center border-bottom py-3">
-                  <img class="rounded-circle flex-shrink-0" src="../../assets/logo8.png" alt=""
+                <div class="d-flex align-items-center border-bottom py-3" *ngFor="let users of user">
+                  <img class="rounded-circle flex-shrink-0" src="{{users.profile}}" alt=""
                     style="width: 40px; height: 40px;">
                   <div class="w-100 ms-3">
                     <div class="d-flex w-100 justify-content-between">
-                      <h6 class="mb-0">Jhon Doe</h6>
+                      <h6 class="mb-0">{{users.nom}} {{users.prenom}}</h6>
                     </div>
                   </div>
                 </div>
-                <div class="d-flex align-items-center border-bottom py-3">
-                  <img class="rounded-circle flex-shrink-0" src="../../assets/logo8.png" alt=""
-                    style="width: 40px; height: 40px;">
-                  <div class="w-100 ms-3">
-                    <div class="d-flex w-100 justify-content-between">
-                      <h6 class="mb-0">Jhon Doe</h6>
-                    </div>
-                  </div>
-                </div>
-                <div class="d-flex align-items-center border-bottom py-2">
-                  <img class="rounded-circle flex-shrink-0" src="../../assets/logo8.png" alt=""
-                    style="width: 40px; height: 40px;">
-                  <div class="w-100 ms-3">
-                    <div class="d-flex w-100 justify-content-between">
-                      <h6 class="mb-0">Jhon Doe</h6>
-                    </div>
-                  </div>
-                </div>
-                <div class="d-flex align-items-center border-bottom py-2">
-                  <img class="rounded-circle flex-shrink-0" src="../../assets/logo8.png" alt=""
-                    style="width: 40px; height: 40px;">
-                  <div class="w-100 ms-3">
-                    <div class="d-flex w-100 justify-content-between">
-                      <h6 class="mb-0">Jhon Doe</h6>
-                    </div>
-                  </div>
-                </div>
-                <div class="d-flex align-items-center border-bottom py-2">
-                  <img class="rounded-circle flex-shrink-0" src="../../assets/logo8.png" alt=""
-                    style="width: 40px; height: 40px;">
-                  <div class="w-100 ms-3">
-                    <div class="d-flex w-100 justify-content-between">
-                      <h6 class="mb-0">Jhon Doe</h6>
-                    </div>
-                  </div>
-                </div>
-                <div class="d-flex align-items-center pt-3 py-3">
-                  <img class="rounded-circle flex-shrink-0" src="../../assets/logo8.png" alt=""
-                    style="width: 40px; height: 40px;">
-                  <div class="w-100 ms-3">
-                    <div class="d-flex w-100 justify-content-between">
-                      <h6 class="mb-0">Jhon Doe</h6>
-                    </div>
-                  </div>
-                </div>
-
-
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="header_fixed py-2">
-        <table>
-          <thead>
-            <tr>
-              <th>S No.</th>
-              <th>Image</th>
-              <th>Username</th>
-              <th>Email</th>
-              <th>Department</th>
-              <!-- <th>Action</th> -->
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>rge</td>
-              <td>Rakhi Gupta</td>
-              <td>rakhigupta@gmail.com</td>
-              <td>Engineering</td>
-              <!-- <td><button>View</button></td> -->
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>gdf</td>
-              <td>Anjali</td>
-              <td>anjali@gmail.com</td>
-              <td>Engineering</td>
-              <!-- <td><button>View</button></td> -->
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>fdf</td>
-              <td>Vejata Gupta</td>
-              <td>Vejata@gmail.com</td>
-              <td>Engineering</td>
-              <!-- <td><button>View</button></td> -->
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>fd</td>
-              <td>Shweta</td>
-              <td>Shweta@gmail.com</td>
-              <td>Engineering</td>
-              <!-- <td><button>View</button></td> -->
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>fd</td>
-              <td>Adarsh</td>
-              <td>Adarsh@gmail.com</td>
-              <td>Engineering</td>
-              <!-- <td><button>View</button></td> -->
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>cxcv</td>
-              <td>Monti</td>
-              <td>Monti@gmail.com</td>
-              <td>Engineering</td>
-              <!-- <td><button>View</button></td> -->
-            </tr>
-            <tr>
-              <td>7</td>
-              <td>vc</td>
-              <td>Arpit</td>
-              <td>Arpit@gmail.com</td>
-              <td>Engineering</td>
-              <!-- <td><button>View</button></td> -->
-            </tr>
-            <tr>
-              <td>8</td>
-              <td>cxc</td>
-              <td>Priya</td>
-              <td>priya@gmail.com</td>
-              <td>Engineering</td>
-              <!-- <td><button>View</button></td> -->
-            </tr>
-          </tbody>
-        </table>
-      </div>
+
       <app-footer></app-footer>
     </main>
 

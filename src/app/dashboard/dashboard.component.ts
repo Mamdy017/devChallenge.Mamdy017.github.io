@@ -48,6 +48,12 @@ export class DashboardComponent implements OnInit {
   nov: number=0;
   dec: number=0;
   juil: number=0;
+  challenge: any;
+  encours: any;
+  terminer: any;
+  avenir: any;
+  user: any;
+  avenir1: any;
 
   constructor(public breakpointObserver: BreakpointObserver,
     private route: Router, private connexion: ConnexionService,
@@ -96,59 +102,28 @@ export class DashboardComponent implements OnInit {
       this.serviceAfficher.graphiqueUser().subscribe(data=>{
         this.graphiqueUser=data;
         console.log("fer",JSON.stringify(this.graphiqueUser.mois))
-        for (const ft of this.graphiqueUser) {
-          if (ft.mois == 1) {
-            this.jan += 1;
-            
-          }
-          if (ft.mois == 2) {
-            this.fe += 1;
-           
-          }
-          if (ft.mois == 3) {
-            this.mar += 1;
-            
-          }
-          if (ft.mois == 4) {
-            this.av += 1;
-           
-          }
-          if (ft.mois == 5) {
-            this.mai += 1;
-            
-          }
-          if (ft.mois == 6) {
-            this.jui += 1;
-           
-          }
-          if (ft.mois == 7) {
-            this.juil += 1;
-            
-          }
-          if (ft.mois == 8) {
-            this.au += 1;
-           
-          }
-          if (ft.mois == 9) {
-            this.sep += 1;
-           
-          }
-          if (ft.mois === 10) {
-            this.oct += 1;
-           
-          }
-          if (ft.mois == 11) {
-            this.nov += 1;
-            
-          }
-          if (ft.mois == 12) {
-            this.dec += 1;
-            
-          }
-  
-          
-        }
+        
       })
+      this.serviceAfficher.afficheruser().subscribe(data => {
+        this.user = data;
+        console.table(this.user);
+      });
+
+      this.serviceAfficher.afficherChallenge().subscribe(data => {
+        this.challenge = data;
+  
+      });
+      this.serviceAfficher.afficherChallengeEncours().subscribe(data => {
+        this.encours = data;
+      });
+      this.serviceAfficher.afficherChallengeTerminer().subscribe(data => {
+        this.terminer= data;
+  
+      });
+      this.serviceAfficher.afficherChallengeTerminer().subscribe(data => {
+        this.avenir1 = data;
+  
+      });
   }
   title = 'DevsChallenge';
   afficheMenuMobile() {

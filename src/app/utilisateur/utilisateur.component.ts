@@ -10,19 +10,14 @@ import { AfficherService } from '../Services/afficher.service';
 })
 export class UtilisateurComponent implements OnInit {
 
-  p:any;
+  p: any;
   menuBureau: boolean = true;
   menuMobile: boolean = false;
   user: any;
   constructor(public breakpointObserver: BreakpointObserver,
-    private route: Router ,private serviceAfficher:AfficherService) { }
+    private route: Router, private serviceAfficher: AfficherService) { }
 
   actualise(): void {
-    this.serviceAfficher.afficheruser().subscribe(data => {
-      this.user = data;
-      console.table(this.user);
-      // console.table(this.user.roles[1])
-    });
     setInterval(
       () => {
       }, 100, clearInterval(1500));
@@ -41,6 +36,10 @@ export class UtilisateurComponent implements OnInit {
           this.menuMobile = false;
           this.actualise();
         }
+      });
+      this.serviceAfficher.afficheruser().subscribe(data => {
+        this.user = data;
+        console.table("mes users",this.user);
       });
   }
   afficheMenuMobile() {
