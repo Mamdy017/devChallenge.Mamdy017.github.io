@@ -1,107 +1,104 @@
 <div class="container-fluid" style="overflow: hidden;">
-    <div class="row flex-nowrap">
-        <div id="sidebar" class="col-auto sidebar  collapse collapse-horizontal show" *ngIf="menuBureau"
-            style="height: 100vh;">
-            <app-menu></app-menu>
-            <!-- </div> -->
-        </div>
-        <main class="col " style=" height: 100vh ; overflow: scroll; overflow-x: hidden;">
-            <nav class=" bg-danger  navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-                <h1 style="width: 20px;"></h1>
-                <a href="#" class="sidebar-toggler flex-shrink-0" data-bs-toggle="collapse" data-bs-target="#sidebar"
-                    aria-expanded="false" (click)="afficheMenuMobile()" aria-controls="collapseWidthExample">
-                    <i class="fa fa-bars"></i>
-                </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control border-0" type="search" placeholder="Search">
-                    <i class='bx bx-search icon ' style="font-size:35px"></i>
-                </form>
-                <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-envelope me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Message</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="../../assets/logo8.png" alt=""
-                                        style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="../../assets/logo8.png" alt=""
-                                        style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="../../assets/logo8.png" alt=""
-                                        style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all message</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-bell me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Notificatin</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Profile updated</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">New user added</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Password changed</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all notifications</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="../../assets/logo8.png" alt=""
-                                style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
-                        </div>
-                    </div>
+  <div class="row flex-nowrap">
+    <div id="sidebar" class="col-auto sidebar  collapse collapse-horizontal show" *ngIf="menuBureau"
+      style="height: 100vh;">
+      <app-menu></app-menu>
+      <!-- </div> -->
+    </div>
+    <main class="col " style=" height: 100vh ; overflow: scroll; overflow-x: hidden;">
+      <nav class=" bg-danger  navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+        <h1 style="width: 20px;"></h1>
+        <a href="#" class="sidebar-toggler flex-shrink-0" data-bs-toggle="collapse" data-bs-target="#sidebar"
+          aria-expanded="false" (click)="afficheMenuMobile()" aria-controls="collapseWidthExample">
+          <i class="fa fa-bars"></i>
+        </a>
+        <form class="d-none d-md-flex ms-4">
+          <input class="form-control border-0" type="search" placeholder="Search">
+          <i class='bx bx-search icon ' style="font-size:35px"></i>
+        </form>
+        <div class="navbar-nav align-items-center ms-auto">
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+              <i class="fa fa-envelope me-lg-2"></i>
+              <span class="d-none d-lg-inline-flex">Message</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+              <a href="#" class="dropdown-item">
+                <div class="d-flex align-items-center">
+                  <img class="rounded-circle" src="../../assets/logo8.png" alt="" style="width: 40px; height: 40px;">
+                  <div class="ms-2">
+                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                    <small>15 minutes ago</small>
+                  </div>
                 </div>
-            </nav>
+              </a>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item">
+                <div class="d-flex align-items-center">
+                  <img class="rounded-circle" src="../../assets/logo8.png" alt="" style="width: 40px; height: 40px;">
+                  <div class="ms-2">
+                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                    <small>15 minutes ago</small>
+                  </div>
+                </div>
+              </a>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item">
+                <div class="d-flex align-items-center">
+                  <img class="rounded-circle" src="../../assets/logo8.png" alt="" style="width: 40px; height: 40px;">
+                  <div class="ms-2">
+                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                    <small>15 minutes ago</small>
+                  </div>
+                </div>
+              </a>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item text-center">See all message</a>
+            </div>
+          </div>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+              <i class="fa fa-bell me-lg-2"></i>
+              <span class="d-none d-lg-inline-flex">Notificatin</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+              <a href="#" class="dropdown-item">
+                <h6 class="fw-normal mb-0">Profile updated</h6>
+                <small>15 minutes ago</small>
+              </a>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item">
+                <h6 class="fw-normal mb-0">New user added</h6>
+                <small>15 minutes ago</small>
+              </a>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item">
+                <h6 class="fw-normal mb-0">Password changed</h6>
+                <small>15 minutes ago</small>
+              </a>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item text-center">See all notifications</a>
+            </div>
+          </div>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+              <img class="rounded-circle me-lg-2" src="../../assets/logo8.png" alt=""
+                style="width: 40px; height: 40px;">
+              <span class="d-none d-lg-inline-flex">John Doe</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+              <a href="#" class="dropdown-item">My Profile</a>
+              <a href="#" class="dropdown-item">Settings</a>
+              <a href="#" class="dropdown-item">Log Out</a>
+            </div>
+          </div>
+        </div>
+      </nav>
 
-            <div class="container-fluid pt-4 px-4">
+      <div class="container-fluid pt-4 px-4">
 
-                <div class="row g-4 py-3">
-                    <!-- <div class="col-sm-12 col-xl-1">
+        <div class="row g-4 py-3">
+          <!-- <div class="col-sm-12 col-xl-1">
                         <div class="bg-light rounded p-4 he" style="height: 100%;">
                             <div class="">
                                 <div class=" py-2">
@@ -148,80 +145,93 @@
                             </div>
                         </div>
                     </div> -->
-                    <div class="col-sm-12  col-xl-10">
-                        <div class="bg-light text-center rounded">
-                            <div class="h-100 bg-light justify-content-end rounded p-5">
-                                <div class="d-flex align-items-center  mb-2" style="text-align: center;">
-                                    <h4 class="mb-0" style="margin-left: auto; margin-right: auto;">Utilisateur recents
-                                    </h4>
-                                </div>
-                                <div *ngFor=" let solution of solutionAffichage|filter:term | paginate: { itemsPerPage: 8, currentPage: p }, let i = index"
-                                    class="d-flex align-items-center border-bottom py-3">
-                                    <div class="rounded-circle flex-shrink-0"
-                                        style="width: 40px; height: 40px; border: 1px solid #5260FF;">
-                                        <span style="margin-top: 1vh !important; position: absolute;">{{i+1}}</span>
-                                    </div>
-                                    <div class="w-100 ms-3">
-                                        <h6>Equipe:&nbsp;&nbsp;&nbsp;&nbsp; {{solution.team.nom}}</h6>
-                                    </div>
-                                    <div class="w-100 ms-3">
-                                        <h6>Challenge:&nbsp;&nbsp;&nbsp;&nbsp; {{solution.challenge.titre}}</h6>
-                                    </div>
-                                    <div class="w-100 ms-3">
-                                        <h6> Fichier source:&nbsp;&nbsp;&nbsp;&nbsp; <a href="{{solution.source}}"
-                                                download=""><i class="bi bi-download" style="font-size: 1.5em;"></i></a>
-                                        </h6>
-                                    </div>
-                                    <div class="w-100 ms-3">
-                                        <h6>Correction: &nbsp;&nbsp; &nbsp;&nbsp;<button
-                                                [routerLink]="['/challenge',solution.id]" data-mdb-toggle="modal"
-                                                data-mdb-target="#critere">Plus...</button></h6>
-                                    </div>
-                                    <div class="w-100 ms-3">
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center border-bottom py-2">
-                                    <img class="rounded-circle flex-shrink-0" src="../../assets/logo8.png" alt=""
-                                        style="width: 40px; height: 40px;">
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-0">Jhon Doe</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center border-bottom py-2">
-                                    <img class="rounded-circle flex-shrink-0" src="../../assets/logo8.png" alt=""
-                                        style="width: 40px; height: 40px;">
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-0">Jhon Doe</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center border-bottom py-2">
-                                    <img class="rounded-circle flex-shrink-0" src="../../assets/logo8.png" alt=""
-                                        style="width: 40px; height: 40px;">
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-0">Jhon Doe</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center pt-3 py-3">
-                                    <img class="rounded-circle flex-shrink-0" src="../../assets/logo8.png" alt=""
-                                        style="width: 40px; height: 40px;">
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-0">Jhon Doe</h6>
-                                        </div>
-                                    </div>
-                                </div>
+          <div class="col-sm-12  col-xl-11">
+            <div class="bg-light text-center rounded">
+              <div class="h-100 bg-light justify-content-end rounded p-5">
+                <div class="d-flex align-items-center  mb-2" style="text-align: center;">
+                  <h4 class="mb-0" style="margin-left: auto; margin-right: auto;">Utilisateur recents
+                  </h4>
+                </div>
+                <div
+                  *ngFor=" let solution of solutionAffichage|filter:term | paginate: { itemsPerPage: 8, currentPage: p }, let i = index"
+                  class="d-flex align-items-center border-bottom py-3">
+                  <div class="rounded-circle flex-shrink-0"
+                    style="width: 40px; height: 40px; border: 1px solid #5260FF;">
+                    <span style="margin-top: 1vh !important; position: absolute;">{{i+1}}</span>
+                  </div>
+                  <div class="w-100 ms-3">
+                    <h6>Equipe:&nbsp;&nbsp;&nbsp;&nbsp; {{solution.team.nom}}</h6>
+                  </div>
+                  <div class="w-100 ms-3">
+                    <h6>Challenge:&nbsp;&nbsp;&nbsp;&nbsp; {{solution.challenge.titre}}</h6>
+                  </div>
+                  <div class="w-100 ms-3">
+                    <h6> Fichier source:&nbsp;&nbsp;&nbsp;&nbsp; <a href="{{solution.source}}" download=""><i
+                          class="bi bi-download" style="font-size: 1.5em;"></i></a>
+                    </h6>
+                  </div>
+                  <div class="w-100 ms-3">
+                    <h6>Correction: &nbsp;&nbsp; &nbsp;&nbsp;<button [routerLink]="['/challenge',solution.id]"
+                        data-mdb-toggle="modal" data-mdb-target="#critere">Plus...</button></h6>
+                  </div>
+                  <div class="w-100 ms-3">
+                  </div>
+                </div>
+                <div
+                  *ngFor=" let solution of solutionAffichage|filter:term | paginate: { itemsPerPage: 10, currentPage: p }, let i = index"
+                  class="d-flex align-items-center border-bottom py-2">
+                  <div class="rounded-circle flex-shrink-0"
+                    style="width: 40px; height: 40px; border: 1px solid #5260FF;">
+                    <span style="margin-top: 1vh !important; position: absolute;">{{i+1}}</span>
+                  </div>
+                  <div class="w-100 ms-3">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h6 class="mb-0">Equipe:&nbsp;&nbsp;&nbsp;&nbsp; {{solution.team.nom}}</h6>
+                      <h6 class="mb-0">Challenge:&nbsp;&nbsp;&nbsp;&nbsp; {{solution.challenge.titre}}</h6>
+                      <h6 class="mb-0"> Fichier source:&nbsp;&nbsp;&nbsp;&nbsp; <a href="{{solution.source}}"
+                          download=""><i class="bi bi-download" style="font-size: 1.5em;"></i></a></h6>
+                      <h6 class="mb-0">Correction: &nbsp;&nbsp; &nbsp;&nbsp;<button
+                          [routerLink]="['/challenge',solution.id]" data-mdb-toggle="modal"
+                          data-mdb-target="#critere">Plus...</button></h6>
 
-
-                            </div>
-                        </div>
                     </div>
-                    <!-- <div class="col-sm-12 col-xl-11">
+                  </div>
+                </div>
+                <div class="d-flex align-items-center border-bottom py-2">
+                  <img class="rounded-circle flex-shrink-0" src="../../assets/logo8.png" alt=""
+                    style="width: 40px; height: 40px;">
+                  <div class="w-100 ms-3">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h6 class="mb-0">Jhon Doe</h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center border-bottom py-2">
+                  <img class="rounded-circle flex-shrink-0" src="../../assets/logo8.png" alt=""
+                    style="width: 40px; height: 40px;">
+                  <div class="w-100 ms-3">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h6 class="mb-0">Jhon Doe</h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center pt-3 py-3">
+                  <img class="rounded-circle flex-shrink-0" src="../../assets/logo8.png" alt=""
+                    style="width: 40px; height: 40px;">
+                  <div class="w-100 ms-3">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h6 class="mb-0">Jhon Doe</h6>
+                    </div>
+                  </div>
+                </div>
+
+
+                <pagination-controls style="font-size: .9em;" (pageChange)="p =$event" nextLabel="Suivant"
+                    previousLabel="Précedent"></pagination-controls>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-sm-12 col-xl-11">
                         <div class="bg-light text-center rounded">
 
                             <div class="h-100 bg-light rounded p-3">
@@ -282,10 +292,10 @@
                             </div>
                         </div>
                     </div> -->
-                </div>
-            </div>
-            <app-footer></app-footer>
-        </main>
+        </div>
+      </div>
+      <app-footer></app-footer>
+    </main>
 
-    </div>
+  </div>
 </div>
