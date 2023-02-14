@@ -54,6 +54,18 @@ export class DashboardComponent implements OnInit {
   avenir: any;
   user: any;
   avenir1: any;
+  fervrier: any;
+  juin: any;
+  janvier: any;
+  mars: any;
+  avril: any;
+  mai1: any;
+  juillet: any;
+  aout: any;
+  septembre: any;
+  octobre: any;
+  novembre: any;
+  decembre: any;
 
   constructor(public breakpointObserver: BreakpointObserver,
     private route: Router, private connexion: ConnexionService,
@@ -64,7 +76,8 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.createChart();
+
+   
 
     this.breakpointObserver
       .observe(['(max-width: 767px)'])
@@ -99,11 +112,39 @@ export class DashboardComponent implements OnInit {
   
         this.username = user.username;
       }
-      this.serviceAfficher.graphiqueUser().subscribe(data=>{
-        this.graphiqueUser=data;
-        console.log("fer",JSON.stringify(this.graphiqueUser.mois))
+      this.serviceAfficher.graphiqueUser().subscribe(data => {
+        this.graphiqueUser = data;
+        console.log("graphiqueUser", this.graphiqueUser);
+        this.janvier = this.graphiqueUser.filter((graphiqueUser: { mois: number; }) => graphiqueUser.mois ===1);
+        this.fervrier = this.graphiqueUser.filter((graphiqueUser: { mois: number; }) => graphiqueUser.mois ===2);
+        this.mars = this.graphiqueUser.filter((graphiqueUser: { mois: number; }) => graphiqueUser.mois === 3);
+        this.avril = this.graphiqueUser.filter((graphiqueUser: { mois: number; }) => graphiqueUser.mois === 4);
+        this.mai1 = this.graphiqueUser.filter((graphiqueUser: { mois: number; }) => graphiqueUser.mois === 5);
+        this.juin = this.graphiqueUser.filter((graphiqueUser: { mois: number; }) => graphiqueUser.mois === 6);
+        this.juillet = this.graphiqueUser.filter((graphiqueUser: { mois: number; }) => graphiqueUser.mois === 7);
+        this.aout = this.graphiqueUser.filter((graphiqueUser: { mois: number; }) => graphiqueUser.mois === 8);
+        this.septembre = this.graphiqueUser.filter((graphiqueUser: { mois: number; }) => graphiqueUser.mois === 9);
+        this.octobre = this.graphiqueUser.filter((graphiqueUser: { mois: number; }) => graphiqueUser.mois === 10);
+        this.novembre = this.graphiqueUser.filter((graphiqueUser: { mois: number; }) => graphiqueUser.mois === 11);
+        this.decembre = this.graphiqueUser.filter((graphiqueUser: { mois: number; }) => graphiqueUser.mois === 12);
+        this.jan = this.janvier.length;
+        this.fe = this.fervrier.length;
+        this.mar = this.mars.length;
+        this.av = this.avril.length;
+        this.mai = this.mai1.length;
+        this.jui = this.juin.length;
+        this.juil = this.juillet.length;
+        this.au = this.aout.length;
+        this.sep = this.septembre.length;
+        this.oct = this.octobre.length;
+        this.nov = this.novembre.length;
+        this.dec = this.decembre.length;
         
-      })
+      
+        this.createChart(); // Créez le chart ici, après avoir récupéré la valeur de fe.
+      });
+      
+    
       this.serviceAfficher.afficheruser().subscribe(data => {
         this.user = data;
         console.table(this.user);
@@ -121,7 +162,7 @@ export class DashboardComponent implements OnInit {
   
       });
       this.serviceAfficher.afficherChallengeTerminer().subscribe(data => {
-        this.avenir1 = data;
+        this.avenir = data;
   
       });
   }
@@ -174,5 +215,6 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
+  
 }
 

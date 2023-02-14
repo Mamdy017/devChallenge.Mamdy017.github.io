@@ -15,6 +15,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ChallengeComponent implements OnInit {
 
+  term:any;
+  p:any;
   errorMessage: string = "";
   menuBureau: boolean = true;
   menuMobile: boolean = false;
@@ -75,6 +77,7 @@ export class ChallengeComponent implements OnInit {
   critereParIdChallenge: any;
   ParIdChallenge: any;
   idChallenge!: number;
+  avenir: any;
 
 
 
@@ -85,6 +88,9 @@ export class ChallengeComponent implements OnInit {
     private serviceAjouter: AjouterServiceService, private datePipe: DatePipe) { }
 
   actualise(): void {
+    // this.serviceAfficher.afficherChallengeAvenir().subscribe(data=>{
+    //   this.avenir=data;
+    // })
     setInterval(
       () => {
       }, 100, clearInterval(1500));

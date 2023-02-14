@@ -11,6 +11,7 @@ import { AfficherService } from '../Services/afficher.service';
 export class UtilisateurComponent implements OnInit {
 
   p: any;
+  term:any
   menuBureau: boolean = true;
   menuMobile: boolean = false;
   user: any;

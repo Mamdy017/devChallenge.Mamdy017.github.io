@@ -2,7 +2,6 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  height: 50%;
 }
 
 .header_fixed {
@@ -62,7 +61,6 @@ button {
   background-color: #707070;
   color: #e6e7e8;
 }
-
 
 
 

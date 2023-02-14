@@ -31,12 +31,11 @@
                                 </div>
                                 <!-- <div class="col-md-2"></div> -->
                                 <div class="col-md-4">
-                                    <form class="d-none d-md-flex ms-4 ">
-                                        <i class='bx bx-search icon fa-2x py-1'></i>
-                                        <input
-                                            class="form-control border-0 border-2 border-start border-end border-alert"
-                                            type="search" placeholder="rechercher">
-                                    </form>
+
+                                    <input type="text" [(ngModel)]="term"
+                                        class="form-control border-0 border-2 border-start border-end border-alert"
+                                        type="search" placeholder="rechercher">
+
                                 </div>
                             </div>
                             <div class="chart-container py-2">
@@ -55,7 +54,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let users of user ,  let i = index ">
+                                            <tr
+                                                *ngFor="let users of user |filter:term | paginate: { itemsPerPage: 8, currentPage: p },  let i = index ">
                                                 <td>{{i+1}}</td>
                                                 <td><img src="{{users.profile}}" alt=""></td>
                                                 <td>{{users.nom}}</td>
@@ -68,7 +68,8 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <pagination-controls (pageChange)="p =$event"></pagination-controls>
+                                <pagination-controls style="font-size: .9em;" (pageChange)="p =$event"
+                                    nextLabel="Suivant" previousLabel="Précedent"></pagination-controls>
                             </div>
                         </div>
                     </div>
