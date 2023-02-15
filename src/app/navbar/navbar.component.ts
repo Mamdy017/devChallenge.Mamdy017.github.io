@@ -10,9 +10,12 @@ import { StorageService } from '../Services/storage.service';
 })
 export class NavbarComponent implements OnInit {
 
+
+  InscriptionReussi = false;
+  Inscriptionechoue = false;
+  messageErreur = '';
   connexionReussi = false;
   connexionEchoue = false;
-  messageErreur = '';
 
   currentUser: any;
   isLoggedIn: any;
@@ -21,8 +24,16 @@ export class NavbarComponent implements OnInit {
   showModeratorBoard: any;
   username: any;
 
+  
   eventBusService: any;
 
+  form = {
+    nom: '',
+    prenom: '',
+    username: '',
+    password: '',
+    email: ''
+  };
   roles: string[] = [];
   constructor(private route: Router, private connexion: ConnexionService,
     private storage: StorageService) { }
@@ -32,6 +43,9 @@ export class NavbarComponent implements OnInit {
       this.connexionReussi = true;
       this.roles = this.storage.recupererUser().roles;
     }
+
+
+    
 
     this.currentUser = this.storage.recupererUser();
     console.table(this.currentUser);
@@ -67,4 +81,19 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+  onSubmit(): void {
+    const { nom, prenom,username,email, password } = this.form;
+alert("je suis username"+this.form.nom)
+    this.connexion.inscription(nom, prenom,username,email, password).subscribe({
+      next: data => {
+        console.log(data);
+        this.InscriptionReussi = true;
+        this.Inscriptionechoue = false;
+      },
+      error: err => {
+        this.messageErreur = err.error.message;
+        this.Inscriptionechoue = true;
+      }
+    });
+  }
 }

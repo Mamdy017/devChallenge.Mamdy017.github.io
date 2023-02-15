@@ -110,8 +110,8 @@
                   <i></i>
                 </div>&nbsp;&nbsp;&nbsp;
                 <div class="input-box">
-                  <input type="password" value="1234567" class="input" id="password" class="form-control" name="password"
-                    [(ngModel)]="form.password" required minlength="6" #password="ngModel"
+                  <input type="password" value="1234567" class="input" id="password" class="form-control"
+                    name="password" [(ngModel)]="form.password" required minlength="6" #password="ngModel"
                     [ngClass]="{ 'is-invalid': f.submitted && password.errors }">
                   <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
                     <div color="red" *ngIf="password.errors['required']" style="color: red;">Le mot de passe est
