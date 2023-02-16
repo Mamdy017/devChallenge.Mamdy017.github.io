@@ -118,15 +118,11 @@
             <h2>Modifier ton profile</h2>
             <form *ngIf="!InscriptionReussi" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
               <div class="" style="display: flex;">
-
-               
                 <div class="input-box">
                   <input type="text" [(ngModel)]="currentUser.nom" name="nom">
                   <span>Nom</span>
                   <i></i>
                 </div>&nbsp;&nbsp;&nbsp;
-              
-
                 <div class="input-box">
                   <input type="text" [(ngModel)]="currentUser.prenom" name="prenom">
                   <span>Prenom</span>
@@ -147,7 +143,7 @@
               </div>
               <div class="" style="display: flex;">
                 <div class="input-box">
-                  <input type="file" [(ngModel)]="currentUser.profile" name="profile">
+                  <input type="file" accept="image/*" [(ngModel)]="currentUser.profile" name="profile"  (change)="onFileChangePhoto($event)">
                   <span>Photo</span>
                   <i></i>
                 </div>&nbsp;&nbsp;&nbsp;

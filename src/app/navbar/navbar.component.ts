@@ -1,3 +1,4 @@
+import { TemplateLiteralElement } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConnexionService } from '../Services/connexion.service';
@@ -24,16 +25,17 @@ export class NavbarComponent implements OnInit {
   showModeratorBoard: any;
   username: any;
 
-  
+
   eventBusService: any;
 
   form = {
     nom: '',
     prenom: '',
     username: '',
-    password: '',
-    email: ''
+    email: '',
+    numero:'',
   };
+  profile!:File
   roles: string[] = [];
   constructor(private route: Router, private connexion: ConnexionService,
     private storage: StorageService) { }
@@ -45,7 +47,7 @@ export class NavbarComponent implements OnInit {
     }
 
 
-    
+
 
     this.currentUser = this.storage.recupererUser();
     console.table(this.currentUser);
@@ -82,9 +84,12 @@ export class NavbarComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { nom, prenom,username,email, password } = this.form;
-alert("je suis username"+this.form.nom)
-    this.connexion.inscription(nom, prenom,username,email, password).subscribe({
+    const { nom, prenom,username,email, numero } = this.form;
+    this.currentUser = this.storage.recupererUser();
+    console.table(this.currentUser);
+    var moi = this.currentUser.id;
+    alert("je suis id" +this.form)
+    this.connexion.modifier(moi,username, email,prenom,nom, numero,this.profile).subscribe({
       next: data => {
         console.log(data);
         this.InscriptionReussi = true;
@@ -95,5 +100,11 @@ alert("je suis username"+this.form.nom)
         this.Inscriptionechoue = true;
       }
     });
+  }
+  onFileChangePhoto(event: any) {
+    if (event.target.files.length > 0) {
+     this.profile = event.target.files[0];
+     console.log("photo icic",this.profile)
+    }
   }
 }

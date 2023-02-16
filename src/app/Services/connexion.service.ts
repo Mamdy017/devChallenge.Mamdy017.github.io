@@ -43,6 +43,16 @@ export class ConnexionService {
     );
   }
 
+  modifier(id:any, username: string, email: string, prenom:string,nom:string, numero: string, profile:File): Observable<any>{
+    let formData =new FormData
+    formData.append("username",username),
+    formData.append("email",email),
+    formData.append("prenom",prenom),
+    formData.append("nom",nom),
+    formData.append("numero",numero),
+    formData.append("profile",profile)
+    return this.http.put(`http://localhost:8080/api/auth/utilisateur/modifier/${id}`,formData)
+  }
   logout(): Observable<any> {
     const req = new HttpRequest('POST', env + 'signout', {}, httpOptions);
     return this.http.request(req);
