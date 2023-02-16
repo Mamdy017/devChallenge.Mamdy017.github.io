@@ -63,4 +63,8 @@ export class AfficherService {
   solutions(idChallenge:number) :Observable<any>{
     return this.http.get(` http://localhost:8080/devs/auth/solution/challenges/${idChallenge}/solutions`)
   }
+  notSolutions():Observable<any>{
+    return this.http.get(` http://localhost:8080/devs/auth/solution/non-etat-1`)
+
+  }
 }

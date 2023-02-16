@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ConnexionService } from '../Services/connexion.service';
+import { StorageService } from '../Services/storage.service';
 
 @Component({
   selector: 'app-menu',
@@ -16,7 +18,7 @@ export class MenuComponent implements OnInit {
   InscriptionReussi = false;
   Inscriptionechoue = false;
   messageErreur = '';
-  constructor(private inscription:ConnexionService) { }
+  constructor(private route: Router,private inscription:ConnexionService,private storage: StorageService) { }
 
   ngOnInit(): void {
 
@@ -37,4 +39,17 @@ export class MenuComponent implements OnInit {
     });
   }
 
+  logout(): void {
+    this.inscription.logout().subscribe({
+      next: res => {
+        console.log(res);
+        this.storage.clean();
+        this.route.navigate(['/connexion']);
+        // window.location.reload();
+      },
+      error: err => {
+        console.log(err);
+      }
+    });
+  }
 }

@@ -14,8 +14,8 @@
         </a>
         <div class="d-none d-md-flex ms-4">
           <input type="text" [(ngModel)]="term"
-          class="form-control border-0 border-2 border-start border-end border-alert" type="search"
-          placeholder="rechercher">
+            class="form-control border-0 border-2 border-start border-end border-alert" type="search"
+            placeholder="rechercher">
         </div>
         <div class="d-flex justify-content-end  w-100">
           <app-navbar></app-navbar>
@@ -29,9 +29,9 @@
             <div class="bg-light text-center rounded">
               <div class="h-100 bg-light justify-content-end rounded p-5">
                 <div class="d-flex align-items-center  mb-2" style="text-align: center;">
-                  <h4 class="mb-0" style="margin-left: auto; margin-right: auto;"> Les solutions du challenge 
+                  <h4 class="mb-0" style="margin-left: auto; margin-right: auto;"> Les solutions du challenge
                   </h4>
-                 
+
                 </div>
                 <div
                   *ngFor=" let solution of solutionAffichage|filter:term | paginate: { itemsPerPage: 10, currentPage: p }, let i = index"
@@ -46,19 +46,20 @@
                       <h6 class="mb-0">Challenge:&nbsp;&nbsp;&nbsp;&nbsp; {{solution.challenge.titre}}</h6>
                       <h6 class="mb-0"> Fichier source:&nbsp;&nbsp;&nbsp;&nbsp; <a href="{{solution.source}}"
                           download=""><i class="bi bi-download" style="font-size: 1.5em;"></i></a></h6>
+                      <h6 class="mb-0" *ngIf="solution.etat=='1'">Etat:&nbsp;&nbsp;&nbsp;&nbsp; corrigé</h6>
+                      <h6 class="mb-0" *ngIf="solution.etat==!'1'">Etat:&nbsp;&nbsp;&nbsp;&nbsp; non corrigé</h6>
                       <h6 class="mb-0">Correction: &nbsp;&nbsp; &nbsp;&nbsp;<button
                           [routerLink]="['/challenge',solution.id]" data-mdb-toggle="modal"
                           data-mdb-target="#critere">Plus...</button></h6>
-
                     </div>
                   </div>
                 </div>
                 <pagination-controls style="font-size: .9em;" (pageChange)="p =$event" nextLabel="Suivant"
-                    previousLabel="Précedent"></pagination-controls>
+                  previousLabel="Précedent"></pagination-controls>
               </div>
             </div>
           </div>
-          
+
         </div>
       </div>
       <app-footer></app-footer>

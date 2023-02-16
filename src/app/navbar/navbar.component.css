@@ -259,8 +259,8 @@
 
 .form-box1 {
   position: relative;
-  width: 700px;
-  height: 90vh;
+  width: 650px;
+  height: 70vh;
   background: linear-gradient(135deg, #707070, #695CFE);
   overflow: hidden;
   border-radius: 8px;
@@ -419,6 +419,7 @@
 
 .btn:hover {
   background: #707070;
+  color: white;
   transition: 0.2s;
 
 }

@@ -51,7 +51,7 @@ export class ConnexionService {
     formData.append("nom",nom),
     formData.append("numero",numero),
     formData.append("profile",profile)
-    return this.http.put(`http://localhost:8080/api/auth/utilisateur/modifier/${id}`,formData)
+    return this.http.put(`http://localhost:8080/devs/auth/utilisateur/modifier/${id}`,formData)
   }
   logout(): Observable<any> {
     const req = new HttpRequest('POST', env + 'signout', {}, httpOptions);
