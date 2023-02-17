@@ -28,7 +28,7 @@
               <i class='bx bxs-trophy fa-3x'></i>
               <div class="ms-3">
                 <p class="mb-2">Total Challenge</p>
-                <h6 class="mb-0">{{challenge.length}}</h6>
+                <h6 class="mb-0">{{challenge?.length ||0}}</h6>
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@
               <i class='bx bxs-trophy fa-3x'></i>
               <div class="ms-3">
                 <p class="mb-2">Total encours</p>
-                <h6 class="mb-0">{{encours.length}}</h6>
+                <h6 class="mb-0">{{encours?.length || 0}}</h6>
               </div>
             </div>
           </div>
@@ -55,7 +55,7 @@
               <i class='bx bxs-trophy  fa-3x '></i>
               <div class="ms-3">
                 <p class="mb-2">Total Terminer</p>
-                <h6 class="mb-0">{{terminer.length}}</h6>
+                <h6 class="mb-0">{{terminer?.length || 0}}</h6>
               </div>
             </div>
           </div>
@@ -288,7 +288,7 @@
                         </div>
                         <div class="input-box">
                           <span class="details">Choisir un barème</span>
-                          <ng-multiselect-dropdown [placeholder]="'Choisir technologie'" [data]="options4"
+                          <ng-multiselect-dropdown [placeholder]="'Choisir technologie'" [data]="options4" 
                             formControlName="baremeids" [settings]="bareme" defaultOpen="false">
                           </ng-multiselect-dropdown>
                         </div>
@@ -445,7 +445,7 @@
                         <td>{{cha.datedebut | date: 'dd/MM/yyyy'}}</td>
                         <td>{{cha.datefin | date: 'dd/MM/yyyy'}}</td>
                         <td>{{cha.etat}}</td>
-                        <td><button [routerLink]="['/challenge',cha.id]" data-mdb-toggle="modal"
+                        <td><button data-mdb-toggle="modal"
                             data-mdb-target="#critere" (click)=" affichage(cha.id)">Plus...</button>
                         </td>
                         <td><button [routerLink]="['/solution',cha.id]" 
@@ -473,7 +473,7 @@
                   <div class="box cyan" *ngFor="let cpidc of critereParIdChallenge let i = index">
                     <h2>Critère {{i+1}} </h2>
                     <p>{{cpidc.critere}}</p>
-                    <span class="img">Bareme {{cpidc.bareme[0].bareme}} points</span>
+                    <span class="img">Bareme <b>{{cpidc.bareme[0].bareme}}</b> points</span>
                   </div>
                 </div>
               </div>

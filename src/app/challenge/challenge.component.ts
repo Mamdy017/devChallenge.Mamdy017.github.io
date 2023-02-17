@@ -47,7 +47,8 @@ export class ChallengeComponent implements OnInit {
     unSelectAllText: 'Tout',
     noDataAvailablePlaceholderText: 'No data available',
     allowSearchFilter: true,
-    closeDropDownOnSelection: true
+    closeDropDownOnSelection: true,
+    itemsShowLimit: 3,
   };
   critere = {
     singleSelection: false,
@@ -56,13 +57,14 @@ export class ChallengeComponent implements OnInit {
     selectAllText: 'Tout',
     unSelectAllText: 'Tout',
     allowSearchFilter: true,
-    closeDropDownOnSelection: true
+    closeDropDownOnSelection: true,
+    itemsShowLimit: 1,
   };
   disabled = false;
   ShowFilter = false;
   limitSelection = false;
   bareme = {
-    singleSelection: false,
+    singleSelection: true, // <-- modification
     defaultOpen: false,
     idField: 'id',
     textField: 'bareme',
@@ -70,7 +72,6 @@ export class ChallengeComponent implements OnInit {
     unSelectAllText: 'Tout',
     closeDropDownOnSelection: true,
     allowSearchFilter: this.ShowFilter
-
   };
   responseMessage: string = "";
   challenge: any;

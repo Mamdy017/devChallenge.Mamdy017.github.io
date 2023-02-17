@@ -21,7 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { CommonModule } from '@angular/common';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -39,6 +39,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     // ProfilesComponent,
     NavbarComponent,
     ProfilesComponent,
+    
 
      ],
   imports: [
@@ -48,7 +49,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-   
+    MatSelectModule,
     CommonModule,
     Ng2SearchPipeModule,
     NgMultiSelectDropDownModule.forRoot()

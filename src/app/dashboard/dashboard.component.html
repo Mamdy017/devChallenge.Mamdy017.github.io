@@ -27,7 +27,7 @@
               <i class='bx bxs-trophy fa-3x'></i>
               <div class="ms-3">
                 <p class="mb-2">Total Challenge</p>
-                <h6 class="mb-0">{{challenge.length}}</h6>
+                <h6 class="mb-0">{{challenge?.length || 0}}</h6>
               </div>
             </div>
           </div>
@@ -36,7 +36,7 @@
               <i class='bx bxs-trophy fa-3x'></i>
               <div class="ms-3">
                 <p class="mb-2">Challenge à venir</p>
-                <h6 class="mb-0">{{avenir.length}}</h6>
+                <h6 class="mb-0">{{avenir?.length || 0}}</h6>
               </div>
             </div>
           </div>
@@ -45,7 +45,7 @@
               <i class='bx bxs-user-circle fa-3x'></i>
               <div class="ms-3">
                 <p class="mb-2">Total Utilisateur</p>
-                <h6 class="mb-0">{{user.length}}</h6>
+                <h6 class="mb-0">{{user?.length || 0}}</h6>
               </div>
             </div>
           </div>
@@ -82,7 +82,7 @@
                   <h6 class="mb-0">Utilisateur recents</h6>
                   <a href="">Voir plus</a>
                 </div>
-                <div class="d-flex align-items-center border-bottom py-3" *ngFor="let users of user">
+                <div class="d-flex align-items-center border-bottom py-3" *ngFor="let users of user?.slice(0,5)">
                   <img class="rounded-circle flex-shrink-0" src="{{users.profile}}" alt=""
                     style="width: 40px; height: 40px;">
                   <div class="w-100 ms-3">

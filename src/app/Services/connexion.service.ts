@@ -26,7 +26,7 @@ export class ConnexionService {
     );
   }
 
-  inscription(nom: string, prenom: string, username:string,email:string, password: string): Observable<any> {
+  inscription(nom: string, prenom: string, username:string,email:string,numero:string, password: string): Observable<any> {
     return this.http.post(
       env + '/inscription',
       {
@@ -34,6 +34,7 @@ export class ConnexionService {
         prenom,
         username,
         email,
+        numero,
         password,
         "roles":[
           "adminuser"

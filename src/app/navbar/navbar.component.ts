@@ -139,12 +139,21 @@ export class NavbarComponent implements OnInit {
       }
     })
   }
-  onFileChangePhoto(event: any) {
-    if (event.target.files.length > 0) {
-      this.profile = event.target.files[0];
-    }
-  }
+  // onFileChangePhoto(event: any) {
+  //   if (event.target.files.length > 0) {
+  //     this.profile = event.target.files[0];
+  //   }
+  // }
 
+  onFileChangePhoto(event:any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.profile = file;
+    }
+    // Ajoutez cette ligne pour s'assurer que la valeur de 'value' pour le champ de fichier est vide.
+    event.target.value = '';
+  }
+  
   refreshPage() {
     location.reload();
   }

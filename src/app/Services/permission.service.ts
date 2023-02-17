@@ -14,7 +14,7 @@ export class PermissionService implements CanActivate {
     state: RouterStateSnapshot
   ): boolean | Observable<boolean> | Promise<boolean> {
     const user = this.storage.recupererUser();
-    if (user && (user.roles.includes('ROLE_ADMIN') || user.username == 'adminuser')) {
+    if (user && (user.roles.includes('ROLE_ADMIN') || user.roles.includes('adminuser'))) {
       return true;
     } else {
       this.route.navigate(['/']);

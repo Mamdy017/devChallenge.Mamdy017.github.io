@@ -48,14 +48,45 @@
                           download=""><i class="bi bi-download" style="font-size: 1.5em;"></i></a></h6>
                       <h6 class="mb-0" *ngIf="solution.etat=='1'">Etat:&nbsp;&nbsp;&nbsp;&nbsp; corrigé</h6>
                       <h6 class="mb-0" *ngIf="solution.etat==!'1'">Etat:&nbsp;&nbsp;&nbsp;&nbsp; non corrigé</h6>
-                      <h6 class="mb-0">Correction: &nbsp;&nbsp; &nbsp;&nbsp;<button
-                          [routerLink]="['/challenge',solution.id]" data-mdb-toggle="modal"
-                          data-mdb-target="#critere">Plus...</button></h6>
+                      <h6 class="mb-0">Correction: &nbsp;&nbsp; &nbsp;&nbsp;<button data-mdb-toggle="modal"
+                          (click)=" affichage(solution.challenge.id)"  data-mdb-target="#critere">Plus...</button></h6>
                     </div>
                   </div>
                 </div>
-                <pagination-controls style="font-size: .9em;" (pageChange)="p =$event" nextLabel="Suivant"
-                  previousLabel="Précedent"></pagination-controls>
+                <div class="modal fade" id="critere" tabindex="100" aria-labelledby="critere" aria-hidden="true">
+                  <div class="modal-dialog d-flex justify-content-center">
+                    <div class="modal-content w-100">
+                      <!-- <button style="margin-left: auto;" type="button" class="btn-close" data-mdb-dismiss="modal"
+                        aria-label="Close"></button>
+                      <div class="row2-container">
+                        <div class="box cyan" *ngFor="let cpidc of critereParIdChallenge let i = index">
+                          <h2>Critère {{i+1}} </h2>
+                          <p>{{cpidc.critere}}</p>
+                          <span class="img">Bareme {{cpidc.bareme[0].bareme}} points</span>
+                        </div>
+                      </div> -->
+                      <form action="">
+                        <Label>Choix de type </Label>
+                        <div  style="width: 96%; margin-left: auto;margin-right: auto;" class=""
+                          *ngFor="let cpidc of critereParIdChallenge let i = index">
+
+                          <div class="input-box">
+
+                            <input type="text" [value]="cpidc.id">
+                            <select class="form-select" aria-label="Default select example" name="id_election">
+                              <option selected>{{cpidc.critere}}</option>
+                              <option value="valide">Valider</option>
+                              <option value="partiel">Partiel</option>
+                              <option value="non-valide">Non valider</option>
+                            </select>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>

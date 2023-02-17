@@ -45,7 +45,7 @@
     </a>
     <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
       <div class="" *ngFor="let not of notif">
-        <a href="#"[routerLink]="['/solution',not.challenge.id]" class="dropdown-item" >
+        <a href="#" [routerLink]="['/solution',not.challenge.id]" class="dropdown-item">
           <h6 class="fw-normal mb-0">{{not.team.nom}}</h6>
           <small>{{not.challenge.titre}}</small>
         </a>
@@ -135,7 +135,8 @@
               </div>
               <div class="" style="display: flex;">
                 <div class="input-box">
-                  <input type="file" accept="image/*" [(ngModel)]="currentUser.profile" name="profile"  (change)="onFileChangePhoto($event)">
+                  <input type="file" accept="image/*" [(ngModel)]="currentUser.profile" name="profile"
+                    (change)="onFileChangePhoto($event)">
                   <span>Photo</span>
                   <i></i>
                 </div>&nbsp;&nbsp;&nbsp;
