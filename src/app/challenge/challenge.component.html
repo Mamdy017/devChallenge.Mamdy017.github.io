@@ -14,8 +14,8 @@
         </a>
         <div class="d-none d-md-flex ms-4">
           <input type="text" [(ngModel)]="term"
-          class="form-control border-0 border-2 border-start border-end border-alert" type="search"
-          placeholder="rechercher">
+            class="form-control border-0 border-2 border-start border-end border-alert" type="search"
+            placeholder="rechercher">
         </div>
         <div class="d-flex justify-content-end  w-100">
           <app-navbar></app-navbar>
@@ -73,12 +73,11 @@
             <div class="modal-dialog d-flex justify-content-center">
               <div class="modal-content w-100">
                 <div class="modal-header" style="background-color: #695CFE;">
-                  <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close" style="color:white !important"></button>
+                  <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"
+                    style="color:white !important"></button>
                 </div>
                 <div class="container">
                   <div class="title">Ajouter un challenge</div>
-                  <div *ngIf="status==false" style="color: red; padding: 2%;">{{ errorMessage }}</div>
-                  <div *ngIf="status==true" style="color: blue; padding: 2%;">{{ errorMessage }}</div>
                   <div class="content">
                     <form action="#" [formGroup]="challengeForm" (ngSubmit)="onSubmit()">
                       <div class="user-details">
@@ -167,14 +166,11 @@
             aria-hidden="true">
             <div class="modal-dialog d-flex justify-content-center">
               <div class="modal-content w-100">
-                <div class="modal-header"  style="background-color: #695CFE;">
-                  <h1  style="color: white; font-size: 2em;">Modifier un challenge</h1>
+                <div class="modal-header" style="background-color: #695CFE;">
+                  <h1 style="color: white; font-size: 2em;">Modifier un challenge</h1>
                   <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="container">
-                
-                  <div *ngIf="status==false" style="color: red; padding: 2%;">{{ errorMessage }}</div>
-                  <div *ngIf="status==true" style="color: blue; padding: 2%;">{{ errorMessage }}</div>
                   <div class="content">
                     <form action="#" [formGroup]="challengeFormModifier" (ngSubmit)="onSubmitModifier()">
                       <div class="user-details">
@@ -288,7 +284,7 @@
                         </div>
                         <div class="input-box">
                           <span class="details">Choisir un barème</span>
-                          <ng-multiselect-dropdown [placeholder]="'Choisir technologie'" [data]="options4" 
+                          <ng-multiselect-dropdown [placeholder]="'Choisir technologie'" [data]="options4"
                             formControlName="baremeids" [settings]="bareme" defaultOpen="false">
                           </ng-multiselect-dropdown>
                         </div>
@@ -445,13 +441,12 @@
                         <td>{{cha.datedebut | date: 'dd/MM/yyyy'}}</td>
                         <td>{{cha.datefin | date: 'dd/MM/yyyy'}}</td>
                         <td>{{cha.etat}}</td>
-                        <td><button data-mdb-toggle="modal"
-                            data-mdb-target="#critere" (click)=" affichage(cha.id)">Plus...</button>
+                        <td><button data-mdb-toggle="modal" data-mdb-target="#critere"
+                            (click)=" affichage(cha.id)">Plus...</button>
                         </td>
-                        <td><button [routerLink]="['/solution',cha.id]" 
-                            >Plus...</button>
+                        <td><button [routerLink]="['/solution',cha.id]">Plus...</button>
                         </td>
-                        <td><i class="fa-sharp fa-regular fa-pen-to-square" [routerLink]="['/challenge',cha.id]"
+                        <td><i class="fa-sharp fa-regular fa-pen-to-square" (click)=" affichage(cha.id)"
                             data-mdb-toggle="modal" data-mdb-target="#staticBackdrop1" style="font-size: 2em; "></i>
                         </td>
                         <td></td>

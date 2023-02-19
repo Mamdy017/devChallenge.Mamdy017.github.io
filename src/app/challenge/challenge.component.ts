@@ -5,6 +5,7 @@ import { AfficherService } from '../Services/afficher.service';
 import { AjouterServiceService } from '../Services/ajouter-service.service';
 import { DatePipe } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -15,8 +16,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ChallengeComponent implements OnInit {
 
-  term:any;
-  p:any;
+  term: any;
+  p: any;
   errorMessage: string = "";
   menuBureau: boolean = true;
   menuMobile: boolean = false;
@@ -79,6 +80,7 @@ export class ChallengeComponent implements OnInit {
   ParIdChallenge: any;
   idChallenge!: number;
   avenir: any;
+  crite: any;
 
 
 
@@ -148,7 +150,7 @@ export class ChallengeComponent implements OnInit {
       techno: new FormControl(''),
     })
     this.serviceAfficher.afficherChallenge().subscribe(data => {
-      this.challenge = data;      
+      this.challenge = data;
     });
     this.serviceAfficher.afficherChallengeEncours().subscribe(data => {
       this.encours = data;
@@ -157,16 +159,10 @@ export class ChallengeComponent implements OnInit {
       this.terminer = data;
 
     });
-  
+
     this.idChallenge = this.routes.snapshot.params['idChallenge']
 
-    this.serviceAfficher.afficherParIdChallenge(this.idChallenge).subscribe(data => {
-      this.ParIdChallenge = data;
-      this.titre = data.titre;
-      this.description = data.description;
-      this.datefin = data.datefin;
-      console.log("mes donnees" + JSON.stringify(this.ParIdChallenge));
-    })
+
     this.serviceAfficher.afficherCategorie().subscribe(data => {
       this.options = data;
     });
@@ -207,6 +203,14 @@ export class ChallengeComponent implements OnInit {
   }
 
   onSubmit() {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: '',
+        cancelButton: ''
+      },
+      heightAuto: false
+
+    })
     if (this.challengeForm.valid) {
       const formData = new FormData();
       const cateids = this.challengeForm.value.cateids.map((options: { id: any; }) => options.id);
@@ -224,17 +228,59 @@ export class ChallengeComponent implements OnInit {
       formData.append('datefin', this.challengeForm.value.datefin);
       formData.append('photo', this.challengeForm.value.fileSource);
 
-      this.serviceAjouter.AjouterChallenge(formData).subscribe((data: any) => {
-        this.errorMessage = data.message;
-        this.status = data.status;
-        this.challengeForm.reset();
-      });
+
+      swalWithBootstrapButtons.fire({
+        title: "<h1 style='font-size:.7em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>Cet challenge va être ajouté !!?</h1>",
+        showCancelButton: true,
+        confirmButtonText: '<span style="font-size:.9em">Confirmer</span>',
+        cancelButtonText: `<span style="font-size:.9em"> Annuler</span>`,
+      })
+        .then((result) => {
+          if (result.isConfirmed) {
+            this.serviceAjouter.AjouterChallenge(formData).subscribe((data: any) => {
+              this.errorMessage = data.message;
+              this.status = data.status;
+
+              if (this.status == true) {
+                swalWithBootstrapButtons.fire(
+                  `<h1  style='font-size:.7em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>${this.errorMessage}.</h1>`,
+                )
+              } else if (this.status == false) {
+                swalWithBootstrapButtons.fire(
+                  `<h1  style='font-size:.7em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>${this.errorMessage}.</h1>`,
+                )
+              }
+            });
+
+          } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+          ) {
+            swalWithBootstrapButtons.fire(
+              '',
+              "<h1 style='font-size:.9em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>Opération annulée</h1>",
+              'error'
+            )
+          }
+        })
+
+
     } else {
-      this.errorMessage = "Tous les champs champs sont obligatoirs !!";
+      swalWithBootstrapButtons.fire(
+        `<h1  style='font-size:.7em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>Tous les champs champs sont obligatoirs !!</h1>`,
+      )
 
     }
   }
   onSubmitModifier() {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: '',
+        cancelButton: ''
+      },
+      heightAuto: false
+
+    })
     if (this.challengeFormModifier.valid) {
       const formData = new FormData();
       const cateIds = this.challengeFormModifier.value.cateidsmod.map((options: { id: any; }) => options.id);
@@ -252,23 +298,47 @@ export class ChallengeComponent implements OnInit {
       formData.append('datefin', this.challengeFormModifier.value.datefinmod);
       formData.append('photo', this.challengeFormModifier.value.fileSourcemod);
 
-      // console.log(critereIds)
-      // console.log(tecnhoIds)
-      // console.log(cateIds)
-      // console.log(this.challengeFormModifier.value.titremod)
-      // console.log(this.challengeFormModifier.value.descriptionmod)
-      // console.log(this.challengeFormModifier.value.datedebutmod)
-      // console.log(this.challengeFormModifier.value.datefinmod)
-      // console.log("sur tout photot" + this.challengeFormModifier.value.fileSourcemod)
+      swalWithBootstrapButtons.fire({
+        title: "<h1 style='font-size:.7em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>Cet challenge va être ajouté !!?</h1>",
+        showCancelButton: true,
+        confirmButtonText: '<span style="font-size:.9em">Confirmer</span>',
+        cancelButtonText: `<span style="font-size:.9em"> Annuler</span>`,
+      })
+        .then((result) => {
+          if (result.isConfirmed) {
+            this.serviceAjouter.modifierChallenge(this.idChallenge, formData).subscribe((data: any) => {
+              this.errorMessage = data.message;
+              this.status = data.status;
 
+              if (this.status == true) {
+                swalWithBootstrapButtons.fire(
+                  `<h1  style='font-size:.7em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>${this.errorMessage}.</h1>`,
 
-      this.serviceAjouter.modifierChallenge(this.idChallenge, formData).subscribe((data: any) => {
-        this.errorMessage = data.message;
-        this.status = data.status;
-        this.challengeFormModifier.reset();
-      });
+                )
+                this.challengeFormModifier.reset();
+
+              } else if (this.status == false) {
+                swalWithBootstrapButtons.fire(
+                  `<h1  style='font-size:.7em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>${this.errorMessage}.</h1>`,
+                )
+              }
+            });
+
+          } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+          ) {
+            swalWithBootstrapButtons.fire(
+              '',
+              "<h1 style='font-size:.9em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>Opération annulée</h1>",
+              'error'
+            )
+          }
+        })
     } else {
-      this.errorMessage = "Tous les champs champs sont obligatoirs !!";
+      swalWithBootstrapButtons.fire(
+        `<h1  style='font-size:.7em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>Tous les champs champs sont obligatoirs !!</h1>`,
+      )
 
     }
   }
@@ -347,6 +417,13 @@ export class ChallengeComponent implements OnInit {
       this.critereParIdChallenge = data;
       // console.log("mes cccc",JSON.stringify(this.critereParIdChallenge))
     })
+    this.serviceAfficher.afficherParIdChallenge(idChallenge).subscribe(data => {
+      this.ParIdChallenge = data;
+      this.titre = data.titre;
+      this.description = data.description;
+      this.datefin = data.datefin;
+      this.crite = data.critere.nom
+    })
   }
 
   isChallengeInProgress(startDate: string): boolean {
@@ -362,4 +439,5 @@ export class ChallengeComponent implements OnInit {
   resetC() {
     this.critereForm.reset();
   }
+
 }

@@ -3,8 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { AjouterServiceService } from '../Services/ajouter-service.service';
 import { AfficherService } from '../Services/afficher.service';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.component.html',
@@ -12,26 +11,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ForumComponent implements OnInit {
 
-  form!: FormGroup;
+  critereSelectionne: { id: string, selection: string }[] = [];
 
-  options4 = [
-    { item_id: 1, item_text: 'New Delhi' },
-    { item_id: 2, item_text: 'Mumbai' },
-    { item_id: 3, item_text: 'Bangalore' },
-    { item_id: 4, item_text: 'Pune' },
-    { item_id: 5, item_text: 'Chennai' },
-    { item_id: 6, item_text: 'Navsari' }
-  ];
-  bareme = {
-    singleSelection: true, // <-- modification
-    defaultOpen: false,
-    idField: 'id',
-    textField: 'bareme',
-    selectAllText: 'Tout',
-    unSelectAllText: 'Tout',
-    closeDropDownOnSelection: true,
-    // allowSearchFilter: this.ShowFilter
-  };
 
   menuBureau: boolean = true;
   menuMobile: boolean = false;
@@ -40,16 +21,23 @@ export class ForumComponent implements OnInit {
   term: any;
   p: any;
   critereParIdChallenge: any;
+  idcr: any;
+
+  options = ['Valider', 'Partiel', 'Non valider'];
+  selectedValues: any[] = [];
+  ids: any;
+  errorMessage: any;
+  status: any;
 
   constructor(public breakpointObserver: BreakpointObserver, private route: Router, private routes: ActivatedRoute,
-    private serviceAjouter: AjouterServiceService, private serviceAfficher: AfficherService,private fb: FormBuilder) { }
+    private serviceAjouter: AjouterServiceService, private serviceAfficher: AfficherService) { }
   actualise(): void {
     setInterval(
       () => {
       }, 100, clearInterval(1500));
   }
   ngOnInit(): void {
-    
+
     this.idChallenge = this.routes.snapshot.params['id']
     this.afficherSolution();
     this.breakpointObserver
@@ -65,17 +53,7 @@ export class ForumComponent implements OnInit {
           this.actualise();
         }
       });
-      // this.serviceAfficher.afficherBareme().subscribe(data => {
-      //   this.options4 = data;
-      // })
-      this.options4 = [
-        { item_id: 1, item_text: 'New Delhi' },
-        { item_id: 2, item_text: 'Mumbai' },
-        { item_id: 3, item_text: 'Bangalore' },
-        { item_id: 4, item_text: 'Pune' },
-        { item_id: 5, item_text: 'Chennai' },
-        { item_id: 6, item_text: 'Navsari' }
-    ];
+
   }
   affichage(idChallenge: any) {
     this.serviceAfficher.afficherCritereParIdChallenge(idChallenge).subscribe(data => {
@@ -83,14 +61,7 @@ export class ForumComponent implements OnInit {
       console.log("mes cccc", JSON.stringify(this.critereParIdChallenge))
     })
   }
-  solid(id:number)
-  {
-alert(id);
-  }
-  onSubmit() {
-    // Handle form submission here
-    alert(this.form.value);
-  }
+
 
 
   afficheMenuMobile() {
@@ -100,8 +71,64 @@ alert(id);
   afficherSolution() {
     this.serviceAfficher.solutions(this.idChallenge).subscribe(data => {
       this.solutionAffichage = data;
-      console.log("mes solutiosn", this.solutionAffichage);
+      // console.log("mes solutiosn", this.solutionAffichage);
     })
   }
+
+  onSubmit(idChallenge: any, id: number) {
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: '',
+        cancelButton: ''
+      },
+      heightAuto: false
+
+    })
+    const selectedValues = this.critereParIdChallenge.map((cpidc: { critere: string; }) => {
+      const selectElement = document.getElementsByName(cpidc.critere)[0] as HTMLSelectElement;
+      return selectElement.value;
+    }).filter((value: string) => ['Valider', 'Partiel', 'Non valider'].includes(value));
+    this.serviceAfficher.afficherCritereParIdChallenge(idChallenge).subscribe(data => {
+      this.critereParIdChallenge = data;
+      this.ids = this.critereParIdChallenge.map((critere: { id: any; }) => critere.id);
+      swalWithBootstrapButtons.fire({
+        title: "<h1 style='font-size:.7em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>Cette Solution va être corrigé !!?</h1>",
+        showCancelButton: true,
+        confirmButtonText: '<span style="font-size:.9em">Confirmer</span>',
+        cancelButtonText: `<span style="font-size:.9em"> Annuler</span>`,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          this.serviceAjouter.Correction(selectedValues, id, this.ids).subscribe(data => {
+            this.errorMessage = data.message;
+            this.status = data.status;
+
+            if (this.status == true) {
+              swalWithBootstrapButtons.fire(
+                `<h1  style='font-size:.7em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>${this.errorMessage}.</h1>`,
+              )
+            } else if (this.status == false) {
+              swalWithBootstrapButtons.fire(
+                `<h1  style='font-size:.7em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>${this.errorMessage}.</h1>`,
+              )
+            }
+          });
+
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            '',
+            "<h1 style='font-size:.9em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>Opération annulée</h1>",
+            'error'
+          )
+        }
+      })
+
+    })
+  }
+
 
 }

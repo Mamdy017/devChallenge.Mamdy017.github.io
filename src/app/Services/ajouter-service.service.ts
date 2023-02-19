@@ -29,4 +29,10 @@ export class AjouterServiceService {
   AjouterTechno(formData: FormData) {
     return this.http.post('http://localhost:8080/devs/auth/techo/ajout', formData);
   }
+  Correction(etats:any,solutionId:number,critereIds:any): Observable<any> {
+    let data= new FormData
+    data.append("etats",etats),
+    data.append("critereIds",critereIds)
+    return this.http.post(`http://localhost:8080/devs/auth/correction/${solutionId}`, data);
+  }
 }
