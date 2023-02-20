@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 
 const USER_KEY = 'auth-user';
+const SOLUTION_ID = 'solution_id';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,6 +35,23 @@ export class StorageService {
     }
 
     return false;
+  }
+
+
+
+
+  public saveId(solutionId: any): void {
+    window.sessionStorage.removeItem(SOLUTION_ID);
+    window.sessionStorage.setItem(SOLUTION_ID, JSON.stringify(solutionId));
+  }
+
+  public getId(): any {
+    const solutionId = window.sessionStorage.getItem(SOLUTION_ID);
+    if (solutionId) {
+      return JSON.parse(solutionId);
+    }
+
+    return {};
   }
 
 

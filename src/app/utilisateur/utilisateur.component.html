@@ -40,34 +40,104 @@
                                 </div>
                             </div>
                             <div class="chart-container py-2">
-                                <div class="header_fixed py-2">
+                                <!-- <div class="header_fixed py-2 ">
                                     <table>
                                         <thead>
                                             <tr>
-                                                <th>No.</th>
-                                                <th>Photo</th>
-                                                <th>Nom</th>
-                                                <th>Prenom</th>
-                                                <th>Email</th>
-                                                <th>Telephone</th>
-                                                <th>Role</th>
-                                                <th>Action</th>
+                                                <th scope="col">No.</th>
+                                                <th scope="col">Photo</th>
+                                                <th scope="col">Nom</th>
+                                                <th scope="col">Prenom</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Telephone</th>
+                                                <th scope="col">Role</th>
+                                                <th scope="col">Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody  class="text-dark">
                                             <tr
                                                 *ngFor="let users of user |filter:term | paginate: { itemsPerPage: 8, currentPage: p },  let i = index ">
-                                                <td>{{i+1}}</td>
+
+                                                <td>
+                                                    <p class="text-body mb-0">{{i+1}}</p>
+                                                </td>
                                                 <td><img src="{{users.profile}}" alt=""></td>
                                                 <td>{{users.nom}}</td>
                                                 <td>{{users.prenom}}</td>
                                                 <td>{{users.email}}</td>
                                                 <td>91228829</td>
-                                                <td>{{users.roles.name}}</td>
+                                                <td *ngIf="users.roles[0].name=='ROLE_USER'">Utilisateur</td>
                                                 <td><button>Banir</button></td>
                                             </tr>
                                         </tbody>
                                     </table>
+                                </div> -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="">
+                                            <div class="table-responsive">
+                                                <table
+                                                    class="table project-list-table table-nowrap align-middle table-borderless">
+                                                    <thead>
+                                                        <!-- ----------------------- Tittre tableau en haut---------------------------
+                                                    --------------------------------------------------- -->
+                                                        <tr class=" text-light" style="background-color: #695CFE;">
+                                                            <th scope="col">No.</th>
+                                                            <th scope="col">Photo</th>
+                                                            <th scope="col">Nom</th>
+                                                            <th scope="col">Prenom</th>
+                                                            <th scope="col">Email</th>
+                                                            <th scope="col">Telephone</th>
+                                                            <th scope="col">Role</th>
+                                                            <th scope="col">Action</th>
+                                                        </tr>
+                                                        <!-- ----------------------- Fin Tittre tableau en haut---------------------------
+                                                    --------------------------------------------------- -->
+                                                    </thead>
+                                                    <tbody class="text-dark">
+                                                        <!-- ----------------------- Liste Element tableau start---------------------------
+                                                    --------------------------------------------------- -->
+                                                        <tr
+                                                            *ngFor="let users of user |filter:term | paginate: { itemsPerPage: 8, currentPage: p },  let i = index ">
+                                                            <td>
+                                                                <p class="text-body mb-0">{{i+1}}</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="text-body mb-0"><img src="{{users.profile}}"
+                                                                        alt=""></p>
+
+                                                            <td>
+                                                                <p class="text-body mb-0">{{users.nom}}</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="text-body mb-0">{{users.prenom}}</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="text-body mb-0">{{users.email}}</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="text-body mb-0">{{users.numero}}</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="text-body mb-0" *ngIf="users.roles[0].name=='ROLE_USER'">Utilisateur</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="text-body mb-0"><button
+                                                                        >Banir</button>
+                                                                </p>
+                                                            </td>
+                                                            
+                                                        </tr>
+                                                        <!-- ----------------------- Fin Element liste tableau---------------------------
+                                                    ----------------------------------------------------------------------------- -->
+
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <pagination-controls style="font-size: .9em;" (pageChange)="p =$event"
                                     nextLabel="Suivant" previousLabel="Précedent"></pagination-controls>

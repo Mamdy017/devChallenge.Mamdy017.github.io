@@ -11,7 +11,7 @@ import { AfficherService } from '../Services/afficher.service';
 export class UtilisateurComponent implements OnInit {
 
   p: any;
-  term:any
+  term: any
   menuBureau: boolean = true;
   menuMobile: boolean = false;
   user: any;
@@ -38,10 +38,9 @@ export class UtilisateurComponent implements OnInit {
           this.actualise();
         }
       });
-      this.serviceAfficher.afficheruser().subscribe(data => {
-        this.user = data;
-        console.table("mes users",this.user);
-      });
+    this.serviceAfficher.afficheruser().subscribe(data => {
+      this.user = data;
+    });
   }
   afficheMenuMobile() {
     this.menuBureau = true;

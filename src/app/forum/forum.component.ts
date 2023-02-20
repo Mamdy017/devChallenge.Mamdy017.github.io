@@ -4,6 +4,7 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { AjouterServiceService } from '../Services/ajouter-service.service';
 import { AfficherService } from '../Services/afficher.service';
 import Swal from 'sweetalert2';
+import { StorageService } from '../Services/storage.service';
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.component.html',
@@ -28,9 +29,16 @@ export class ForumComponent implements OnInit {
   ids: any;
   errorMessage: any;
   status: any;
+  classements: any;
 
-  constructor(public breakpointObserver: BreakpointObserver, private route: Router, private routes: ActivatedRoute,
-    private serviceAjouter: AjouterServiceService, private serviceAfficher: AfficherService) { }
+  constructor(
+    public breakpointObserver: BreakpointObserver,
+     private route: Router,
+      private routes: ActivatedRoute,
+    private serviceAjouter: AjouterServiceService,
+     private serviceAfficher: AfficherService,
+     private storageService: StorageService
+     ) { }
   actualise(): void {
     setInterval(
       () => {
@@ -39,6 +47,11 @@ export class ForumComponent implements OnInit {
   ngOnInit(): void {
 
     this.idChallenge = this.routes.snapshot.params['id']
+    this.serviceAfficher.afficherCritereParIdChallenge(this.idChallenge).subscribe(data => {
+      this.critereParIdChallenge = data;
+      alert("mes cccc"+ JSON.stringify(this.critereParIdChallenge))
+    })
+    this.mesclassements()
     this.afficherSolution();
     this.breakpointObserver
       .observe(['(max-width: 767px)'])
@@ -53,14 +66,10 @@ export class ForumComponent implements OnInit {
           this.actualise();
         }
       });
+  }
+  
+  
 
-  }
-  affichage(idChallenge: any) {
-    this.serviceAfficher.afficherCritereParIdChallenge(idChallenge).subscribe(data => {
-      this.critereParIdChallenge = data;
-      console.log("mes cccc", JSON.stringify(this.critereParIdChallenge))
-    })
-  }
 
 
 
@@ -72,11 +81,11 @@ export class ForumComponent implements OnInit {
     this.serviceAfficher.solutions(this.idChallenge).subscribe(data => {
       this.solutionAffichage = data;
       // console.log("mes solutiosn", this.solutionAffichage);
+      alert(JSON.stringify(this.solutionAffichage))
     })
   }
 
-  onSubmit(idChallenge: any, id: number) {
-
+  onSubmit() {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: '',
@@ -89,7 +98,7 @@ export class ForumComponent implements OnInit {
       const selectElement = document.getElementsByName(cpidc.critere)[0] as HTMLSelectElement;
       return selectElement.value;
     }).filter((value: string) => ['Valider', 'Partiel', 'Non valider'].includes(value));
-    this.serviceAfficher.afficherCritereParIdChallenge(idChallenge).subscribe(data => {
+    this.serviceAfficher.afficherCritereParIdChallenge(this.idChallenge).subscribe(data => {
       this.critereParIdChallenge = data;
       this.ids = this.critereParIdChallenge.map((critere: { id: any; }) => critere.id);
       swalWithBootstrapButtons.fire({
@@ -100,7 +109,9 @@ export class ForumComponent implements OnInit {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          this.serviceAjouter.Correction(selectedValues, id, this.ids).subscribe(data => {
+          alert(this.storageService.getId().id)
+          alert(selectedValues)
+          this.serviceAjouter.Correction(selectedValues, this.storageService.getId().id, this.ids).subscribe(data => {
             this.errorMessage = data.message;
             this.status = data.status;
 
@@ -130,5 +141,17 @@ export class ForumComponent implements OnInit {
     })
   }
 
+   mesclassements(){
+    this.serviceAfficher.classements(this.idChallenge).subscribe(data=>{
+      this.classements=data
+    })
+   }
+   affichage(id:number){
+    alert(id)
+    const solutionId = {
+      "id":id
+    }
+    this.storageService.saveId(solutionId);
+   }
 
 }

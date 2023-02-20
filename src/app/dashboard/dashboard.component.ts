@@ -66,6 +66,7 @@ export class DashboardComponent implements OnInit {
   octobre: any;
   novembre: any;
   decembre: any;
+  categorie: any;
 
   constructor(public breakpointObserver: BreakpointObserver,
     private route: Router, private connexion: ConnexionService,
@@ -76,8 +77,9 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-   
+    this.serviceAfficher.afficherCategorie().subscribe(data=>{
+      this.categorie=data;
+    })   
 
     this.breakpointObserver
       .observe(['(max-width: 767px)'])

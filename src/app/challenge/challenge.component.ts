@@ -80,6 +80,7 @@ export class ChallengeComponent implements OnInit {
   ParIdChallenge: any;
   idChallenge!: number;
   avenir: any;
+  isCollapsed = true;
   crite: any;
 
 
