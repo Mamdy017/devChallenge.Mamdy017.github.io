@@ -6,6 +6,7 @@ import { AjouterServiceService } from '../Services/ajouter-service.service';
 import { DatePipe } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { StorageService } from '../Services/storage.service';
 
 
 @Component({
@@ -89,12 +90,11 @@ export class ChallengeComponent implements OnInit {
 
   constructor(public breakpointObserver: BreakpointObserver,
     private route: Router, private routes: ActivatedRoute, private serviceAfficher: AfficherService,
-    private serviceAjouter: AjouterServiceService, private datePipe: DatePipe) { }
+    private serviceAjouter: AjouterServiceService, private datePipe: DatePipe,
+    private storageService:StorageService) { }
 
   actualise(): void {
-    // this.serviceAfficher.afficherChallengeAvenir().subscribe(data=>{
-    //   this.avenir=data;
-    // })
+
     setInterval(
       () => {
       }, 100, clearInterval(1500));
@@ -140,6 +140,9 @@ export class ChallengeComponent implements OnInit {
       criteres: new FormControl(''),
       baremeids: new FormControl([Validators.required, Validators.pattern("^[0-9]*$")]),
 
+    })
+    this.serviceAfficher.afficherChallengeAvenir().subscribe(data=>{
+      this.avenir=data;
     })
     this.cateForm = new FormGroup({
       cate: new FormControl(''),
@@ -246,6 +249,7 @@ export class ChallengeComponent implements OnInit {
                 swalWithBootstrapButtons.fire(
                   `<h1  style='font-size:.7em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>${this.errorMessage}.</h1>`,
                 )
+                this.challengeForm.reset()
               } else if (this.status == false) {
                 swalWithBootstrapButtons.fire(
                   `<h1  style='font-size:.7em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>${this.errorMessage}.</h1>`,
@@ -282,7 +286,7 @@ export class ChallengeComponent implements OnInit {
       heightAuto: false
 
     })
-    if (this.challengeFormModifier.valid) {
+ 
       const formData = new FormData();
       const cateIds = this.challengeFormModifier.value.cateidsmod.map((options: { id: any; }) => options.id);
       const tecnhoIds = this.challengeFormModifier.value.tecnhoidsmod.map((options1: { id: any; }) => options1.id);
@@ -307,7 +311,8 @@ export class ChallengeComponent implements OnInit {
       })
         .then((result) => {
           if (result.isConfirmed) {
-            this.serviceAjouter.modifierChallenge(this.idChallenge, formData).subscribe((data: any) => {
+            
+            this.serviceAjouter.modifierChallenge(this.storageService.getModId().id, formData).subscribe((data: any) => {
               this.errorMessage = data.message;
               this.status = data.status;
 
@@ -336,12 +341,7 @@ export class ChallengeComponent implements OnInit {
             )
           }
         })
-    } else {
-      swalWithBootstrapButtons.fire(
-        `<h1  style='font-size:.7em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>Tous les champs champs sont obligatoirs !!</h1>`,
-      )
-
-    }
+    
   }
   onSubmitCritere() {
     if (this.critereForm.valid) {
@@ -418,6 +418,8 @@ export class ChallengeComponent implements OnInit {
       this.critereParIdChallenge = data;
       // console.log("mes cccc",JSON.stringify(this.critereParIdChallenge))
     })
+
+    
     this.serviceAfficher.afficherParIdChallenge(idChallenge).subscribe(data => {
       this.ParIdChallenge = data;
       this.titre = data.titre;
@@ -427,11 +429,66 @@ export class ChallengeComponent implements OnInit {
     })
   }
 
+  affichage3(idChallenge: any) {
+    
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: '',
+        cancelButton: ''
+      },
+      heightAuto: false
+
+    })
+      swalWithBootstrapButtons.fire({
+        title: "<h1 style='font-size:.7em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>Cet challenge va être ajouté !!?</h1>",
+        showCancelButton: true,
+        confirmButtonText: '<span style="font-size:.9em">Confirmer</span>',
+        cancelButtonText: `<span style="font-size:.9em"> Annuler</span>`,
+      })
+        .then((result) => {
+          if (result.isConfirmed) {
+            
+            this.serviceAjouter.supprimer(idChallenge).subscribe((data: any) => {
+              this.errorMessage = data.message;
+              this.status = data.status;
+
+              if (this.status == true) {
+                swalWithBootstrapButtons.fire(
+                  `<h1  style='font-size:.7em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>${this.errorMessage}.</h1>`,
+                )
+
+              } else if (this.status == false) {
+                swalWithBootstrapButtons.fire(
+                  `<h1  style='font-size:.7em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>${this.errorMessage}.</h1>`,
+                )
+              }
+            });
+
+          } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+          ) {
+            swalWithBootstrapButtons.fire(
+              '',
+              "<h1 style='font-size:.9em; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>Opération annulée</h1>",
+              'error'
+            )
+          }
+        })
+  }
+
   isChallengeInProgress(startDate: string): boolean {
     const challengeStartDate = new Date(startDate.split('T')[0]);
     const currentDate = new Date();
     return challengeStartDate > currentDate;
   }
+  affichage2(id:number){
+    const modId = {
+      "id":id
+    }
+    this.storageService.modId(modId);
+    alert("moi"+modId)
+   }
 
   reset() {
     this.challengeForm.reset();

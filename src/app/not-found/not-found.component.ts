@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ConnexionService } from '../Services/connexion.service';
+import { StorageService } from '../Services/storage.service';
 
 @Component({
   selector: 'app-not-found',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotFoundComponent implements OnInit {
 
-  constructor() { }
+  constructor( private inscription:ConnexionService,private storage: StorageService,private route: Router) { }
 
   ngOnInit(): void {
   }
 
+  logout(): void {
+    this.inscription.logout().subscribe({
+      next: res => {
+        console.log(res);
+        this.storage.clean();
+        this.route.navigate(['/connexion']);
+        // window.location.reload();
+      },
+      error: err => {
+        console.log(err);
+      }
+    });
+  }
 }

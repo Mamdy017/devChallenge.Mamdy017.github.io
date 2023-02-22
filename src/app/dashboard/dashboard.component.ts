@@ -148,7 +148,7 @@ export class DashboardComponent implements OnInit {
       
     
       this.serviceAfficher.afficheruser().subscribe(data => {
-        this.user = data;
+        this.user = data.slice().reverse();
         console.table(this.user);
       });
 

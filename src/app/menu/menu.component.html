@@ -24,12 +24,12 @@
           <span class="text nav-text">Utilisateur</span>
         </a>
       </li>
-      <li class="nav-link">
+      <!-- <li class="nav-link">
         <a href="#" routerLinkActive="active" routerLink="/forum">
           <i class='bx bxs-conversation icon'></i>
           <span class="text nav-text">Forum</span>
         </a>
-      </li>
+      </li> -->
       <span class="py-5">
         <a href="#">
           <span class="text nav-text"></span>
@@ -87,8 +87,8 @@
                   <i></i>
                 </div>&nbsp;&nbsp;&nbsp;
                 <div class="input-box">
-                  <input type="text" name="prenom"  [(ngModel)]="form.prenom" required maxlength="20"
-                    #prenom="ngModel" [ngClass]="{ 'is-invalid': f.submitted && prenom.errors }">
+                  <input type="text" name="prenom" [(ngModel)]="form.prenom" required maxlength="20" #prenom="ngModel"
+                    [ngClass]="{ 'is-invalid': f.submitted && prenom.errors }">
                   <div class="invalid-feedback" *ngIf="prenom.errors && f.submitted">
                     <div *ngIf="prenom.errors['required']">Le nom est obligatoire!</div>
                     <div *ngIf="prenom.errors['maxlength']">
@@ -101,7 +101,7 @@
               </div>
               <div class="" style="display: flex;">
                 <div class="input-box">
-                  <input type="text" name="username"  [(ngModel)]="form.username" required maxlength="20"
+                  <input type="text" name="username" [(ngModel)]="form.username" required maxlength="20"
                     #username="ngModel" [ngClass]="{ 'is-invalid': f.submitted && username.errors }">
                   <div class="invalid-feedback" *ngIf="username.errors && f.submitted">
                     <div *ngIf="username.errors['required']">Le nom est obligatoire!</div>
@@ -113,21 +113,21 @@
                   <i></i>
                 </div>&nbsp;&nbsp;&nbsp;
                 <div class="input-box">
-                  <input type="number" name="numero"[(ngModel)]="form.numero" required maxlength="13"
-                    #numero="ngModel" [ngClass]="{ 'is-invalid': f.submitted && numero.errors }">
+                  <input type="number" name="numero" [(ngModel)]="form.numero" required maxlength="13" #numero="ngModel"
+                    [ngClass]="{ 'is-invalid': f.submitted && numero.errors }">
                   <div class="invalid-feedback" *ngIf="numero.errors && f.submitted">
                     <div *ngIf="numero.errors['required']">Le numero est obligatoire!</div>
                     <div *ngIf="numero.errors['maxlength']">
                       Le numero telephone ne doit pas depasser 13 caracters
                     </div>
                   </div>
-                  <span>Pseudo</span>
+                  <span>Numéro de téléphone</span>
                   <i></i>
                 </div>&nbsp;&nbsp;&nbsp;
               </div>
               <div class="" style="display: flex; margin-bottom: 10%;">
                 <div class="input-box" style="width: 100%;">
-                  <input type="email" name="email"  [(ngModel)]="form.email" required #email="ngModel"
+                  <input type="email" name="email" [(ngModel)]="form.email" required #email="ngModel"
                     [ngClass]="{ 'is-invalid': f.submitted && email.errors }">
                   <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
                     <div *ngIf="email.errors['required']">Le email est obligatoire!</div>

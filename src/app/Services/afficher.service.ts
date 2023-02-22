@@ -14,7 +14,7 @@ export class AfficherService {
 
   constructor(private http: HttpClient ) { }
   afficherChallenge() :Observable<any>{
-    return this.http.get(`${env}/challenge/afficher`);
+    return this.http.get(`${env}/challenge/decroissant`);
   }
 
 

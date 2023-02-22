@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 const USER_KEY = 'auth-user';
 const SOLUTION_ID = 'solution_id';
-
+const MOD_ID = 'modId';
 @Injectable({
   providedIn: 'root'
 })
@@ -50,10 +50,20 @@ export class StorageService {
     if (solutionId) {
       return JSON.parse(solutionId);
     }
-
     return {};
   }
 
+  
+  public modId(modId: any): void {
+    window.sessionStorage.removeItem(MOD_ID);
+    window.sessionStorage.setItem(MOD_ID, JSON.stringify(modId));
+  }
 
-
+  public getModId(): any {
+    const modId = window.sessionStorage.getItem(MOD_ID);
+    if (modId) {
+      return JSON.parse(modId);
+    }
+    return {};
+  }
 }

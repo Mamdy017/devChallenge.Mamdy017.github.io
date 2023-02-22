@@ -94,7 +94,7 @@
                     <th scope="col">N°</th>
                     <th scope="col">Equipe/utilisateur</th>
                     <th scope="col">Challenge</th>
-                    <th scope="col">Source</th>
+                    <th scope="col">Points</th>
                     <th scope="col">Action</th>
 
                   </tr>
@@ -111,6 +111,9 @@
                     </td>
                     <td *ngIf="rang.team">
                       <p class="text-body mb-0">{{rang.team.nom}}</p>
+                    </td>
+                    <td *ngIf="rang.utilisateurs">
+                      <p class="text-body mb-0">{{rang.utilisateurs.nom}}</p>
                     </td>
 
                     <td>

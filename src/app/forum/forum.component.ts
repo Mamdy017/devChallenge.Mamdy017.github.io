@@ -49,7 +49,7 @@ export class ForumComponent implements OnInit {
     this.idChallenge = this.routes.snapshot.params['id']
     this.serviceAfficher.afficherCritereParIdChallenge(this.idChallenge).subscribe(data => {
       this.critereParIdChallenge = data;
-      alert("mes cccc"+ JSON.stringify(this.critereParIdChallenge))
+      // alert("mes cccc"+ JSON.stringify(this.critereParIdChallenge))
     })
     this.mesclassements()
     this.afficherSolution();
@@ -81,7 +81,7 @@ export class ForumComponent implements OnInit {
     this.serviceAfficher.solutions(this.idChallenge).subscribe(data => {
       this.solutionAffichage = data;
       // console.log("mes solutiosn", this.solutionAffichage);
-      alert(JSON.stringify(this.solutionAffichage))
+      // alert(JSON.stringify(this.solutionAffichage))
     })
   }
 
@@ -109,8 +109,8 @@ export class ForumComponent implements OnInit {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          alert(this.storageService.getId().id)
-          alert(selectedValues)
+          // alert(this.storageService.getId().id)
+          // alert(selectedValues)
           this.serviceAjouter.Correction(selectedValues, this.storageService.getId().id, this.ids).subscribe(data => {
             this.errorMessage = data.message;
             this.status = data.status;
@@ -144,14 +144,15 @@ export class ForumComponent implements OnInit {
    mesclassements(){
     this.serviceAfficher.classements(this.idChallenge).subscribe(data=>{
       this.classements=data
+      // alert(JSON.stringify(this.classements))
     })
    }
    affichage(id:number){
-    alert(id)
     const solutionId = {
       "id":id
     }
     this.storageService.saveId(solutionId);
+    // alert(solutionId)
    }
 
 }

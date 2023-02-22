@@ -16,7 +16,13 @@ export class AjouterServiceService {
   modifierChallenge(idChallenge:number,formData: FormData) {
     return this.http.put(`http://localhost:8080/devs/auth/challenge/modification/${idChallenge}`, formData);
   }
+  supprimer(idChallenge:number) {
+    return this.http.put(`http://localhost:8080/devs/auth/challenge/modification1/${idChallenge}`,{});
+  }
 
+  supprimerUser(idUser:number) {
+    return this.http.put(`http://localhost:8080/devs/auth/utilisateur/modifierS/${idUser}`,{});
+  }
   AjouterCritere(formData: FormData) {
     return this.http.post('http://localhost:8080/devs/auth/critere/ajout', formData);
   }

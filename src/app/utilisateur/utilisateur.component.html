@@ -82,14 +82,14 @@
                                                         <!-- ----------------------- Tittre tableau en haut---------------------------
                                                     --------------------------------------------------- -->
                                                         <tr class=" text-light" style="background-color: #695CFE;">
-                                                            <th scope="col">No.</th>
+                                                            <th scope="col">N°.</th>
                                                             <th scope="col">Photo</th>
                                                             <th scope="col">Nom</th>
                                                             <th scope="col">Prenom</th>
                                                             <th scope="col">Email</th>
                                                             <th scope="col">Telephone</th>
                                                             <th scope="col">Role</th>
-                                                            <th scope="col">Action</th>
+                                                            <th *ngIf="!adminP" scope="col">Action</th>
                                                         </tr>
                                                         <!-- ----------------------- Fin Tittre tableau en haut---------------------------
                                                     --------------------------------------------------- -->
@@ -98,7 +98,7 @@
                                                         <!-- ----------------------- Liste Element tableau start---------------------------
                                                     --------------------------------------------------- -->
                                                         <tr
-                                                            *ngFor="let users of user |filter:term | paginate: { itemsPerPage: 8, currentPage: p },  let i = index ">
+                                                            *ngFor="let users of user.slice().reverse() |filter:term | paginate: { itemsPerPage: 8, currentPage: p },  let i = index ">
                                                             <td>
                                                                 <p class="text-body mb-0">{{i+1}}</p>
                                                             </td>
@@ -121,8 +121,8 @@
                                                             <td>
                                                                 <p class="text-body mb-0" *ngIf="users.roles[0].name=='ROLE_USER'">Utilisateur</p>
                                                             </td>
-                                                            <td>
-                                                                <p class="text-body mb-0"><button
+                                                            <td *ngIf="!adminP">
+                                                                <p class="text-body mb-0" (click)="bannir(users.id)"><button
                                                                         >Banir</button>
                                                                 </p>
                                                             </td>

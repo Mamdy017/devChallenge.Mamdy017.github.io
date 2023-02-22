@@ -53,20 +53,10 @@ export class NavbarComponent implements OnInit {
     }
 
     this.currentUser = this.storage.recupererUser();
-    // console.table(this.currentUser);
+
     var moi = this.currentUser.id;
 
     this.isLoggedIn = this.storage.connexionReussi();
-
-    // if (this.isLoggedIn) {
-    //   const user = this.storage.recupererUser();
-    //   this.roles = user.roles;
-
-    //   this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-    //   this.showModeratorBoard = this.roles.includes('adminuser');
-
-    //   this.username = user.username;
-    // }
     this.serviceAffiche.notSolutions().subscribe(data=>{
       this.notif=data;
     })
