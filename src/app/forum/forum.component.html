@@ -43,7 +43,7 @@
                   <div class="w-100 ms-3">
                     <div class="d-flex w-100 justify-content-between">
                       <h6 *ngIf="solution.team" class="mb-0">Equipe:&nbsp;&nbsp;&nbsp;&nbsp; {{solution.team.nom}}</h6>
-                      <h6 *ngIf="solution.utilisateurs" class="mb-0">Equipe:&nbsp;&nbsp;&nbsp;&nbsp;
+                      <h6 *ngIf="solution.utilisateurs" class="mb-0">Utilisateur:&nbsp;&nbsp;&nbsp;&nbsp;
                         {{solution.utilisateurs.nom}}</h6>
                       <h6 class="mb-0">Challenge:&nbsp;&nbsp;&nbsp;&nbsp; {{solution.challenge.titre}}</h6>
                       <h6 class="mb-0"> Fichier source:&nbsp;&nbsp;&nbsp;&nbsp; <a href="{{solution.source}}"
@@ -62,17 +62,19 @@
                       <form 
                         (submit)="onSubmit() "
                         style="width: 96%; margin-left: auto;margin-right: auto;">
-                        <label>Choix de type :</label>
-                        <div *ngFor="let cpidc of critereParIdChallenge; let i = index">
-                          <div class="input-box">
+                        <label>Choisir les points :</label>
+                        <div *ngFor="let cpidc of critereParIdChallenge;">
+                          <div class="input-box" style="margin-bottom: 2%;">
+                        
+                            <option style="font-weight: 100; margin-bottom: 2%;" selected>{{cpidc.critere}}</option>
                             <select class="form-select" aria-label="Default select example" name="{{cpidc.critere}}">
-                              <option style="font-weight: 100;" selected>{{cpidc.critere}}</option>
+                              <option style="font-weight: 20;" selected>Choisir</option>
                               <option style="font-weight: bold;" *ngFor="let option of options" [value]="option">
                                 {{option}}</option>
                             </select>
                           </div>
                         </div>
-                        <button type="submit">Envoyer</button>
+                        <button style="width: 100%; margin-bottom: 5%;" type="submit">Envoyer</button>
                       </form>
                     </div>
                   </div>
@@ -84,13 +86,16 @@
       </div>
       <div class="row" style="width: 98%; margin-left: auto; margin-right: auto;">
         <div class="col-lg-12">
+          <h3 style="margin-left: 40%; color: #5260FF;font-weight: bold; width: 100%;">Le classements</h3>
           <div class="">
             <div class="table-responsive">
+
               <table class="table project-list-table table-nowrap align-middle table-borderless">
                 <thead>
                   <!-- ----------------------- Tittre tableau en haut---------------------------
                         --------------------------------------------------- -->
                   <tr class=" text-light" style="background-color: #695CFE;">
+                    
                     <th scope="col">N°</th>
                     <th scope="col">Equipe/utilisateur</th>
                     <th scope="col">Challenge</th>
