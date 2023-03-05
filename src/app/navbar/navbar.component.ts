@@ -69,13 +69,13 @@ export class NavbarComponent implements OnInit {
   logout(): void {
     this.connexion.logout().subscribe({
       next: res => {
-        console.log(res);
+        // console.log(res);
         this.storage.clean();
         this.route.navigate(['/connexion']);
         // window.location.reload();
       },
       error: err => {
-        console.log(err);
+        // console.log(err);
       }
     });
 
@@ -143,7 +143,7 @@ export class NavbarComponent implements OnInit {
     // Ajoutez cette ligne pour s'assurer que la valeur de 'value' pour le champ de fichier est vide.
     event.target.value = '';
   }
-  
+
   refreshPage() {
     location.reload();
   }

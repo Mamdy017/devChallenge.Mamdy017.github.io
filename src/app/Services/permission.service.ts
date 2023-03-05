@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { StorageService } from './storage.service'; 
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +17,11 @@ export class PermissionService implements CanActivate {
     if (user && (user.roles.includes('ROLE_ADMIN') || user.roles.includes('adminuser'))) {
       return true;
     } else {
-      this.route.navigate(['/']);
+      // this.route.navigate(['/']);
+      location.reload();
       setInterval(() => {
         location.reload();
-      }, 1000);
+      }, 10);
       return false;
     }
   }

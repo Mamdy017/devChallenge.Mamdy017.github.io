@@ -67,9 +67,13 @@ export class AfficherService {
     return this.http.get(` http://localhost:8080/devs/auth/solution/non-etat-1`)
 
   }
-  
+
   classements(idChallenge:number) :Observable<any>{
     return this.http.get(`http://localhost:8080/devs/auth/solution/challenge/${idChallenge}`)
   }
 
+
+  team(idChallenge:number,teamId:number) :Observable<any>{
+    return this.http.get(`http://localhost:8080/devs/auth/teamusrs/afficherEquipeMembre/${idChallenge}/${teamId}`)
+  }
 }

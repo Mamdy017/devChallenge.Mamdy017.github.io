@@ -37,7 +37,7 @@ export class MenuComponent implements OnInit {
 
     this.inscription.inscription(nom, prenom,username,email, numero, password).subscribe({
       next: data => {
-        console.log(data);
+        // console.log(data);
         this.InscriptionReussi = true;
         this.Inscriptionechoue = false;
       },
@@ -51,13 +51,13 @@ export class MenuComponent implements OnInit {
   logout(): void {
     this.inscription.logout().subscribe({
       next: res => {
-        console.log(res);
+        // console.log(res);
         this.storage.clean();
         this.route.navigate(['/connexion']);
         // window.location.reload();
       },
       error: err => {
-        console.log(err);
+        // console.log(err);
       }
     });
   }

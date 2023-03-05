@@ -18,13 +18,13 @@ export class NotFoundComponent implements OnInit {
   logout(): void {
     this.inscription.logout().subscribe({
       next: res => {
-        console.log(res);
+        // console.log(res);
         this.storage.clean();
         this.route.navigate(['/connexion']);
         // window.location.reload();
       },
       error: err => {
-        console.log(err);
+        // console.log(err);
       }
     });
   }

@@ -30,6 +30,7 @@ export class ForumComponent implements OnInit {
   errorMessage: any;
   status: any;
   classements: any;
+  mesteam: any;
 
   constructor(
     public breakpointObserver: BreakpointObserver,
@@ -67,8 +68,8 @@ export class ForumComponent implements OnInit {
         }
       });
   }
-  
-  
+
+
 
 
 
@@ -153,6 +154,11 @@ export class ForumComponent implements OnInit {
     }
     this.storageService.saveId(solutionId);
     // alert(solutionId)
+   }
+   mesteams(teamId:number){
+    this.serviceAfficher.team(this.idChallenge,teamId).subscribe(data=>{
+      this.mesteam=data;
+    })
    }
 
 }
