@@ -41,13 +41,15 @@
   <div class="nav-item dropdown">
     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
       <i class="fa fa-bell me-lg-2" style="font-size: 1.5em;"></i>
-      <span class="badge rounded-pill badge-notification bg-danger " style="margin-top: -10%; margin-left: -18%; position: absolute;">{{notif?.length ||0}}</span>
+      <span class="badge rounded-pill badge-notification bg-danger "
+        style="margin-top: -10%; margin-left: -18%; position: absolute;">{{notif?.length ||0}}</span>
       <span class="d-none d-lg-inline-flex">Solution</span>
     </a>
     <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
       <div class="" *ngFor="let not of notif">
         <a href="#" [routerLink]="['/solution',not.challenge.id]" class="dropdown-item">
-          <h6 class="fw-normal mb-0">{{not.team.nom}}</h6>
+          <h6 *ngIf="not.team.nom" class="fw-normal mb-0">{{not.team.nom}}</h6>
+          <h6 *ngIf="!not.team.nom">{{not.utilisateur.nom}}</h6>
           <small>{{not.challenge.titre}}</small>
         </a>
         <hr class="dropdown-divider">

@@ -81,8 +81,6 @@ export class ForumComponent implements OnInit {
   afficherSolution() {
     this.serviceAfficher.solutions(this.idChallenge).subscribe(data => {
       this.solutionAffichage = data;
-      // console.log("mes solutiosn", this.solutionAffichage);
-      // alert(JSON.stringify(this.solutionAffichage))
     })
   }
 

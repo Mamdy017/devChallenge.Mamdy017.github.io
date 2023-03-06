@@ -347,8 +347,7 @@ export class ChallengeComponent implements OnInit {
     if (this.critereForm.valid) {
       const formData = new FormData();
       const baremeids = this.critereForm.value.baremeids.map((options4: { id: any; }) => options4.id);
-      // console.log("vvvvvvvvvv" + baremeids);
-      // console.log("mes id" + this.critereForm.value.criteres)
+     
       formData.append('baremeids', baremeids);
       formData.append('criteres', this.critereForm.value.criteres);
 
@@ -367,7 +366,6 @@ export class ChallengeComponent implements OnInit {
     if (this.baremeForm.valid) {
       const formData = new FormData();
       formData.append('bareme', this.baremeForm.value.bareme);
-      // console.log("mes" + this.baremeForm.value.bareme);
       this.serviceAjouter.AjouterBareme(formData).subscribe((data: any) => {
         this.errorMessage = data.message;
         this.status = data.status;
@@ -397,7 +395,6 @@ export class ChallengeComponent implements OnInit {
     if (this.technoForm.valid) {
       const formData = new FormData();
       formData.append('techno', this.technoForm.value.techno);
-      // console.log("bvbvbvb" + this.technoForm.value.techno);
       this.serviceAjouter.AjouterTechno(formData).subscribe((data: any) => {
         this.errorMessage = data.message;
         this.status = data.status;
@@ -416,7 +413,6 @@ export class ChallengeComponent implements OnInit {
   affichage(idChallenge: any) {
     this.serviceAfficher.afficherCritereParIdChallenge(idChallenge).subscribe(data => {
       this.critereParIdChallenge = data;
-      // console.log("mes cccc",JSON.stringify(this.critereParIdChallenge))
     })
 
     
@@ -487,7 +483,6 @@ export class ChallengeComponent implements OnInit {
       "id":id
     }
     this.storageService.modId(modId);
-    alert("moi"+modId)
    }
 
   reset() {

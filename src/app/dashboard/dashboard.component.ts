@@ -70,7 +70,6 @@ export class DashboardComponent implements OnInit {
       this.roles = this.storage.recupererUser().roles;
     }
     this.currentUser = this.storage.recupererUser();
-    // console.table(this.currentUser);
     var moi = this.currentUser.id;
 
 
@@ -90,7 +89,6 @@ export class DashboardComponent implements OnInit {
 
     this.serviceAfficher.afficheruser().subscribe(data => {
       this.user = data.slice().reverse();
-      // console.table(this.user);
     });
 
     this.serviceAfficher.afficherChallenge().subscribe(data => {
