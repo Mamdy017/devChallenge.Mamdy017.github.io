@@ -48,9 +48,9 @@
     <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
       <div class="" *ngFor="let not of notif">
         <a href="#" [routerLink]="['/solution',not.challenge.id]" class="dropdown-item">
-          <h6 *ngIf="not.team.nom" class="fw-normal mb-0">{{not.team.nom}}</h6>
-          <h6 *ngIf="!not.team.nom">{{not.utilisateur.nom}}</h6>
-          <small>{{not.challenge.titre}}</small>
+          <h6  class="fw-normal mb-0" *ngIf="not.team?.nom">Equipe: {{not.team?.nom}}</h6>
+          <h6 *ngIf="!not.team?.nom">utilisateurs: {{not.utilisateurs?.nom}}</h6>
+          <small style="color: #707070;">Challenge: {{not.challenge.titre}}</small>
         </a>
         <hr class="dropdown-divider">
       </div>
